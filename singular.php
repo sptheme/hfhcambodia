@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying all single posts.
+ * The template for displaying all pages, single posts and attachments
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Habitat Cambodia
  */
@@ -14,7 +14,20 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'template-parts/content', 'single' ); ?>
+			<?php 
+			// Single Page
+			if ( is_singular( 'page' ) ) {
+
+				get_template_part( 'partials/page-single-layout' );
+
+			}
+
+			// Single posts
+			elseif ( is_singular( 'post' ) ) {
+
+				get_template_part( 'partials/blog/blog-single-layout' );
+
+			}?>
 
 			<?php the_post_navigation(); ?>
 

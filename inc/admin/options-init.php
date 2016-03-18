@@ -101,25 +101,40 @@
      */
 
     /*
+     * ---> OTHER VARIABLE
+     */
+
+    $entry_meta_choices = array(
+        'date'       => esc_html__( 'Date', 'redux-framework-wpsp' ),
+        'author'     => esc_html__( 'Author', 'redux-framework-wpsp' ),
+        'categories' => esc_html__( 'Categories', 'redux-framework-wpsp' ),
+        'comments'   => esc_html__( 'Comments', 'redux-framework-wpsp' ),
+    );
+
+    /*
+     * ---> END OTHER VARIABLE
+     */
+
+    /*
      * ---> START HELP TABS
      */
 
     $tabs = array(
         array(
             'id'      => 'redux-help-tab-1',
-            'title'   => __( 'Theme Information 1', 'hfhcambodia' ),
-            'content' => __( '<p>This is the tab content, HTML is allowed.</p>', 'hfhcambodia' )
+            'title'   => __( 'Theme Information 1', 'redux-framework-wpsp' ),
+            'content' => __( '<p>This is the tab content, HTML is allowed.</p>', 'redux-framework-wpsp' )
         ),
         array(
             'id'      => 'redux-help-tab-2',
-            'title'   => __( 'Theme Information 2', 'hfhcambodia' ),
-            'content' => __( '<p>This is the tab content, HTML is allowed.</p>', 'hfhcambodia' )
+            'title'   => __( 'Theme Information 2', 'redux-framework-wpsp' ),
+            'content' => __( '<p>This is the tab content, HTML is allowed.</p>', 'redux-framework-wpsp' )
         )
     );
     Redux::setHelpTab( $opt_name, $tabs );
 
     // Set the help sidebar
-    $content = __( '<p>This is the sidebar content, HTML is allowed.</p>', 'hfhcambodia' );
+    $content = __( '<p>This is the sidebar content, HTML is allowed.</p>', 'redux-framework-wpsp' );
     Redux::setHelpSidebar( $opt_name, $content );
 
 
@@ -134,6 +149,44 @@
      *
      */
 
+    // Blog section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Blog', 'redux-framework-wpsp' ),
+        'id'               => 'blog-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-file-edit'
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'General', 'redux-framework-wpsp' ),
+        'id'         => 'blog-general-option',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'blog-cats-exclude',
+                'type'     => 'text',
+                'title'    => __( 'Exclude Categories From Blog', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Enter the ID\'s of categories to exclude from the blog template or homepage blog seperated by a comma (no spaces).', 'redux-framework-wpsp' ),
+            ),
+        )
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Single', 'redux-framework-wpsp' ),
+        'id'         => 'blog-single-option',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'blog-post-meta-sections',
+                'type'     => 'checkbox',
+                'title'    => __( 'Meta', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'checked meta filed to be display', 'redux-framework-wpsp' ),
+                'options'  => $entry_meta_choices
+            ),
+        )
+    ) );
+
     // Placeholder section
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Placeholder', 'redux-framework-wpsp' ),
@@ -142,7 +195,7 @@
         'customizer_width' => '400px',
         'icon'             => 'el el-picture'
     ) );
-     Redux::setSection( $opt_name, array(
+    Redux::setSection( $opt_name, array(
         'title'      => __( 'General', 'redux-framework-wpsp' ),
         'id'         => 'placehodler-option',
         'subsection' => true,

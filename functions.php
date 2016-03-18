@@ -166,6 +166,11 @@ function wpsp_print_ie_script(){
 add_action('wp_head', 'wpsp_print_ie_script');
 
 /**
+ * Core functions
+ */
+require get_template_directory() . '/inc/core-functions.php';
+
+/**
  * Add Redux Framework
  */
 require get_template_directory() . '/inc/admin/admin-init.php';
@@ -192,11 +197,16 @@ require get_template_directory() . '/inc/aq_resizer.php';
 require get_template_directory() . '/inc/sanitize-data.php';
 
 /**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
  * Custom hooks
  */
 require get_template_directory() . '/inc/hooks.php';
+
+/**
+ * Blog helper functions
+ */
+require get_template_directory() . '/inc/blog-functions.php';
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
