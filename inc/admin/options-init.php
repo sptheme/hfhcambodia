@@ -24,6 +24,7 @@
     $args = array(
         'opt_name' => 'redux_wpsp',
         'use_cdn' => TRUE,
+        'dev_mode' => FALSE,
         'display_name' => 'Theme Options',
         'display_version' => '1.0.0',
         'page_title' => 'Theme Options',
@@ -72,11 +73,10 @@
     );
 
     // SOCIAL ICONS -> Setup custom links in the footer for quick links in your panel footer icons.
-    $args['share_icons'][] = array(
+    /*$args['share_icons'][] = array(
         'url'   => 'https://github.com/ReduxFramework/ReduxFramework',
         'title' => 'Visit us on GitHub',
         'icon'  => 'el el-github'
-        //'img'   => '', // You can use icon OR img. IMG needs to be a full URL.
     );
     $args['share_icons'][] = array(
         'url'   => 'https://www.facebook.com/pages/Redux-Framework/243141545850368',
@@ -92,7 +92,7 @@
         'url'   => 'http://www.linkedin.com/company/redux-framework',
         'title' => 'Find us on LinkedIn',
         'icon'  => 'el el-linkedin'
-    );
+    );*/
 
     Redux::setArgs( $opt_name, $args );
 
