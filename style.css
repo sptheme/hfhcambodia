@@ -47,10 +47,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Captions
 	## Galleries
+# Blog Post
+	## Blog post meta
 # Addon Elements
 	## Paging navigation
 	## Buttons
 	## Social Button
+	## Equal height content
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -1720,8 +1723,151 @@ object {
 
 
 /*--------------------------------------------------------------
+# Blog post
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Blog post meta
+--------------------------------------------------------------*/
+.meta,
+.entry .meta { font-size: 0.923em; color: #777; list-style: none; margin: 0 0 10px; }
+.meta li,
+.entry .meta li { float: left; margin: 0 20px 5px 0; }
+.meta li:last-child,
+.entry .meta li:last-child { margin-right: 0 }
+.meta li .fa { margin-right: 8px }
+.meta a { color: #777; text-decoration: none; }
+.meta a:hover { color: #000; text-decoration: none; }
+.meta time { display: inline; }
+
+/*--------------------------------------------------------------
+## Blog single post
+--------------------------------------------------------------*/
+.single-post .entry { margin-bottom: 40px }
+
+.single-post .meta { margin: 0 0 20px }
+
+/* Blog Single > Thumbnail */
+#post-media { display: block; position: relative; margin-bottom: 20px; }
+#post-media img { display: block; margin: 0 auto; width: 100%; }
+.post-media-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 10px 15px; background: #000; background: rgba(0,0,0,0.75); color: #fff; font-size: 0.923em; font-weight: normal; text-align: center; }
+.post-media-caption p { color: #fff }
+.post-media-caption a { color: #fff; text-decoration: underline; }
+.post-media-caption p:last-child { margin: 0 }
+
+/* Blog Single > Tags */
+.post-tags { margin-bottom: 40px }
+
+/* Blog Single > Related Posts */
+.related-posts { margin-bottom: 20px; overflow: hidden; }
+.related-posts li { margin-bottom: 20px }
+.related-posts li:last-child,
+.related-posts li p:last-child { margin-bottom: 0 }
+.related-post-thumb { display: block }
+.related-post-thumb img { display: block; width: 100%; }
+.related-post-title { margin: 0 0 5px; display: block; }
+.related-post-content { padding: 10px; background: #f7f7f7; border: 1px solid #eee; }
+.related-post-excerpt { font-size: 0.923em; line-height: 1.7em; }
+.related-post-excerpt p:last-child { margin: 0 }
+
+/* Blog Single > Quote */
+.single .format-quote { position: relative; display: block; padding: 20px 30px; font-size: 1.231em; z-index: 2; background: #f7f7f7; }
+.single .format-quote p:last-child { margin: 0 }
+.single .format-quote .quote-entry-author { margin-top: 15px; font-size: 0.923em; font-weight: 300; text-decoration: underline; }
+.single .format-quote .fa-quote-right { position: absolute; right: 15px; bottom: 15px; font-size: 60px; display: block; z-index: 1; opacity: 0.1; }
+
+
+/*--------------------------------------------------------------
 # Addon Elements
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Images
+--------------------------------------------------------------*/
+/* Commons > Images */
+.stretch-image img,
+img.stretch-image { display: block; width: 100% !important; }
+.image-filter-grayscale { filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); filter: gray; -webkit-filter: grayscale(100%); -webkit-transition: all .25s ease; -webkit-backface-visibility: hidden; }
+.image-filter-grayscale img { opacity: 1 !important }
+.image-filter-grayscale:hover { filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale"); -webkit-filter: grayscale(0%); }
+
+/* Commons > Image Classes */
+.image-shadow { background: #fff; box-shadow: 0px 1px 3px rgba(0,0,0,0.1); }
+.image-border { background: #fff; padding: 4px; border: 1px solid #ddd; }
+.image-rounded { background: #fff; border-radius: 3px; }
+.image-circle { background: #fff; border-radius: 99px; }
+.image-hover:hover { opacity: 0.8; -webkit-opacity: 0.8; -moz-opacity: 0.8; box-shadow: 0px 1px 5px rgba(0,0,0,0.2); }
+.image-fancy { background: #fff; padding: 4px; border: 1px solid #ddd; border-radius: 99px; -moz-border-radius: 99px; -webkit-border-radius: 99px; }
+.image-fancy:hover { opacity: 0.8; -webkit-opacity: 0.8; -moz-opacity: 0.8; box-shadow: 0px 1px 5px rgba(0,0,0,0.2); }
+
+/*--------------------------------------------------------------
+## Image Hover
+--------------------------------------------------------------*/
+.wpsp-image-hover { position: relative; overflow: hidden; vertical-align: top; }
+.wpsp-image-hover > a { -webkit-backface-visibility: hidden; -webkit-transform: translateZ(0) scale(1.0, 1.0); }
+.wpsp-image-hover img { display: block; width: 100%; /* width is important to fix firefox bug */ margin: 0 auto; height: auto; box-shadow: 0 0 0 rgba(0,0,0,0); -moz-box-shadow: 0 0 0 rgba(0,0,0,0); -webkit-box-shadow: 0 0 0 rgba(0,0,0,0); transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s; }
+
+/* Image Hover > Opacity */
+.wpsp-image-hover.opacity img { width: auto; }
+.wpsp-image-hover.opacity img:hover { opacity: 0.8; -moz-opacity: 0.8; -webkit-opacity: 0.8 }
+
+/* Image Hover > Grow */
+.wpsp-image-hover.grow { display: inline-block; }
+.wpsp-image-hover.grow:hover img { transform: scale(1.2); -ms-transform: scale(1.2); -webkit-transform: scale(1.2); -o-transform: scale(1.2); -moz-transform: scale(1.2); }
+
+/* Commons > Image Hover > Shrink */
+.wpsp-image-hover.shrink:hover img { transform: scale(0.8); -ms-transform: scale(0.8); -webkit-transform: scale(0.8); -o-transform: scale(0.8); -moz-transform: scale(0.8); }
+
+/* Commons > Image Hover > Pan */
+.wpsp-image-hover.side-pan:hover img { margin-left: -11%; transform: scale(1.2); -ms-transform: scale(1.2); -webkit-transform: scale(1.2); -o-transform: scale(1.2); -moz-transform: scale(1.2); }
+.wpsp-image-hover.vertical-pan:hover img { margin-top: -10%; transform: scale(1.2); -ms-transform: scale(1.2); -webkit-transform: scale(1.2); -o-transform: scale(1.2); -moz-transform: scale(1.2); }
+
+/* Commons > Image Hover > Tilt */
+.wpsp-image-hover.tilt:hover img { -webkit-transform: rotate(-10deg); -moz-transform: rotate(-10deg); -o-transform: rotate(-10deg); -ms-transform: rotate(-10deg); transform: rotate(-10deg); }
+
+/* Commons > Image Hover > Blurr */
+.wpsp-image-hover.blurr img,
+.wpsp-image-hover.blurr-invert img { transition: all 0.2s; -moz-transition: all 0.2s; -webkit-transition: all 0.2s; -o-transition: all 0.2s; }
+.wpsp-image-hover.blurr:hover img { filter: blur(3px); -webkit-filter: blur(3px); -moz-filter: blur(3px); -o-filter: blur(3px); -ms-filter: blur(3px); }
+
+/* Commons > Image Hover > Invert */
+.wpsp-image-hover.blurr-invert img { filter: blur(3px); -webkit-filter: blur(3px); -moz-filter: blur(3px); -o-filter: blur(3px); -ms-filter: blur(3px); }
+.wpsp-image-hover.blurr-invert:hover img { filter: blur(0px); -webkit-filter: blur(0px); -moz-filter: blur(0px); -o-filter: blur(0px); -ms-filter: blur(0px); }
+
+/* Commons > Image Hover > Sepia */
+.wpsp-image-hover.sepia img { -webkit-filter: sepia(100%); filter: sepia(100%); }
+.wpsp-image-hover.sepia:hover img { -webkit-filter: sepia( 100% ); filter: sepia( 100% ); }
+
+/* Commons > Image Hover > FadeIn */
+.wpsp-image-hover.fade-in { background: #000; }
+.wpsp-image-hover.fade-in img { width: 100%; opacity: 0.7; -moz-opacity: 0.7; -webkit-opacity: 0.7; }
+.wpsp-image-hover.fade-in:hover img { opacity: 1; -moz-opacity: 1; -webkit-opacity: 1; }
+
+/* Commons > Image Hover > FadeOut */
+.wpsp-image-hover.fade-out { background: #000 }
+.wpsp-image-hover.fade-out img { width: 100% }
+.wpsp-image-hover.fade-out:hover img { opacity: 0.7; -moz-opacity: 0.7; -webkit-opacity: 0.7; }
+
+/*--------------------------------------------------------------
+## Overlays
+--------------------------------------------------------------*/
+.overlay-parent { position: relative; display: block; overflow: hidden; }
+.overlay-parent > a,
+.overlay-parent > a img { display: block; width: 100% !important; }
+
+/* Overlays > Hide */
+.overlay-hide { visibility: hidden; opacity: 0; -moz-opacity: 0; -webkit-opacity: 0; }
+
+/* Hoverlays > Show */
+.overlay-parent:hover .overlay-plus-two-hover,
+.overlay-parent:hover .overlay-plus-three-hover,
+.overlay-parent:hover .magnifying-hover,
+.overlay-parent:hover .overlay-slideup-title span.title,
+.overlay-parent:hover .overlay-hover-button { visibility: visible; opacity: 1; -moz-opacity: 1; -webkit-opacity: 1; }
+
+/* Overlays > Plus Hover */
+.overlay-plus-hover { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background: #000 url("images/overlay-plus.png") center center no-repeat; transition: all .25s ease-in-out; }
+.overlay-parent:hover .overlay-plus-hover { visibility: visible; opacity: 0.65; -moz-opacity: 0.65; -webkit-opacity: 0.65; }
 
 /*--------------------------------------------------------------
 ## Paging navigation
@@ -1933,3 +2079,16 @@ a.button:hover {
 .wpsp-social-btn-black-ch.wpsp-vimeo:hover { background: #1ab7ea }
 .wpsp-social-bg.wpsp-yelp,
 .wpsp-social-btn-black-ch.wpsp-yelp:hover { background: #AF0605 }
+
+/*--------------------------------------------------------------
+## Equal height content
+--------------------------------------------------------------*/
+/* reset equal height */
+@media only screen and (min-width: 768px) and (max-width: 959px) { 
+	.match-height-content,
+	.equal-height-content { height: auto !important }
+}
+
+@media only screen and (max-width: 767px) { 
+	.match-height-content { height: auto !important }
+}

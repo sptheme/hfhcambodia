@@ -1,6 +1,6 @@
 <?php
 /**
- * Blog single meta
+ * Blog entry meta
  *
  * @package Habitat Cambodia
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Get meta sections
-$sections = wpsp_blog_single_meta_sections();
+$sections = wpsp_blog_entry_meta_sections();
 
 // Return if sections are empty
 if ( empty( $sections ) ) {

@@ -178,15 +178,116 @@
         //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'redux-framework-wpsp' ),
         'fields'     => array(
             array(
+                'id'       => 'is-featured-image',
+                'type'     => 'checkbox',
+                'title'    => __( 'Featured image', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Show/hide featured image', 'redux-framework-wpsp' ),
+                'default'  => '0'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'is-featured-image-lightbox',
+                'type'     => 'checkbox',
+                'title'    => __( 'Featured image lightbox', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Enable/disable featured image lightbox', 'redux-framework-wpsp' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
                 'id'       => 'blog-post-meta-sections',
                 'type'     => 'checkbox',
                 'title'    => __( 'Meta', 'redux-framework-wpsp' ),
                 'subtitle' => __( 'checked meta filed to be display', 'redux-framework-wpsp' ),
                 'options'  => $entry_meta_choices
             ),
+            array(
+                'id'       => 'post-gallery-format-cols',
+                'type'     => 'select',
+                'title'    => __( 'Post gallery columns', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'set number of column to display photo', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    '1' => 'Column 1',
+                    '2' => 'Column 2',
+                    '3' => 'Column 3',
+                    '4' => 'Column 4',
+                    '5' => 'Column 5',
+                    '6' => 'Column 6',
+                ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'is-related-blog-post',
+                'type'     => 'switch',
+                'title'    => __( 'Enable/disable related posts', 'redux-framework-wpsp' ),
+                'default'  => false,
+            ),
+            array(
+                'id'       => 'related-post-title',
+                'type'     => 'text',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Title', 'redux-framework-wpsp' ),
+                'default'  => __( 'Related Posts', 'redux-framework-wpsp' ),
+            ),
+            array(
+                'id'       => 'related-blog-post-count',
+                'type'     => 'select',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Count', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'set number of related post', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    '1' => 'Column 1',
+                    '2' => 'Column 2',
+                    '3' => 'Column 3',
+                ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'related-blog-post-columns',
+                'type'     => 'select',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Columns', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'set number of column to display related post', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    '1' => 'Column 1',
+                    '2' => 'Column 2',
+                    '3' => 'Column 3',
+                    '4' => 'Column 4',
+                    '5' => 'Column 5',
+                    '6' => 'Column 6',
+                ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'is-blog-related-excerpt',
+                'type'     => 'checkbox',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Excerpt', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Show/hide post excerpt', 'redux-framework-wpsp' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'blog-related-excerpt-length',
+                'type'     => 'text',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Excerpt Length', 'redux-framework-wpsp' ),
+                'default'  => '15'// 1 = on | 0 = off
+            ),
         )
     ) );
 
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Archive', 'redux-framework-wpsp' ),
+        'id'         => 'blog-archive-option',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'blog-entry-meta-sections',
+                'type'     => 'checkbox',
+                'title'    => __( 'Entry Meta', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'checked meta filed to be display', 'redux-framework-wpsp' ),
+                'options'  => $entry_meta_choices
+            ),
+        )
+    ) );
     // Placeholder section
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Placeholder', 'redux-framework-wpsp' ),

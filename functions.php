@@ -136,6 +136,7 @@ function hfhcambodia_scripts() {
 	wp_enqueue_script( 'jquery-fitvideo', get_template_directory_uri() . '/js/vendor/jquery.fitvids.js', array(), '20160218', true );
 	wp_enqueue_script( 'jquery-superslides', get_template_directory_uri() . '/js/vendor/jquery.superslides.min.js', array(), '20160218', true );
 	wp_enqueue_script( 'jquery-magnific-popup', get_template_directory_uri() . '/js/vendor/jquery.magnific-popup.min.js', array(), '20160218', true );
+	wp_enqueue_script( 'jquery-matchHeight', get_template_directory_uri() . '/js/vendor/jquery.matchHeight.js', array(), '20160218', true );
 	wp_enqueue_script( 'jquery-main', get_template_directory_uri() . '/js/main.js', array('jquery'), '20160218', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -164,6 +165,59 @@ function wpsp_print_ie_script(){
 	echo '<![endif]-->'. "\n";
 }
 add_action('wp_head', 'wpsp_print_ie_script');
+
+/**
+ * Print customs css and script for theme
+ */
+	
+function wpsp_print_custom_css_script() { ?>
+	
+	<?php if ( is_page() || is_singular() ) : ?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+
+				// Setup content a link work with magnificPopup
+			    $('a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]').each(function(){
+		        	if ($(this).parents('.gallery').length == 0) {
+			            $(this).magnificPopup({
+			               type: 'image',
+			               removalDelay: 500,
+			               mainClass: 'mfp-fade'
+			            });
+			        }
+			    });
+
+			    // Setup wp gallery work with magnificPopup
+			    $('.gallery').each(function() {
+			        $(this).magnificPopup({
+			            delegate: 'a',
+			            type: 'image',
+			            removalDelay: 300,
+			            mainClass: 'mfp-fade',
+			            gallery: {
+			            	enabled: true,
+			            	navigateByImgClick: true
+			            }
+			        });
+			    });
+
+			    // Setup video work with magnificPopup
+			    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+					disableOn: 700,
+					type: 'iframe',
+					mainClass: 'mfp-fade',
+					removalDelay: 160,
+					preloader: false,
+
+					fixedContentPos: false
+				});
+		    });
+		</script>
+	<?php endif; ?>
+	
+<?php
+}
+add_action('wp_head', 'wpsp_print_custom_css_script');
 
 /**
  * Core functions
