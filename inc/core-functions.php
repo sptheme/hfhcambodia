@@ -470,3 +470,64 @@ function wpsp_get_post_video_html( $video = '' ) {
 
 }
 endif;
+
+if ( ! function_exists( 'wpsp_paging_nav' ) ) :
+/**
+ * Display navigation to next/previous set of posts when applicable.
+ *
+ * @todo Remove this function when WordPress 4.3 is released.
+ */
+function wpsp_paging_nav( $pages = '', $mid_size = 2 ) {
+	global $wp_query, $paged;
+	// Don't print empty markup if there's only one page.
+	if( $pages == '' ) {
+
+		$pages = $GLOBALS['wp_query']->max_num_pages;
+
+		if( !$pages )
+			$pages = 1;
+
+	}
+	if ( $pages < 2 ) {
+		return;
+	}
+
+	$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
+	$pagenum_link = html_entity_decode( get_pagenum_link() );
+	$query_args   = array();
+	$url_parts    = explode( '?', $pagenum_link );
+
+	if ( isset( $url_parts[1] ) ) {
+		wp_parse_str( $url_parts[1], $query_args );
+	}
+
+	$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
+	$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
+
+	$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
+	$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
+
+	// Set up paginated links.
+	$links = paginate_links( array(
+		'base'     => $pagenum_link,
+		'format'   => $format,
+		'total'    => $pages,
+		'current'  => $paged,
+		'mid_size' => $mid_size,
+		'add_args' => array_map( 'urlencode', $query_args ),
+		'prev_text' => __( '← Previous', 'learninginstitute' ),
+		'next_text' => __( 'Next →', 'learninginstitute' ),
+        'type'      => 'list',
+	) );
+
+	if ( $links ) :
+
+	?>
+	<nav class="navigation paging-navigation" role="navigation">
+		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'learninginstitute' ); ?></h1>
+			<?php echo $links; ?>
+	</nav><!-- .navigation -->
+	<?php
+	endif;
+}
+endif;

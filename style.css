@@ -1741,6 +1741,36 @@ object {
 .meta time { display: inline; }
 
 /*--------------------------------------------------------------
+## Blog entry post
+--------------------------------------------------------------*/
+/* Entries > Left Thumbnail Style */
+.entries.left-thumbs .entry { border: 0 }
+.entries.left-thumbs .entry .entry-media { margin-bottom: 20px }
+.entries.left-thumbs .entry .entry-media,
+.entries.left-thumbs .entry .entry-details { width: 100%; }
+
+@media only screen and (min-width: 768px) {
+	.entries.left-thumbs .entry-media { float: left; margin: 0; width: 46%; }
+	.entries.left-thumbs .entry-details { background: none; border: none; float: right; width: 50%; padding: 0; }
+}
+
+/* Entries > Title */
+.entry-title { display: block; font-size: 1.077em; margin: 0 0 5px; font-weight: 600; color: #000; }
+.entry-title a { color: inherit }
+.entry-title a:hover { text-decoration: none }
+.single-post-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
+
+/* Blog entries */
+.blog-entry-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
+.blog-entry-media,
+.blog-entry-excerpt,
+.blog-entry-readmore { margin-bottom: 20px }
+
+/* Blog Entry > Thumbnail */
+.entries .blog-entry { margin-bottom: 30px; border-bottom: 1px solid #eee; }
+.blog-entry.thumbnail-entry-style .blog-entry-title { margin: 0 0 5px }
+
+/*--------------------------------------------------------------
 ## Blog single post
 --------------------------------------------------------------*/
 .single-post .entry { margin-bottom: 40px }

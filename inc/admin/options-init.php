@@ -280,11 +280,43 @@
         //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'redux-framework-wpsp' ),
         'fields'     => array(
             array(
+                'id'       => 'blog-entry-style',
+                'type'     => 'select',
+                'title'    => __( 'Blog entry style', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    '' => esc_html__( 'Default', 'redux-framework-wpsp' ),
+                    'large-image-entry-style' => esc_html__( 'Large Image','redux-framework-wpsp' ),
+                    'thumbnail-entry-style' => esc_html__( 'Left Thumbnail','redux-framework-wpsp' ),
+                    'grid-entry-style' => esc_html__( 'Grid','redux-framework-wpsp' ),
+                ),
+                'default'  => 'large-image-entry-style'
+            ),
+            array(
+                'id'       => 'is-auto-excerpt',
+                'type'     => 'switch',
+                'title'    => __( 'Auto Excerpts', 'redux-framework-wpsp' ),
+                'default'  => true,
+            ),
+            array(
+                'id'       => 'blog-excerpt-length',
+                'type'     => 'text',
+                'required' => array( 'is-auto-excerpt', '=', '1' ),
+                'title'    => __( 'Related Posts Excerpt Length', 'redux-framework-wpsp' ),
+                'default'  => '40'// 1 = on | 0 = off
+            ),
+            array(
                 'id'       => 'blog-entry-meta-sections',
                 'type'     => 'checkbox',
                 'title'    => __( 'Entry Meta', 'redux-framework-wpsp' ),
                 'subtitle' => __( 'checked meta filed to be display', 'redux-framework-wpsp' ),
                 'options'  => $entry_meta_choices
+            ),
+            array(
+                'id'       => 'blog-entry-video-output',
+                'type'     => 'checkbox',
+                'title'    => __( 'Display Featured Videos?', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Show/hide featured video', 'redux-framework-wpsp' ),
+                'default'  => '1'// 1 = on | 0 = off
             ),
         )
     ) );

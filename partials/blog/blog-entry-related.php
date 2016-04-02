@@ -21,7 +21,7 @@ $classes[] = wpsp_grid_class(wpsp_get_redux('related-blog-post-columns')); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 	
-	<figure class="related-post-figure clear grow overlay-parent">
+	<figure class="related-post-figure clear wpsp-image-hover grow overlay-parent">
 		<a href="<?php the_permalink(); ?>" title="<?php wpsp_esc_title(); ?>" rel="bookmark" class="related-post-thumb">
 			<?php wpsp_get_post_thumbnail('thumb-landscape'); ?>
 			<span class="overlay-plus-hover overlay-hide theme-overlay"></span>
