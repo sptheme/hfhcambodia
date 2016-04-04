@@ -1395,9 +1395,9 @@ blockquote.aligncenter {
 .widget li:last-child {
     border-bottom: none;
 }
-.widget li a {
+/*.widget li a {
     display: inline-block;
-}
+}*/
 
 .widget li ul,
 .widget li ol { margin-top: 0; }
@@ -1588,16 +1588,16 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .wpsp-video-widget-description { text-align: center; margin-top: 15px; }
 
 /* Widgets > Posts w/ Thumbnails */
-.wpsp-widget-recent-posts-li { margin: 0; font-size: 1em; min-height: 95px; padding-left: 85px; position: relative; padding-top: 15px; padding-bottom: 15px; }
-.wpsp-widget-recent-posts-li:first-child { padding-top: 15px }
-.wpsp-widget-recent-posts-thumbnail { position: absolute; left: 0; top: 15px; width: 65px; }
+.wpsp-widget-recent-posts-li { margin: 0; font-size: 1em; min-height: 95px; padding-left: 85px!important; position: relative; padding-top: 1em!important; padding-bottom: 1em!important; }
+.wpsp-widget-recent-posts-li:first-child { padding-top: 1em }
+.wpsp-widget-recent-posts-thumbnail { position: absolute; left: 0; top: 1em; width: 25%; }
 .wpsp-widget-recent-posts-thumbnail,
 .wpsp-widget-recent-posts-thumbnail img { display: block }
-.wpsp-widget-recent-posts-li:first-child .wpsp-widget-recent-posts-thumbnail { top: 15px }
+.wpsp-widget-recent-posts-li:first-child .wpsp-widget-recent-posts-thumbnail { top: 1em }
 .wpsp-widget-recent-posts-title { font-weight: 600; color: #000; }
 .wpsp-widget-recent-posts-title:hover { text-decoration: none; opacity: 0.75; }
 .widget-area .wpsp-widget-recent-posts-date { font-size: 0.923em; font-weight: 400; color: #777; }
-.wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-thumbnail { position: inherit; left: auto; top: auto; margin-bottom: 15px; width: 100%; }
+.wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-thumbnail { position: inherit; left: auto; top: auto; margin-bottom: 1em; width: 100%; }
 .wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-li { padding-left: 0; min-height: 0; }
 .wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-date { margin-top: 0 }
 
