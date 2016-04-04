@@ -13,6 +13,8 @@
 		</div> <!-- .container .clear -->
 	</div><!-- #content -->
 
+	<?php wpsp_hook_content_bottom(); ?>
+
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div id="footer-top-sidebar" class="footer-top-sidebar">
 			<?php if ( is_active_sidebar( 'footer-top-sidebar' ) ) : ?>

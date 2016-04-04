@@ -170,7 +170,7 @@
 @media only screen and (min-width: 768px) {
   .full-slide-container,
   .site-slider {
-      height: 480px;
+      height: 420px;
   }
   .full-slide-container .slide-caption {
     width: 360px;

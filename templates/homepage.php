@@ -6,7 +6,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Learning_Institute
+ * @package Habitat Cambodia
  */
 
 get_header(); 
@@ -25,7 +25,7 @@ get_header();
 	        <?php endif; ?>    
 	        </header>
 	        <?php if ( !empty($home_meta['wpsp_main_program_page_home'][0]) ) : ?>
-	        <div class="featured-page wpsp-row clearfix">
+	        <div class="featured-page wpsp-row clear">
 	    	<?php
 	    		$page_count = 0;
 	    		$cols = 2;
@@ -62,7 +62,7 @@ get_header();
 		            <?php }
 					} 
 				}?>
-	        </div> <!-- .featured-page .clearfix -->
+	        </div> <!-- .featured-page .clear -->
 	    	<?php endif; ?>
     	</div> <!-- .container -->
 	</section> <!-- .our-work -->
@@ -85,7 +85,7 @@ get_header();
 
 	<section class="latest-video-wrap">
 		<div class="container">
-			<div <?php post_class( array('latest-video', 'wpsp-row', 'clearfix') ); ?>>
+			<div <?php post_class( array('latest-video', 'wpsp-row', 'clear') ); ?>>
 			<div class="col span_1_of_2">
 				<?php printf( '<div class="post-thumbnail"><a class="popup-youtube" itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
 					wpsp_get_post_video(), 
@@ -94,9 +94,9 @@ get_header();
 				); ?>
 			</div>
 			<div class="col span_1_of_2">
-				<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
-				<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
-				<?php get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
+				<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
+				<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
+				<?php get_template_part( 'partials/blog/blog-entry-content' ); ?>
 			</div>
 			</div> <!-- .latest-video -->
 		</div> <!-- .container -->
@@ -122,7 +122,7 @@ get_header();
 	if ( $post_query->have_posts() ) : ?>
 	<section class="latest-post-wrap">
 		<div class="container">
-			<div class="latest-post wpsp-row posts-thumb clearfix">
+			<div class="latest-post wpsp-row posts-thumb clear">
 				<div class="col span_2_of_3">
 					<header class="section-title">
 						<h2><?php echo $home_meta['wpsp_latest_post_headline'][0]; ?></h2>
@@ -132,10 +132,10 @@ get_header();
 					while ( $post_query->have_posts() ) : $post_query->the_post(); 
 						$post_count++;
 						if ( $post_count <= $post_number ) : ?>
-							<article id="post-<?php the_ID(); ?>" <?php post_class( array('wpsp-row', 'clearfix', 'entry-blog-article') ); ?>>
-							<?php get_template_part( 'template-parts/blog/blog-entry-media' ); ?>
-							<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
-							<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
+							<article id="post-<?php the_ID(); ?>" <?php post_class( array('wpsp-row', 'clear', 'blog-entry') ); ?>>
+							<?php get_template_part( 'partials/blog/blog-entry-media' ); ?>
+							<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
+							<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
 							<div class="blog-entry-excerpt">
 								<?php wpsp_excerpt( array(
 									'length'   => 20,
@@ -165,14 +165,14 @@ get_header();
 	if ( $publication_query->have_posts() ) : ?>
 	<section class="publications-wrap">
 		<div class="container">
-		<div class="latest-publications wpsp-row clearfix">
+		<div class="latest-publications wpsp-row clear">
 			<header class="section-title">
 				<h2><?php echo $home_meta['wpsp_publication_headline'][0]; ?></h2>
 			</header>
 
 			<?php while ( $publication_query->have_posts() ) : $publication_query->the_post(); ?>
 				<div class="col span_1_of_2">
-				<?php get_template_part( 'template-parts/publication/publication-entry-layout' ); ?>
+				<?php get_template_part( 'partials/publication/publication-entry-layout' ); ?>
 				</div>
 			<?php endwhile; wp_reset_postdata(); ?>	
 		</div>

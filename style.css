@@ -42,8 +42,10 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Content
     ## Posts and pages
 	## Asides
-	## Comments
+	## Comments	
 # Infinite scroll
+# Templates
+	## Homepage
 # Media
 	## Captions
 	## Galleries
@@ -495,6 +497,7 @@ html {
 
 body {
 	background: #fff; /* Fallback for when there is no custom background color defined. */
+	font-size: 93.8%;
 }
 
 hr {
@@ -1607,6 +1610,16 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
+.entry-title {
+	font-size: 1.250em;
+	margin: 0 0 0.313em 0;
+}
+.single-post-title {
+	font-size: 1.875em;
+	line-height: 1.2em;
+	font-weight: 400;
+	margin: -0.250em 0 0.313em 0;
+}
 .sticky {
 	display: block;
 }
@@ -1667,6 +1680,149 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
 .infinity-end.neverending .site-footer {
 	display: block;
+}
+
+/*--------------------------------------------------------------
+# Templates
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Homepage
+--------------------------------------------------------------*/
+.page-template-homepage .site-content > .container {
+	width: 100%!important;
+}
+
+/* Section Title */
+.section-title h2 {
+	font-size: 1.250em;
+    line-height: 1.250em;
+    margin-bottom: 0.625em;
+}
+.section-title p.description {
+    font-size: 0.875em;
+    line-height: 1.125em;
+    color:#727272;
+}
+
+.our-work .section-title {
+	text-align: center;
+}
+
+.latest-video-wrap {
+	background-color: #f3f3f3;
+	padding: 1.250em 0;
+}
+.latest-video {
+	padding: 1.5em 1em;
+	background-color: #0198cd;
+}
+.latest-video a,
+.latest-video p {
+	color:#fff;
+}
+.latest-video .meta {
+	color:#99ccff;
+}
+.latest-video .col {
+	margin-bottom: 1em;
+}
+.latest-video .post-thumbnail {
+	border:10px solid #fff;
+}
+.latest-video .post-thumbnail:hover {
+	border-color: #4fb94a;
+}
+.latest-video.format-video .post-thumbnail a:before {
+	color:#f23635;
+	font-size: 3.125em;
+	margin-left: -25px;
+}
+
+.latest-post .section-title h2 {
+	margin-top: 0;
+}
+.latest-post .blog-entry{
+	margin-bottom: 0.813em;
+}
+.latest-post .entry-title {
+	font-size: 1.231em;
+	line-height: 1.250em;
+	color:#007acc;
+}
+.latest-post .posted-on ,
+.latest-post .blog-entry-excerpt p,
+.latest-post a.wpsp-readmore {
+	font-size: 1em;
+}
+.latest-post .blog-entry-excerpt p {
+	margin-bottom: 0.438em;
+}
+.latest-post .blog-entry:last-child,
+.latest-post.wpsp-row .col,
+.latest-publications.wpsp-row .col {
+	margin-bottom: 0;
+}
+.latest-publications.wpsp-row .col.span_1_of_2:nth-child(2n+1) {
+	clear: none!important;
+}
+.latest-publications .publication-entry-title {
+	font-size: 0.938em;
+	color: #3a3a3a;
+	padding-top: 0.625em;
+}
+.latest-publications .publication-entry-meta ul {
+	font-size: 0.813em;
+	color:#666666;
+}
+.page-template-homepage .wpsp-facebook-page-widget .widget-title {
+	background-color: #ffffff;
+	color: #444444;
+	font-size: 1.6em;
+	padding: 0 0 0.625em 0;
+	margin: 0;
+}
+
+@media only screen and (min-width: 767px) {
+	.page-template-homepage .site-slider {
+		margin-top: 1.333em;
+	}
+	.section-title h2 {
+        font-size: 1.6em;
+	    line-height: 1.4em;
+	    font-weight: 600;
+    }
+    .section-title p.description {
+        font-size: 1em;
+        line-height: 1.5em;
+    }
+	.latest-video-wrap {
+    	padding: 3.125em 0;
+    }
+    .latest-post-wrap {
+    	padding: 1.875em 0;
+    }
+    .latest-video {
+		padding: 2.5em 1.875em;
+		background-color: #fff;
+		background-image: url(images/bg-post-highlight.gif);
+		background-repeat: repeat-y;
+	}
+	.latest-video .entry-title {
+		font-size: 1.5em;
+	}
+	.latest-video a {
+		color:#007acc;
+	}
+	.latest-video p {
+		color:#444444;
+	}
+	.latest-video .meta {
+		color:#777;
+	}
+	.latest-video .col {
+		margin-bottom: 0;
+	}
 }
 
 /*--------------------------------------------------------------

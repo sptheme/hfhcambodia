@@ -6,7 +6,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Learning_Institute
+ * @package Habitat Cambodia
  */
 
 get_header(); 
