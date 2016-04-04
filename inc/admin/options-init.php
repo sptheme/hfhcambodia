@@ -109,7 +109,14 @@
         'author'     => esc_html__( 'Author', 'redux-framework-wpsp' ),
         'categories' => esc_html__( 'Categories', 'redux-framework-wpsp' ),
         'comments'   => esc_html__( 'Comments', 'redux-framework-wpsp' ),
-    );
+        );
+
+    $sites_sharing = array( 
+        'twitter'       => esc_html__( 'Twitter', 'redux-framework-wpsp' ),
+        'facebook'      => esc_html__( 'Facebook', 'redux-framework-wpsp' ),
+        'google_plus'   => esc_html__( 'Google+', 'redux-framework-wpsp' ),
+        'pinterest'     => esc_html__( 'Pinterest', 'redux-framework-wpsp' ),
+        );
 
     /*
      * ---> END OTHER VARIABLE
@@ -148,6 +155,77 @@
      * ---> START SECTIONS
      *
      */
+
+    // General section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'General', 'redux-framework-wpsp' ),
+        'id'               => 'general-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-cog'
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Social Sharing', 'redux-framework-wpsp' ),
+        'id'         => 'social-sharing',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'social-share-sites',
+                'type'     => 'checkbox',
+                //'multi'    => true,
+                'title'    => __( 'Meta', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'checked meta filed to be display', 'redux-framework-wpsp' ),
+                'options'  => $sites_sharing
+            ),
+            array(
+                'id'       => 'social-share-position',
+                'type'     => 'select',
+                'title'    => __( 'Position', 'redux-framework-wpsp' ),
+                'options'  => array(
+                        'horizontal'   => esc_html__( 'Horizontal', 'redux-framework-wpsp' ),
+                        'vertical'   => esc_html__( 'Vertical', 'redux-framework-wpsp' ),
+                    ),
+                'default' => 'horizontal',
+            ),
+             array(
+                'id'       => 'is-social-share-heading',
+                'type'     => 'switch',
+                'title'    => __( 'Enable/disable heading', 'redux-framework-wpsp' ),
+                'default'  => true,
+            ),
+            array(
+                'id'       => 'social-share-heading',
+                'type'     => 'text',
+                'title'    => __( 'Heading on Posts', 'redux-framework-wpsp' ),
+                'default'  => __( 'Please Share This', 'redux-framework-wpsp' ),
+            ),
+            array(
+                'id'       => 'social-share-style',
+                'type'     => 'select',
+                'title'    => __( 'Style', 'redux-framework-wpsp' ),
+                'options'  => array(
+                        'flat'   => esc_html__( 'Flat', 'redux-framework-wpsp' ),
+                        'minimal'   => esc_html__( 'Minimal', 'redux-framework-wpsp' ),
+                        'three-d'   => esc_html__( '3D', 'redux-framework-wpsp' ),
+                    ),
+                'default' => 'flat',
+            ),
+            array(
+                'id'       => 'social-share-twitter-handle',
+                'type'     => 'text',
+                'title'    => __( 'Twitter Handle', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Twitter user name/id', 'redux-framework-wpsp' ),
+            ),
+            array(
+                'id'       => 'social-share-pages',
+                'type'     => 'checkbox',
+                'title'    => __( 'Enable for Pages', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Enable/disable for page', 'redux-framework-wpsp' ),
+                'default'  => '0'// 1 = on | 0 = off
+            ),
+        )
+    ) );
 
     // Blog section
     Redux::setSection( $opt_name, array(

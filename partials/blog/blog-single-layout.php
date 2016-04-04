@@ -34,6 +34,7 @@ $password_required = post_password_required(); ?>
 		get_template_part( 'partials/blog/blog-single-meta' );
 		get_template_part( 'partials/blog/blog-single-content' ); 
 	} ?>
+	<?php get_template_part( 'partials/social-share' ); ?>
 	<?php the_post_navigation(); ?>
 	<?php get_template_part( 'partials/blog/blog-single-related' ); ?>
 </article><!-- #post-## -->

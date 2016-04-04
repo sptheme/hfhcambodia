@@ -23,7 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php
 	// Get social sharing template part
-	//get_template_part( 'partials/social', 'share' ); ?>
+	if ( wpsp_get_redux('social-share-pages', true) ) {
+		get_template_part( 'partials/social', 'share' ); 
+	} ?>
 
 	<footer class="entry-footer">
 		<?php

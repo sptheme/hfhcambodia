@@ -531,3 +531,54 @@ function wpsp_paging_nav( $pages = '', $mid_size = 2 ) {
 	endif;
 }
 endif;
+
+/*-------------------------------------------------------------------------------*/
+/* [ Social Share ]
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Returns social sharing template part
+ *
+ * @since 1.0.0
+ */
+function wpsp_social_share_sites() {
+    $sites = wpsp_get_redux( 'social-share-sites', array( 'twitter', 'facebook', 'google_plus', 'pinterest' ) );
+    $sites = apply_filters( 'wpsp_social_share_sites', $sites );
+    if ( $sites && ! is_array( $sites ) ) {
+        $sites  = explode( ',', $sites );
+    }
+    return $sites;
+}
+
+/**
+ * Returns correct social share position
+ *
+ * @since 1.0.0
+ */
+function wpsp_social_share_position() {
+    $position = wpsp_get_redux( 'social-share-position' );
+    $position = $position ? $position : 'horizontal';
+    return apply_filters( 'wpsp_social_share_position', $position );
+}
+
+/**
+ * Returns correct social share style
+ *
+ * @since 1.0.0
+ */
+function wpsp_social_share_style() {
+    $style = wpsp_get_redux( 'social-share-style' );
+    $style = $style ? $style : 'flat';
+    return apply_filters( 'wpsp_social_share_style', $style );
+}
+
+/**
+ * Returns the social share heading
+ *
+ * @since 1.0.0
+ */
+function wpsp_social_share_heading() {
+    $heading = wpsp_get_translated_theme_mod( 'social_share_heading' );
+    $heading = $heading ? $heading : esc_html__( 'Please Share This', 'hfhcambodia' );
+    return apply_filters( 'wpsp_social_share_heading', $heading );
+}

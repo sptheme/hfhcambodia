@@ -261,6 +261,11 @@ require get_template_directory() . '/inc/hooks.php';
 require get_template_directory() . '/inc/blog-functions.php';
 
 /**
+ * Translation with WPML plugin
+ */
+require get_template_directory() . '/inc/wpml.php';
+
+/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
