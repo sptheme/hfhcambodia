@@ -6,7 +6,7 @@
  * Learn more: http://codex.wordpress.org/Widgets_API
  *
  *
- * @package Discover Travel
+ * @package Habitat Cambodia
  */
 
 // Exit if accessed directly

@@ -208,7 +208,10 @@ function wpsp_custom_widgets() {
         'facebook-page',
         'call-to-action',
         'social-fontawesome',
-        'custom-taxonomy-menu'
+        'custom-taxonomy-menu',
+        //'modern-menu',
+        'video',
+        'posts-thumbnails',
     );
 
     // Loop through widgets and load their files

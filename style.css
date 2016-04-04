@@ -1563,6 +1563,44 @@ blockquote.aligncenter {
 	}
 }
 
+/* Modern Menu widget */
+.modern-menu-widget { border: 1px solid #eee; border-radius: 3px; margin: 0; }
+.modern-menu-widget li,
+.modern-menu-widget a { display: block }
+.modern-menu-widget a { position: relative; padding: 0.538em 30px 0.538em 0.769em; color: #777; }
+.modern-menu-widget a > .fa { margin-right: 8px }
+.modern-menu-widget a:after { display: block; font-family: "FontAwesome"; content: "\f054"; position: absolute; right: 10px; top: 50%; margin-top: -6px; height: 12px; line-height: 12px; font-size: 0.923em; color: #bbb; }
+body.content-right-sidebar .modern-menu-widget li a { padding-left: 30px; padding-right: 0.769em; }
+body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\f053"; }
+.modern-menu-widget a:hover { text-decoration: none; background: #fafafa; }
+.modern-menu-widget li.current-menu-item a { color: #fff; margin: 0 -1px; }
+.modern-menu-widget li.current-menu-item a:after { color: #fff }
+.modern-menu-widget li { border-bottom: 1px solid #eee }
+.modern-menu-widget li ul { border-top: 1px solid #eee }
+.modern-menu-widget > li:first-child > a { border-top-left-radius: 3px; border-top-right-radius: 3px; }
+.modern-menu-widget > li:last-child > a { border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; }
+.modern-menu-widget li:last-child { border-bottom: none; }
+
+.modern-menu-widget li.current-menu-item a { background: #3b86b0 }
+.modern-menu-widget a:hover { color: #3b86b0 }
+
+/* Widgets > Video */
+.wpsp-video-widget-description { text-align: center; margin-top: 15px; }
+
+/* Widgets > Posts w/ Thumbnails */
+.wpsp-widget-recent-posts-li { margin: 0; font-size: 1em; min-height: 95px; padding-left: 85px; position: relative; padding-top: 15px; padding-bottom: 15px; }
+.wpsp-widget-recent-posts-li:first-child { padding-top: 15px }
+.wpsp-widget-recent-posts-thumbnail { position: absolute; left: 0; top: 15px; width: 65px; }
+.wpsp-widget-recent-posts-thumbnail,
+.wpsp-widget-recent-posts-thumbnail img { display: block }
+.wpsp-widget-recent-posts-li:first-child .wpsp-widget-recent-posts-thumbnail { top: 15px }
+.wpsp-widget-recent-posts-title { font-weight: 600; color: #000; }
+.wpsp-widget-recent-posts-title:hover { text-decoration: none; opacity: 0.75; }
+.widget-area .wpsp-widget-recent-posts-date { font-size: 0.923em; font-weight: 400; color: #777; }
+.wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-thumbnail { position: inherit; left: auto; top: auto; margin-bottom: 15px; width: 100%; }
+.wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-li { padding-left: 0; min-height: 0; }
+.wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-date { margin-top: 0 }
+
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/

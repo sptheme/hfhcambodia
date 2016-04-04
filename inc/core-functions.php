@@ -582,3 +582,262 @@ function wpsp_social_share_heading() {
     $heading = $heading ? $heading : esc_html__( 'Please Share This', 'hfhcambodia' );
     return apply_filters( 'wpsp_social_share_heading', $heading );
 }
+
+/*-------------------------------------------------------------------------------*/
+/* [ Image ]
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Outputs the img HTMl thubmails used in the Total VC modules
+ *
+ * @since 1.0.0
+ */
+function wpsp_post_thumbnail_total( $args = array() ) {
+	echo wpsp_get_post_thumbnail_total( $args );
+}
+
+/**
+ * Returns correct HTMl for post thumbnails
+ *
+ * @since 1.0.0
+ */
+function wpsp_get_post_thumbnail_total( $args = array() ) {
+
+	// Check if retina is enabled
+	$retina_img = '';
+	$attr       = array();
+
+	// Default args
+	$defaults = array(
+		'attachment'    => get_post_thumbnail_id(),
+		'size'          => 'full',
+		'width'         => '',
+		'height'        => '',
+		'crop'          => 'center-center',
+		'alt'           => '',
+		'class'         => '',
+		'return'        => 'html',
+		'style'         => '',
+		'schema_markup' => false,
+		'placeholder'   => false,
+	);
+
+	// Parse args
+	$args = wp_parse_args( $args, $defaults );
+
+	// Extract args
+	extract( $args );
+
+	// Return dummy image
+	if ( 'dummy' == $attachment || $placeholder ) {
+		return '<img src="'. wpsp_placeholder_img_src() .'" />';
+	}
+
+	// Return if there isn't any attachment
+	if ( ! $attachment ) {
+		return;
+	}
+
+	// Sanitize variables
+	$size = ( 'wpsp-custom' == $size ) ? 'wpsp_custom' : $size;
+	$size = ( 'wpsp_custom' == $size ) ? false : $size;
+	$crop = ( ! $crop ) ? 'center-center' : $crop;
+	$crop = ( 'true' == $crop ) ? 'center-center' : $crop;
+
+	// Image must have an alt
+	if ( empty( $alt ) ) {
+		$alt = get_post_meta( $attachment, '_wp_attachment_image_alt', true );
+	}
+	if ( empty( $alt ) ) {
+		$alt = trim( strip_tags( get_post_field( 'post_excerpt', $attachment ) ) );
+	}
+	if ( empty( $alt ) ) {
+		$alt = trim( strip_tags( get_the_title( $attachment ) ) );
+		$alt = str_replace( '_', ' ', $alt );
+		$alt = str_replace( '-', ' ', $alt );
+	}
+
+	// Prettify alt attribute
+	if ( $alt ) {
+		$alt = ucwords( $alt );
+	}
+
+	// If image width and height equal '9999' return full image
+	if ( '9999' == $width && '9999' == $height ) {
+		$size  = $size ? $size : 'full';
+		$width = $height = '';
+	}
+
+	// Define crop locations
+	$crop_locations = array_flip( wpsp_image_crop_locations() );
+
+	// Set crop location if defined in format 'left-top' and turn into array
+	if ( $crop && in_array( $crop, $crop_locations ) ) {
+		$crop = ( 'center-center' == $crop ) ? true : explode( '-', $crop );
+	}
+
+	// Get attachment URl
+	$attachment_url = wp_get_attachment_url( $attachment );
+
+	// Return if there isn't any attachment URL
+	if ( ! $attachment_url ) {
+		return;
+	}
+
+	// Add classes
+	if ( $class ) {
+		$attr['class'] = $class;
+	}
+
+	// Add alt
+	if ( $alt ) {
+		$attr['alt'] = esc_attr( $alt );
+	}
+
+	// Add style
+	if ( $style ) {
+		$attr['style'] = $style;
+	}
+
+	// Add schema markup
+	if ( $schema_markup ) {
+		$attr['itemprop'] = 'image';
+	}
+
+	
+
+	// Sanitize size
+	$size = $size ? $size : 'full';
+
+	// Return image URL
+	if ( 'url' == $return ) {
+		$src = wp_get_attachment_image_src( $attachment, $size, false );
+		return $src[0];
+	}
+
+	// Return image HTMl
+	else {
+		return wp_get_attachment_image( $attachment, $size, false, $attr );
+	}
+
+}
+
+/**
+ * Returns correct image hover classnames
+ *
+ * @since 1.0.0
+ */
+function wpsp_image_hover_classes( $style = '' ) {
+	if ( $style ) {
+		$classes   = array( 'wpsp-image-hover' );
+		$classes[] = $style;
+		return esc_attr( implode( ' ', $classes ) );
+	}
+}
+
+/**
+ * Returns thumbnail sizes
+ *
+ * @since 2.0.0
+ */
+function wpsp_get_thumbnail_sizes( $size = '' ) {
+
+	global $_wp_additional_image_sizes;
+
+	$sizes = array(
+		'full'  => array(
+			'width'  => '9999',
+			'height' => '9999',
+			'crop'   => 0,
+		),
+	);
+	$get_intermediate_image_sizes = get_intermediate_image_sizes();
+
+	// Create the full array with sizes and crop info
+	foreach( $get_intermediate_image_sizes as $_size ) {
+
+		if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
+
+			$sizes[ $_size ]['width']   = get_option( $_size . '_size_w' );
+			$sizes[ $_size ]['height']  = get_option( $_size . '_size_h' );
+			$sizes[ $_size ]['crop']    = (bool) get_option( $_size . '_crop' );
+
+		} elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
+
+			$sizes[ $_size ] = array( 
+				'width'     => $_wp_additional_image_sizes[ $_size ]['width'],
+				'height'    => $_wp_additional_image_sizes[ $_size ]['height'],
+				'crop'      => $_wp_additional_image_sizes[ $_size ]['crop']
+			);
+
+		}
+
+	}
+
+	// Get only 1 size if found
+	if ( $size ) {
+		if ( isset( $sizes[ $size ] ) ) {
+			return $sizes[ $size ];
+		} else {
+			return false;
+		}
+	}
+
+	// Return sizes
+	return $sizes;
+}
+
+/**
+ * Placeholder Image
+ *
+ * @since 1.0.0
+ */
+function wpsp_placeholder_img_src() {
+	return esc_url( apply_filters( 'wpsp_placeholder_img_src', get_template_directory_uri() .'/images/placeholder.png' ) );
+}
+
+/*-------------------------------------------------------------------------------*/
+/* [ Array ]
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Array of image crop locations
+ *
+ * @link 1.0.0
+ */
+function wpsp_image_crop_locations() {
+	return array(
+		''              => esc_html__( 'Default', 'total' ),
+		'left-top'      => esc_html__( 'Top Left', 'total' ),
+		'right-top'     => esc_html__( 'Top Right', 'total' ),
+		'center-top'    => esc_html__( 'Top Center', 'total' ),
+		'left-center'   => esc_html__( 'Center Left', 'total' ),
+		'right-center'  => esc_html__( 'Center Right', 'total' ),
+		'center-center' => esc_html__( 'Center Center', 'total' ),
+		'left-bottom'   => esc_html__( 'Bottom Left', 'total' ),
+		'right-bottom'  => esc_html__( 'Bottom Right', 'total' ),
+		'center-bottom' => esc_html__( 'Bottom Center', 'total' ),
+	);
+}
+
+/**
+ * Image Hovers
+ *
+ * @since 1.0.0
+ */
+function wpsp_image_hovers() {
+	return apply_filters( 'wpsp_image_hovers', array(
+		''             => esc_html__( 'Default', 'hfhcambodia' ),
+		'opacity'      => esc_html_x( 'Opacity', 'Image Hover', 'hfhcambodia' ),
+		'grow'         => esc_html_x( 'Grow', 'Image Hover', 'hfhcambodia' ),
+		'shrink'       => esc_html_x( 'Shrink', 'Image Hover', 'hfhcambodia' ),
+		'side-pan'     => esc_html_x( 'Side Pan', 'Image Hover', 'hfhcambodia' ),
+		'vertical-pan' => esc_html_x( 'Vertical Pan', 'Image Hover', 'hfhcambodia' ),
+		'tilt'         => esc_html_x( 'Tilt', 'Image Hover', 'hfhcambodia' ),
+		'blurr'        => esc_html_x( 'Normal - Blurr', 'Image Hover', 'hfhcambodia' ),
+		'blurr-invert' => esc_html_x( 'Blurr - Normal', 'Image Hover', 'hfhcambodia' ),
+		'sepia'        => esc_html_x( 'Sepia', 'Image Hover', 'hfhcambodia' ),
+		'fade-out'     => esc_html_x( 'Fade Out', 'Image Hover', 'hfhcambodia' ),
+		'fade-in'      => esc_html_x( 'Fade In', 'Image Hover', 'hfhcambodia' ),
+	) );
+}
