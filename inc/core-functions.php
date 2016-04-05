@@ -728,8 +728,6 @@ function wpsp_post_thumbnail_total( $args = array() ) {
  */
 function wpsp_get_post_thumbnail_total( $args = array() ) {
 
-	// Check if retina is enabled
-	$retina_img = '';
 	$attr       = array();
 
 	// Default args
@@ -754,8 +752,8 @@ function wpsp_get_post_thumbnail_total( $args = array() ) {
 	extract( $args );
 
 	// Return dummy image
-	if ( 'dummy' == $attachment || $placeholder ) {
-		return '<img src="'. wpsp_placeholder_img_src() .'" />';
+	if ( '' == $attachment || $placeholder ) {
+		return '<img src="'. wpsp_placeholder_img_src($size) .'" />';
 	}
 
 	// Return if there isn't any attachment
@@ -829,20 +827,68 @@ function wpsp_get_post_thumbnail_total( $args = array() ) {
 		$attr['itemprop'] = 'image';
 	}
 
-	
+	// If on the fly image resizing is enabled or a custom width/height is defined
+	if ( $width || $height ) {
+		// Add Classes
+		if ( $class ) {
+			$class = ' class="'. $class .'"';
+		}
 
-	// Sanitize size
-	$size = $size ? $size : 'full';
+		// If size is defined and not equal to wpex_custom
+		if ( $size && 'wpsp_custom' != $size ) {
+			$dims   = wpsp_get_thumbnail_sizes( $size );
+			$width  = $dims['width'];
+			$height = $dims['height'];
+			$crop   = ! empty( $dims['crop'] ) ? $dims['crop'] : $crop;
+		}
 
-	// Return image URL
-	if ( 'url' == $return ) {
-		$src = wp_get_attachment_image_src( $attachment, $size, false );
-		return $src[0];
+		/* Crop image with aq_resize
+		 * https://github.com/syamilmj/Aqua-Resizer
+		 */
+
+		$image = aq_resize( $attachment_url, $width, $height, true );
+
+		// Return HTMl
+		if ( $image ) {
+
+			// Return image URL
+			if ( 'url' == $return ) {
+				return $image;
+			}
+
+			// Return image HTMl
+			else {
+
+				// Add attributes
+				$attr = array_map( 'esc_attr', $attr );
+				$html = '';
+				foreach ( $attr as $name => $value ) {
+					$html .= ' '. esc_attr( $name ) .'="'. esc_attr( $value ) .'"';
+				}
+
+				// Return img
+				return '<img src="'. esc_url( $image ) .'" width="'. esc_attr( $width ) .'" height="'. esc_attr( $height ) .'"'. $html .' />';
+
+			}
+
+		}
 	}
-
-	// Return image HTMl
+	// Return image from add_image_size
 	else {
-		return wp_get_attachment_image( $attachment, $size, false, $attr );
+	
+		// Sanitize size
+		$size = $size ? $size : 'full';
+
+		// Return image URL
+		if ( 'url' == $return ) {
+			$src = wp_get_attachment_image_src( $attachment, $size, false );
+			return $src[0];
+		}
+
+		// Return image HTMl
+		else {
+			return wp_get_attachment_image( $attachment, $size, false, $attr );
+		}
 	}
 
 }
@@ -917,8 +963,15 @@ function wpsp_get_thumbnail_sizes( $size = '' ) {
  *
  * @since 1.0.0
  */
-function wpsp_placeholder_img_src() {
-	return esc_url( apply_filters( 'wpsp_placeholder_img_src', get_template_directory_uri() .'/images/placeholder.png' ) );
+function wpsp_placeholder_img_src( $size = 'thumb-landscape' ) {
+	global $redux_wpsp;
+	if ( 'thumb-portrait' == $size ) {		
+		return esc_url( apply_filters( 'wpsp_placeholder_img_src', $redux_wpsp['portrait-placeholder']['url'] ) );
+	} if ( 'thumb-square' == $size ) {
+		return esc_url( apply_filters( 'wpsp_placeholder_img_src', $redux_wpsp['square-placeholder']['url'] ) );
+	}else {
+	    return esc_url( apply_filters( 'wpsp_placeholder_img_src', $redux_wpsp['landscape-placeholder']['url'] ) );
+	}
 }
 
 /*-------------------------------------------------------------------------------*/
@@ -1109,16 +1162,16 @@ function wpsp_get_dashicons_array() {
  */
 function wpsp_image_crop_locations() {
 	return array(
-		''              => esc_html__( 'Default', 'total' ),
-		'left-top'      => esc_html__( 'Top Left', 'total' ),
-		'right-top'     => esc_html__( 'Top Right', 'total' ),
-		'center-top'    => esc_html__( 'Top Center', 'total' ),
-		'left-center'   => esc_html__( 'Center Left', 'total' ),
-		'right-center'  => esc_html__( 'Center Right', 'total' ),
-		'center-center' => esc_html__( 'Center Center', 'total' ),
-		'left-bottom'   => esc_html__( 'Bottom Left', 'total' ),
-		'right-bottom'  => esc_html__( 'Bottom Right', 'total' ),
-		'center-bottom' => esc_html__( 'Bottom Center', 'total' ),
+		''              => esc_html__( 'Default', 'hfhcambodia' ),
+		'left-top'      => esc_html__( 'Top Left', 'hfhcambodia' ),
+		'right-top'     => esc_html__( 'Top Right', 'hfhcambodia' ),
+		'center-top'    => esc_html__( 'Top Center', 'hfhcambodia' ),
+		'left-center'   => esc_html__( 'Center Left', 'hfhcambodia' ),
+		'right-center'  => esc_html__( 'Center Right', 'hfhcambodia' ),
+		'center-center' => esc_html__( 'Center Center', 'hfhcambodia' ),
+		'left-bottom'   => esc_html__( 'Bottom Left', 'hfhcambodia' ),
+		'right-bottom'  => esc_html__( 'Bottom Right', 'hfhcambodia' ),
+		'center-bottom' => esc_html__( 'Bottom Center', 'hfhcambodia' ),
 	);
 }
 

@@ -46,6 +46,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Infinite scroll
 # Templates
 	## Homepage
+# Custom post type
+	## Publication
 # Media
 	## Captions
 	## Galleries
@@ -1825,6 +1827,41 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 	.latest-video .col {
 		margin-bottom: 0;
 	}
+}
+
+/*--------------------------------------------------------------
+# Custom post type
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Publication
+--------------------------------------------------------------*/
+.entry-publication-article {
+	background-color:#f7f7f7;
+	overflow: hidden;
+}
+.publication-entry-media {
+	width: 25%;
+	float: left;
+	padding-right: 1em;
+}
+h3.publication-entry-title {
+	font-size: 1em;
+	font-weight: 600;
+	clear: none;
+	padding: 0.8em 0.8em 0 0;
+}
+.publication-entry-meta ul {
+	overflow: hidden;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	color:#8e8e8e;
+}
+.publication-entry-meta ul li {
+	display: block;
+	float: left;
+	padding-right:0.313em;
 }
 
 /*--------------------------------------------------------------
