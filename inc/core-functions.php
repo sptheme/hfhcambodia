@@ -533,6 +533,131 @@ function wpsp_paging_nav( $pages = '', $mid_size = 2 ) {
 endif;
 
 /*-------------------------------------------------------------------------------*/
+/* [ Buttons ]
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Returns correct social button class
+ *
+ * @since 1.0.0
+ */
+function wpsp_get_social_button_class( $style ) {
+
+	// Set theme default style
+	$style = $style ? $style : 'flat-rounded';
+	$style = apply_filters( 'wpsp_default_social_button_style', $style );
+
+	// None
+	if ( 'none' == $style ) {
+		$style = 'wpex-social-btn-no-style';
+	}
+
+	// Minimal
+	elseif ( 'minimal' == $style ) {
+		$style = 'wpex-social-btn-minimal';
+	} elseif ( 'minimal-rounded' == $style ) {
+		$style = 'wpex-social-btn-minimal wpex-semi-rounded';
+	} elseif ( 'minimal-round' == $style ) {
+		$style = 'wpex-social-btn-minimal wpex-round';
+	}
+
+	// Flat
+	elseif ( 'flat' == $style ) {
+		$style = 'wpex-social-btn-flat wpex-bg-gray';
+	} elseif ( 'flat-rounded' == $style ) {
+		$style = 'wpex-social-btn-flat wpex-semi-rounded';
+	} elseif ( 'flat-round' == $style ) {
+		$style = 'wpex-social-btn-flat wpex-round';
+	}
+
+	// Flat Color
+	elseif ( 'flat-color' == $style ) {
+		$style = 'wpex-social-btn-flat wpex-social-bg';
+	} elseif ( 'flat-color-rounded' == $style ) {
+		$style = 'wpex-social-btn-flat wpex-social-bg wpex-semi-rounded';
+	} elseif ( 'flat-color-round' == $style ) {
+		$style = 'wpex-social-btn-flat wpex-social-bg wpex-round';
+	}
+
+	// 3D
+	elseif ( '3d' == $style ) {
+		$style = 'wpex-social-btn-3d';
+	} elseif ( '3d-color' == $style ) {
+		$style = 'wpex-social-btn-3d wpex-social-bg';
+	}
+
+	// Black
+	elseif ( 'black' == $style ) {
+		$style = 'wpex-social-btn-black';
+	} elseif ( 'black-rounded' == $style ) {
+		$style = 'wpex-social-btn-black wpex-semi-rounded';
+	} elseif ( 'black-round' == $style ) {
+		$style = 'wpex-social-btn-black wpex-round';
+	}
+
+	// Black + Color Hover
+	elseif ( 'black-ch' == $style ) {
+		$style = 'wpex-social-btn-black-ch';
+	} elseif ( 'black-ch-rounded' == $style ) {
+		$style = 'wpex-social-btn-black-ch wpex-semi-rounded';
+	} elseif ( 'black-ch-round' == $style ) {
+		$style = 'wpex-social-btn-black-ch wpex-round';
+	}
+
+	// Graphical
+	elseif ( 'graphical' == $style ) {
+		$style = 'wpex-social-bg wpex-social-btn-graphical';
+	} elseif ( 'graphical-rounded' == $style ) {
+		$style = 'wpex-social-bg wpex-social-btn-graphical wpex-semi-rounded';
+	} elseif ( 'graphical-round' == $style ) {
+		$style = 'wpex-social-bg wpex-social-btn-graphical wpex-round';
+	}
+
+	// Apply filters & return style
+	return apply_filters( 'wpsp_get_social_button_class', 'wpex-social-btn '. $style );
+}
+
+/**
+ * Returns correct theme button classes based on args
+ *
+ * @since 3.2.0
+ */
+function wpsp_get_button_classes( $style = '', $color = '', $size = '', $align = '' ) {
+
+	// Extract if style is an array of arguments
+	if ( is_array( $style ) ) {
+		extract( $style );
+	}
+
+	// Main classes
+	if ( 'plain-text' == $style ) {
+		$classes = 'theme-txt-link';
+	} elseif ( $style ) {
+		$classes = 'theme-button '. $style;
+	} else {
+		$classes = 'theme-button';
+	}
+
+	// Color
+	if ( $color ) {
+		$classes .= ' '. $color;
+	}
+
+	// Size
+	if ( $size ) {
+		$classes .= ' '. $size;
+	}
+
+	// Align
+	if ( $align ) {
+		$classes .= ' align-'. $align;
+	}
+
+	// Apply filters and return classes
+	return apply_filters( 'wpsp_get_theme_button_classes', $classes, $style, $color, $size, $align );
+}
+
+/*-------------------------------------------------------------------------------*/
 /* [ Social Share ]
 /*-------------------------------------------------------------------------------*/
 

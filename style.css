@@ -1203,7 +1203,7 @@ blockquote.aligncenter {
 .site-footer {
 	background-color: #007acc;
 	border-top:5px solid #43A047;
-	font-size: 0.813em;
+	/*font-size: 0.867em;*/
 }
 .site-footer,
 .site-footer .widget_rss span.rss-date,
@@ -1245,8 +1245,7 @@ blockquote.aligncenter {
 	font-size: 1.846em;
 }
 .footer-top-sidebar .wpsp-fa-social-widget ul li {
-	padding-top: 0;
-	padding-bottom: 0;
+	padding: 0 10px;
 	margin: 0;
 }
 .footer-top-sidebar .wpsp-fa-social-widget ul li a{
@@ -1314,6 +1313,8 @@ blockquote.aligncenter {
 	}
 	.footer-top-sidebar .wpsp-fa-social-widget ul li {
 		border-left: 1px solid #009cbb;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 }
 @media only screen and (min-width: 768px) {
@@ -1593,7 +1594,7 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 /* Widgets > Posts w/ Thumbnails */
 .wpsp-widget-recent-posts-li { margin: 0; font-size: 1em; min-height: 95px; padding-left: 85px!important; position: relative; padding-top: 1em!important; padding-bottom: 1em!important; }
 .wpsp-widget-recent-posts-li:first-child { padding-top: 1em }
-.wpsp-widget-recent-posts-thumbnail { position: absolute; left: 0; top: 1em; width: 25%; }
+.wpsp-widget-recent-posts-thumbnail { position: absolute!important; left: 0; top: 1em; width: 25%; }
 .wpsp-widget-recent-posts-thumbnail,
 .wpsp-widget-recent-posts-thumbnail img { display: block }
 .wpsp-widget-recent-posts-li:first-child .wpsp-widget-recent-posts-thumbnail { top: 1em }
@@ -1744,6 +1745,7 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 }
 .latest-post .blog-entry{
 	margin-bottom: 0.813em;
+	border-bottom: 1px solid #eee;
 }
 .latest-post .entry-title {
 	font-size: 1.231em;
@@ -1960,11 +1962,12 @@ object {
 .blog-entry-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
 .blog-entry-media,
 .blog-entry-excerpt,
-.blog-entry-readmore { margin-bottom: 20px }
+.blog-entry-readmore { margin-bottom: 20px; }
 
 /* Blog Entry > Thumbnail */
-.entries .blog-entry { margin-bottom: 30px; border-bottom: 1px solid #eee; }
-.blog-entry.thumbnail-entry-style .blog-entry-title { margin: 0 0 5px }
+.entries .blog-entry { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #eee; }
+.blog-entry.thumbnail-entry-style .blog-entry-title { margin: 0 0 5px; }
+.blog-entry.thumbnail-entry-style .blog-entry-excerpt { margin-bottom: 0; }
 
 /*--------------------------------------------------------------
 ## Blog single post
