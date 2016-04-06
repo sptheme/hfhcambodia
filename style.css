@@ -59,6 +59,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Social Button
 	## Social Sharing
 	## Equal height content
+	## Overlay Post thumbnail
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -1241,6 +1242,7 @@ blockquote.aligncenter {
 .footer-top-sidebar .wpsp-fontawesome-social-widget .widget-title {
 	border-bottom: none;
 	padding-bottom: 0;
+	padding-top: 1em;
 }
 .footer-top-sidebar .wpsp-fa-social-widget ul {
 	margin: 0;
@@ -1322,7 +1324,7 @@ blockquote.aligncenter {
 @media only screen and (min-width: 768px) {
 	.footer-bottom-sidebar { display: block; }
 	.footer-bottom-sidebar .col .widget {
-		float: left; margin: 0 0 20px; padding: 0 10px;
+		float: left; margin: 1.333em 0 1.333em; padding: 0 0.667em;
 	}
 	.footer-bottom-sidebar .span_1_of_2 .widget {
 		width: 50%
@@ -1345,6 +1347,7 @@ blockquote.aligncenter {
 	font-weight: 600;
 	padding: 0 0 0.625em 0;
 	margin-bottom: 0;
+	margin-top: 0;
 }
 
 /* Make sure select elements fit in widgets. */
@@ -1613,16 +1616,6 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-.entry-title {
-	font-size: 1.250em;
-	margin: 0 0 0.313em 0;
-}
-.single-post-title {
-	font-size: 1.875em;
-	line-height: 1.2em;
-	font-weight: 400;
-	margin: -0.250em 0 0.313em 0;
-}
 .sticky {
 	display: block;
 }
@@ -1650,6 +1643,17 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+/* Search & Archive */
+.page-template-publications-filter .entry-header,
+.search .entry-header h1,
+.archive .entry-header h1 {
+	font-size: 2em;
+	margin-bottom: 0.750em;
+}
+.search article.hentry {
+	border-bottom: 1px dotted #999;
 }
 
 /*--------------------------------------------------------------
@@ -1806,6 +1810,8 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
     .latest-post-wrap {
     	padding: 1.875em 0;
     }
+    .latest-post-wrap .entries.left-thumbs .entry-media { width: 20%; }
+    .latest-post-wrap .entries.left-thumbs .entry-details { width: 75%; }
     .latest-video {
 		padding: 2.5em 1.875em;
 		background-color: #fff;
@@ -1830,13 +1836,81 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 }
 
 /*--------------------------------------------------------------
+## About
+--------------------------------------------------------------*/
+.welcome-message {
+	background-color: #7f6e5c;
+}
+.welcome-message .col.body-msg {
+	padding: 1.250em!important;
+	color: #ffffff;
+}
+.welcome-message h3{
+	margin-top: 0;
+	margin-bottom: 0.455em;
+}
+.about-entry-content {
+	background-color: #ebebeb;
+	padding: 1.250em;
+}
+.about-entry-content h1,
+.about-entry-content h2,
+.about-entry-content h3,
+.about-entry-content h4,
+.about-entry-content h5,
+.about-entry-content h6 {
+	margin-top: 0;
+}
+
+.welcome-message,
+.about-entry-content {
+	margin-bottom: 1.250em;
+}
+
+.our-mission.post-thumbnail-wrap img,
+.our-value.post-thumbnail-wrap img {
+	opacity: 0.3!important;
+}
+.our-mission.post-thumbnail-wrap:hover img,
+.our-value.post-thumbnail-wrap:hover img {
+	opacity: 0.5!important;
+}
+.our-mission.post-thumbnail-wrap {
+	background-color: #4caf50;
+}
+.our-mission.post-thumbnail-wrap .caption-wrap,
+.our-value.post-thumbnail-wrap .caption-wrap {
+	font-style: italic;
+	padding: 1.250em;
+}
+.our-mission p,
+.our-value p {
+	margin-bottom: 0;
+}
+
+@media only screen and (min-width: 767px) {
+	.welcome-message h3{
+		font-size: 2em;
+		margin-bottom: 0.313em;
+	}
+}
+
+/*--------------------------------------------------------------
+## Contact
+--------------------------------------------------------------*/
+.rwmb-map-canvas,
+iframe.google-map {
+	border:5px solid #f1f1f1;
+}
+
+/*--------------------------------------------------------------
 # Custom post type
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
 ## Publication
 --------------------------------------------------------------*/
-.entry-publication-article {
+.publication-entry {
 	background-color:#f7f7f7;
 	overflow: hidden;
 }
@@ -1990,7 +2064,7 @@ object {
 }
 
 /* Entries > Title */
-.entry-title { display: block; font-size: 1.077em; margin: 0 0 5px; font-weight: 600; color: #000; }
+.entry-title { display: block; font-size: 1.6em; margin: 0 0 5px; font-weight: 600; color: #000; }
 .entry-title a { color: inherit }
 .entry-title a:hover { text-decoration: none }
 .single-post-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
@@ -2429,3 +2503,156 @@ ul.wpsp-social-share { list-style: none }
 @media only screen and (max-width: 767px) { 
 	.match-height-content { height: auto !important }
 }
+
+/*--------------------------------------------------------------
+## Overlay Post thumbnail
+--------------------------------------------------------------*/
+.overlay-wrap {
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+.overlay-wrap > a, 
+.overlay-wrap > a img {
+	display: block;
+	width: 100%!important;
+}
+.overlay-hide {
+    visibility: hidden;
+    opacity: 0;
+    -moz-opacity: 0;
+    -webkit-opacity: 0;
+}
+.overlay-inner {
+	position: absolute;
+	top: 0;
+    right: 0;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    transition: all .25s ease-in-out;
+}
+.overlay-wrap:hover .overlay-inner.white,
+.overlay-inner.white {
+	background:#fff;
+}
+.overlay-wrap:hover .overlay-inner.black,
+.overlay-inner.black {
+	background:#000;
+}
+.overlay-wrap:hover .overlay-inner.blue,
+.overlay-inner.blue{
+	background: #3399cc;
+}
+.overlay-inner span.title { 
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	line-height: 1.3em; 
+	font-weight: 400;
+	position: absolute; 
+	bottom: 30px; 
+	left: 0; 
+	width: 100%; 
+	text-align: center; 
+	padding: 0 30px; 
+	color: #000; 
+	font-size: 1.077em; 
+	font-weight: 600; 
+	transition: all .15s ease-in-out; 
+}
+.overlay-inner.black span.title,
+.overlay-inner.blue span.title { color: #fff }
+.overlay-wrap:hover .overlay-inner { 
+	visibility: visible; 
+	opacity: 0.8; 
+	-webkit-opacity: 0.8; 
+	-moz-opacity: 0.8; 
+}
+.overlay-wrap:hover .overlay-inner span.title { 
+	bottom: 60px 
+}
+
+/* Post Thumbnail Effect */
+.post-thumbnail-wrap {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	background-color: #004860;	
+}
+.post-thumbnail-wrap img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.post-thumbnail-wrap:hover img {
+	opacity: 0.5;
+}
+.post-thumbnail-wrap .caption-wrap {
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color:#ffffff;
+}
+.post-thumbnail-wrap .caption-inner {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.post-thumbnail-wrap .entry-caption {
+	display: table-cell;
+	vertical-align: bottom;
+}
+.post-thumbnail-wrap a {
+	display: table-cell;
+	vertical-align: bottom;
+}
+.post-thumbnail-wrap span.title {
+	color:#fff;
+	padding: 1em 0.625em;
+	display: block;
+}
+
+	/* Effect SP 1 */
+	.post-thumbnail-wrap.overlay-1 img {
+	    opacity: 0.7;
+	    -webkit-transition: opacity 0.35s;
+	    transition: opacity 0.35s;
+	}
+	.post-thumbnail-wrap.overlay-1:hover img {
+	    opacity: 1;
+	}
+	.post-thumbnail-wrap.overlay-1 span.title {
+		background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+		background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+		text-shadow: 0px 2px 2px #000000;
+    	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    	-webkit-transition: padding 0.2s;
+	    transition: padding 0.2s;
+
+	}
+	.post-thumbnail-wrap.overlay-1:hover span.title {
+		padding-bottom: 2em;
+	}
+
+	/* Effect SP 2 */
+	.post-thumbnail-wrap.overlay-2 a {
+		vertical-align: middle;
+		text-align: center;
+	}
+	.post-thumbnail-wrap.overlay-2 span.title {
+		background-color: #48b24e;
+		color: #fff;
+		font-size: 0.813em;
+		padding: 0.625em;
+		display: inline-block;
+		opacity: 0;
+		-webkit-transition: opacity 0.35s;
+	    transition: opacity 0.35s;
+	}
+
+	.post-thumbnail-wrap.overlay-2:hover span.title {
+		opacity: 1;
+	}

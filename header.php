@@ -32,7 +32,7 @@
 				<?php if( !is_singular() ) echo '</h1>'; else echo '</h2>'; ?>
 			</div><!-- .site-branding -->
 
-			<div class="site-donate"><a href="#" class="button orange"><?php esc_html_e( 'Donate Now', 'hfhcambodia' ); ?></a></div>
+			<div class="site-donate"><a href="http://www.give2habitat.org/cambodia" target="_blank" class="button orange"><?php esc_html_e( 'Donate Now', 'hfhcambodia' ); ?></a></div>
 		</div> <!-- .container .clear -->
 	</header><!-- #masthead -->
 

@@ -27,7 +27,7 @@ get_header();
 					<?php $args = array(
 						    'type'         => 'map',
 						    'width'        => '100%', // Map width, default is 640px. Can be '%' or 'px'
-						    'height'       => '480px', // Map height, default is 480px. Can be '%' or 'px'
+						    'height'       => '420px', // Map height, default is 480px. Can be '%' or 'px'
 						    'js_options'   => array(
 						        'zoom'        => 16, // You can use 'zoom' inside 'js_options' or as a separated parameter
 						    )

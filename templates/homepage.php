@@ -122,26 +122,29 @@ get_header();
 	if ( $post_query->have_posts() ) : ?>
 	<section class="latest-post-wrap">
 		<div class="container">
-			<div class="latest-post wpsp-row posts-thumb clear">
+			<div class="latest-post <?php wpsp_blog_wrap_classes(); ?> wpsp-row clear">
 				<div class="col span_2_of_3">
 					<header class="section-title">
 						<h2><?php echo $home_meta['wpsp_latest_post_headline'][0]; ?></h2>
 					</header>
 					<?php  
 					$post_count = 0;
+					$classes = wpsp_blog_entry_classes();
 					while ( $post_query->have_posts() ) : $post_query->the_post(); 
 						$post_count++;
 						if ( $post_count <= $post_number ) : ?>
-							<article id="post-<?php the_ID(); ?>" <?php post_class( array('wpsp-row', 'clear', 'blog-entry') ); ?>>
-							<?php get_template_part( 'partials/blog/blog-entry-media' ); ?>
-							<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
-							<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
-							<div class="blog-entry-excerpt">
-								<?php wpsp_excerpt( array(
-									'length'   => 20,
-									'readmore' => false,
-								) ); ?>
-							</div>
+							<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
+							<?php get_template_part( 'partials/blog/media/blog-entry' ); ?>
+							<div class="blog-entry-content entry-details">
+								<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
+								<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
+								<div class="blog-entry-excerpt">
+									<?php wpsp_excerpt( array(
+										'length'   => 20,
+										'readmore' => false,
+									) ); ?>
+								</div>
+							</div>	
 							</article>
 						<?php endif; ?>
 					<?php endwhile; wp_reset_postdata(); ?>

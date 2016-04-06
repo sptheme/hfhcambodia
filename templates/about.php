@@ -15,7 +15,7 @@ get_header();
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<section class="welcome-message wpsp-row no-margin-grid clearfix">
+			<section class="welcome-message wpsp-row no-margin-grid clear">
 				<div class="col span_1_of_2 photo-profile">
 					<?php $photo_profile = wp_get_attachment_url( rwmb_meta('wpsp_profile_photo') ); ?>
 			        <img src="<?php echo esc_url($photo_profile); ?>">
@@ -34,7 +34,7 @@ get_header();
 				<?php the_content(); ?>
 			</section> <!-- .about-entry-content -->
 
-			<section class="li-goal wpsp-row clearfix">
+			<section class="li-goal wpsp-row clear">
 				<div class="col span_1_of_2">
 					<div class="our-mission post-thumbnail-wrap overlay-1">
 						<?php if ( !empty($about_meta['wpsp_mission_photo'][0]) ) : ?>
@@ -86,7 +86,7 @@ get_header();
 			        <?php endif; ?>    
 			        </header>
 			        <?php if ( !empty($about_meta['wpsp_main_program_page'][0]) ) : ?>
-			        <div class="featured-page wpsp-row clearfix">
+			        <div class="featured-page wpsp-row clear">
 			    	<?php
 			    		$page_count = 0;
 			    		$args = array (
@@ -122,7 +122,7 @@ get_header();
 				            <?php }
 							} 
 						}?>
-			        </div> <!-- .featured-page .clearfix -->
+			        </div> <!-- .featured-page .clear -->
 			    	<?php endif; ?>
 		    	</div> <!-- .container -->
 			</section> <!-- .our-work -->

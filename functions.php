@@ -173,22 +173,6 @@ add_action('wp_head', 'wpsp_print_ie_script');
 function wpsp_print_custom_css_script() { 
 	global $post; ?>
 	
-	<style type="text/css">
-	/* custom style */
-	<?php 
-	// Background image for contact page
-	if ( is_page_template( 'templates/contact.php' ) ) {
-		$page_contact_bg_img = wp_get_attachment_url( rwmb_meta( 'wpsp_contact_bg_image') ); 
-		if ( $page_contact_bg_img ) : ?>
-			.page-template-contact .site-content { 
-				background-image: url(<?php echo $page_contact_bg_img; ?>); 
-				background-position: 50% 0;
-				background-size: cover;
-			}
-	<?php endif; ?>
-	<?php } ?>
-	</style>
-
 	<?php if ( is_page() || is_singular() ) : ?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
