@@ -12,14 +12,16 @@
 get_header(); 
 
 ?>
-	<header class="page-header-contact">
-		<h2 class="entry-title"><?php the_title();?></h2>
-		<?php if ( rwmb_meta('wpsp_contact_desc') ) : ?>
-		<p class="description"><?php echo rwmb_meta('wpsp_contact_desc'); ?></p>
-	<?php endif; ?>
-	</header>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+			<header class="entry-header">
+				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			</header><!-- .entry-header -->
+
+			<div class="entry-content">
+				<?php the_content(); ?>
+			</div><!-- .entry-content -->
+		
 			<div class="wpsp-row clearfix">
 				<div class="col span_2_of_3">
 					<?php $args = array(
@@ -37,7 +39,7 @@ get_header();
 					<?php if ( is_active_sidebar( 'contact-sidebar' ) ) dynamic_sidebar( 'contact-sidebar' ); ?>
 				</div>
 			</div> <!-- .wpsp-rwo -->
-			<?php the_content(); ?>
+			
 		</main><!-- #main -->
 	</div><!-- #primary -->		
 
