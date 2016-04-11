@@ -67,38 +67,51 @@ get_header();
     	</div> <!-- .container -->
 	</section> <!-- .our-work -->
 
-	<?php // Only video post
+	<?php // Highlight post
+		$terms = rwmb_meta('wpsp_post_category');
+		$cats_ids = array();
+		if ( !empty($terms) ) {
+			foreach ( $terms as $term ) {
+				$cats_ids[] = $term->term_id;
+			}
+		}
+
 		$args = array(
 				'post_type' => 'post',
 				'posts_per_page' => 1,
-				'tax_query' => array( array(
-		            'taxonomy' => 'post_format',
-		            'field' => 'slug',
-		            'terms' => array('post-format-video'),
-		            'operator' => 'IN'
-		           ) )
+				'category__in'   => $cats_ids,
 			);
-		$video_post_query = new WP_Query($args);
+		$highlight_query = new WP_Query($args);
 
-		if ( $video_post_query->have_posts() ) : 
-			while ( $video_post_query->have_posts() ) : $video_post_query->the_post(); ?>
+		if ( $highlight_query->have_posts() ) : 
+			while ( $highlight_query->have_posts() ) : $highlight_query->the_post(); 
+		
+			// show icon by post format
+			$post_format = get_post_format();
+			$format_standard = '<span class="overlay-article-hover overlay-font-icon overlay-icon-center-center"></span>'; 
+			$format_video = '<span class="overlay-video-hover overlay-font-icon overlay-icon-center-center"></span>';
+			$post_icon = ( $post_format == 'video' ) ? $format_video : $format_standard; ?>
 
-	<section class="latest-video-wrap">
+	<section class="highlight-post-wrap">
 		<div class="container">
-			<div <?php post_class( array('latest-video', 'wpsp-row', 'clear') ); ?>>
+			<div <?php post_class( array('highlight-post', 'wpsp-row', 'clear') ); ?>>
 			<div class="col span_1_of_2">
-				<?php printf( '<div class="post-thumbnail"><a class="popup-youtube" itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
+				<div class="wpsp-image-hover grow overlay-parent">
+				<?php printf( '<a class="popup-youtube" itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s %4$s</a>', 
 					wpsp_get_post_video(), 
 					wpsp_get_esc_title(), 
-					wpsp_post_thumbnail('blog-post')  
+					wpsp_post_thumbnail('blog-post'),
+					$post_icon  
 				); ?>
+				</div> <!-- .wpsp-image-hover -->
 			</div>
 			<div class="col span_1_of_2">
+				<span class="highlight green"><?php the_category( ', ', get_the_ID() ); ?></span>
 				<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
 				<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
 				<?php get_template_part( 'partials/blog/blog-entry-content' ); ?>
 			</div>
-			</div> <!-- .latest-video -->
+			</div> <!-- .highlight-post -->
 		</div> <!-- .container -->
 	</section>
 	<?php endwhile; wp_reset_postdata(); 

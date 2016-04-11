@@ -285,6 +285,8 @@ th {
 # Fonts icon
 --------------------------------------------------------------*/
 
+.overlay-article-hover:before,
+.overlay-video-hover:before,
 .menu-item-has-children a:after,
 .bypostauthor > article .fn:after,
 .comment-reply-title small a:before,
@@ -1731,36 +1733,41 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 	text-align: center;
 }
 
-.latest-video-wrap {
+.highlight-post-wrap {
 	background-color: #f3f3f3;
 	padding: 1.250em 0;
 }
-.latest-video {
+.highlight-post {
 	padding: 1.5em 1em;
 	background-color: #0198cd;
 }
-.latest-video a,
-.latest-video p {
+.highlight-post .entry-title,
+.highlight-post a,
+.highlight-post p {
 	color:#fff;
 }
-.latest-video .meta {
+.highlight-post .entry-title {
+	font-size: 1.333em;
+}
+.highlight-post .meta {
 	color:#99ccff;
 }
-.latest-video .col {
+.highlight-post .col {
 	margin-bottom: 1em;
 }
-.latest-video .post-thumbnail {
+.highlight-post .wpsp-image-hover {
 	border:10px solid #fff;
+	transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s;
 }
-.latest-video .post-thumbnail:hover {
+.highlight-post .wpsp-image-hover:hover {
 	border-color: #4fb94a;
 }
-.latest-video.format-video .post-thumbnail a:before {
+/*.highlight-post.format-video .post-thumbnail a:before {
 	color:#f23635;
 	font-size: 3.125em;
 	margin-left: -25px;
 }
-
+*/
 .latest-post .section-title h2 {
 	margin-top: 0;
 }
@@ -1819,33 +1826,37 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
         font-size: 1em;
         line-height: 1.5em;
     }
-	.latest-video-wrap {
+	.highlight-post-wrap {
     	padding: 3.125em 0;
+    }
+    .highlight-post .overlay-font-icon:before {
+    	font-size: 1.600em;
     }
     .latest-post-wrap {
     	padding: 1.875em 0;
     }
     .latest-post-wrap .entries.left-thumbs .entry-media { width: 20%; }
     .latest-post-wrap .entries.left-thumbs .entry-details { width: 75%; }
-    .latest-video {
+    .highlight-post {
 		padding: 2.5em 1.875em;
 		background-color: #fff;
 		background-image: url(images/bg-post-highlight.gif);
 		background-repeat: repeat-y;
 	}
-	.latest-video .entry-title {
+	.highlight-post .entry-title {
 		font-size: 1.5em;
+		color:#333333;
 	}
-	.latest-video a {
+	.highlight-post a {
 		color:#007acc;
 	}
-	.latest-video p {
+	.highlight-post p {
 		color:#444444;
 	}
-	.latest-video .meta {
+	.highlight-post .meta {
 		color:#777;
 	}
-	.latest-video .col {
+	.highlight-post .col {
 		margin-bottom: 0;
 	}
 }
@@ -2224,6 +2235,42 @@ img.stretch-image { display: block; width: 100% !important; }
 .overlay-plus-hover { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background: #000 url("images/overlay-plus.png") center center no-repeat; transition: all .25s ease-in-out; }
 .overlay-parent:hover .overlay-plus-hover { visibility: visible; opacity: 0.65; -moz-opacity: 0.65; -webkit-opacity: 0.65; }
 
+/* Overlays > Articl Hover */
+.overlay-article-hover:before { content: "\f15c"; }
+
+/* Overlays > Video Hover */
+.overlay-video-hover:before { content: "\f16a"; }
+
+.overlay-font-icon{ 
+	height: 100%; 
+	width: 100%; 
+	position: absolute; 
+	top: 0; 
+	left: 0;
+}
+
+.overlay-font-icon:before {
+	display: block;
+    position: absolute;
+    font-size: 1em;
+    color: #4caf50;
+    background-color: #ffffff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.overlay-icon-center-center:before {
+	width: 2em;
+    height: 2em;
+    line-height: 2em;
+    top: 50%;
+    left: 50%;
+    margin-top: -1em;
+    margin-left: -1em;
+    text-align: center;
+}
+
+.overlay-parent:hover .overlay-font-icon:before { color:#007acc; }
+
 /*--------------------------------------------------------------
 ## Paging navigation
 --------------------------------------------------------------*/
@@ -2294,6 +2341,17 @@ a.button:hover {
 }
 .button.orange:hover {
 	background: #cf5511;
+}
+
+/*--------------------------------------------------------------
+## Higight
+--------------------------------------------------------------*/
+.highlight {
+	color:#4a97c2;
+}
+.highlight.green,
+.highlight.green a {
+	color:#4fb94a;
 }
 
 /*--------------------------------------------------------------

@@ -90,6 +90,23 @@
 					'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
 				),
 			array(
+				'name'  => __( 'Post highlight', 'wpsp_meta_options' ), 
+				'id'    => "post_highlight_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Select category', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "highlight_cat",
+					'desc'  => __( 'Select case study category', 'wpsp_meta_options' ), 
+					'type'  => 'taxonomy',
+					'options' => array(
+						'taxonomy' => 'category',
+						'type'     => 'select',
+					),
+					 
+				),	
+			array(
 				'name'  => __( 'Latest Post', 'wpsp_meta_options' ), 
 				'id'    => "latest_post_fake_id",
 				'desc'	=> __( '', 'wpsp_meta_options' ), 
