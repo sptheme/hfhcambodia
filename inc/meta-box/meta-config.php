@@ -53,10 +53,15 @@
 				'type'  => 'heading'
 			),
 				array(
-					'name'  => __( 'Upload Photos', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "slideshow",
-					'desc'	=> __( 'Upload images for slideshow. Option: Recommended image size: 1600px by 640px.', 'wpsp_meta_options' ), 
-					'type'  => 'image_advanced'
+					'name'  => __( 'Slide category', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "slide_category",
+					'desc'	=> __( 'Select slider category', 'wpsp_meta_options' ), 
+					'type'  => 'taxonomy',
+					'options' => array(
+						'taxonomy' => 'slider_category',
+						'type'     => 'select',
+						'args'     => array(),
+					),
 				),
 			array(
 				'name'  => __( 'Main programs', 'wpsp_meta_options' ), 
@@ -280,7 +285,7 @@
 				// Select multiple values, optional. Default is false.
 				'multiple'    => false,
 				'std'         => 'post-highlight',
-				'placeholder' => __( 'Select an Item', 'your-prefix' ),
+				'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
 			),
 			array(
 				'name'  => __( 'Page columns', 'wpsp_meta_options' ), 
@@ -341,7 +346,36 @@
 					'std'   => '11.546921,104.917905',
 				),
 		)
-    );		
+    );	
+
+    // Slider post type
+    $meta_boxes[] = array(
+    	'id'			=> 'slider-options',
+		'title'			=> __( 'Slider setting', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'slider' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Slide link', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "slide_link",
+				'desc' => __( 'URL/Link for slide (e.g: http://google.com). You can keep it blank, if does not have link', 'wpsp_meta_options' ),
+				'type'  => 'url',
+				'std'  => '',
+			),
+			array(
+				'name'  => __( 'Slide link', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "slide_link_target",
+				'type'  => 'select',
+				'options'     => array(
+					'_blank' => __( 'Open link in new tab', 'wpsp_meta_options' ),
+					'_self' => __( 'Open link in current tab', 'wpsp_meta_options' ),
+				),
+			),
+		)
+    );	
 	
 	// Portfolio post type
     /*$meta_boxes[] = array(

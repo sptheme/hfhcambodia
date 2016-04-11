@@ -262,9 +262,9 @@ require get_template_directory() . '/inc/hooks.php';
 require get_template_directory() . '/inc/blog-functions.php';
 
 /**
- * Active Portfolio, Staff, Publication, Partner and Testimonials post type
+ * Active Slider, Staff, Publication, Partner and Testimonials post type
  */
-require get_template_directory() . '/inc/portfolio/portfolio-config.php';
+require get_template_directory() . '/inc/slider/slider-config.php';
 require get_template_directory() . '/inc/staff/staff-config.php';
 require get_template_directory() . '/inc/publications/publications-config.php';
 require get_template_directory() . '/inc/partner/partner-config.php';

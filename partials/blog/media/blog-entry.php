@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="blog-entry-media entry-media clear wpsp-image-hover opacity overlay-parent">
 		<a href="<?php the_permalink(); ?>" title="<?php wpsp_esc_title(); ?>" rel="bookmark" class="related-post-thumb">
 			<?php wpsp_post_thumbnail_total( array(
-				'size'   => $img_size,
+				'size'   => 'thumb-landscape',
 				'width'  => '90',
 				'height' => '140',
 				'alt'    => wpsp_get_esc_title(),

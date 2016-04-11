@@ -6,10 +6,39 @@
  *
  * @package Habitat Cambodia
  */
+global $post;
+// Posts count
+$posts_count = 5;
 
+// Query args
+$terms = rwmb_meta('wpsp_slide_category', array( 'type' => 'taxonomy', 'taxonomy' => 'slider_category'), $post->ID );
 
-$images = rwmb_meta( 'wpsp_slideshow', array('type' => 'image_advanced'), $post->ID ); 
-if ( !empty($images) ) : ?>
+$cats_ids = array();
+if ( !empty($terms) ) {
+	foreach ( $terms as $term ) {
+		$cats_ids[] = $term->term_id;
+	}
+}
+$args = array(
+	'post_type'		 => 'slider',
+	'posts_per_page' => $posts_count,
+	'tax_query'      => array (
+		array (
+			'taxonomy' => 'slider_category',
+			'field'    => 'term_id',
+			'terms'    => $cats_ids,
+			'operator' => 'IN',
+		),
+	),
+);
+
+$args = apply_filters( 'wpsp_slider_post_args', $args );
+
+// Run Query - must be set to $wpex_related_query var!!
+$slider_query = new wp_query( $args );
+
+// If posts were found display related items
+if ( $slider_query->have_posts() ) : ?>
 
 	<script type="text/javascript">
 	    jQuery(document).ready(function($){
@@ -26,8 +55,23 @@ if ( !empty($images) ) : ?>
 	<div class="site-slider container">
 		<div id="slides">
 		    <ul class="slides-container">
-		<?php foreach ( $images as $image ) : ?>    
-		        <li><img src="<?php echo $image['full_url']; ?>" alt="$image['alt']"></li>
+		<?php foreach ( $slider_query->posts as $post ) : setup_postdata( $post ); ?>    
+		        <li>
+		        <?php // Get slider meta
+		        $slide_link = rwmb_meta('wpsp_slide_link');
+				$slide_link_target = rwmb_meta('wpsp_slide_link_target'); ?>
+				
+		        <?php if ( !empty($slide_link) ) : ?>
+		        	<a href="<?php echo esc_url($slide_link); ?>" target="<?php echo esc_attr($slide_link_target); ?>">
+		        <?php endif; ?>	
+		        	<?php wpsp_post_thumbnail_total( array(
+						'size'   => 'thumb-full',
+						'alt'    => wpsp_get_esc_title(),
+					) ); ?>
+				<?php if ( !empty($slide_link) ) : ?>
+		        	</a>
+		        <?php endif; ?>		
+		        </li>
 		<?php endforeach; ?>        
 			</ul>
 			<nav class="slides-navigation">
