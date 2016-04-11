@@ -90,15 +90,18 @@ get_header();
 			$post_format = get_post_format();
 			$format_standard = '<span class="overlay-article-hover overlay-font-icon overlay-icon-center-center"></span>'; 
 			$format_video = '<span class="overlay-video-hover overlay-font-icon overlay-icon-center-center"></span>';
-			$post_icon = ( $post_format == 'video' ) ? $format_video : $format_standard; ?>
+			$popup_link = ( $post_format == 'video' ) ? wpsp_get_post_video() : wpsp_get_permalink();
+			$popup_class = ( $post_format == 'video' ) ? 'popup-youtube' : 'popup-none';
+			$post_icon = ( $post_format == 'video' ) ? $format_video : $format_standard;  ?>
 
 	<section class="highlight-post-wrap">
 		<div class="container">
 			<div <?php post_class( array('highlight-post', 'wpsp-row', 'clear') ); ?>>
 			<div class="col span_1_of_2">
 				<div class="wpsp-image-hover grow overlay-parent">
-				<?php printf( '<a class="popup-youtube" itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s %4$s</a>', 
-					wpsp_get_post_video(), 
+				<?php printf( '<a class="%1$s" itemprop="url" href="%2$s" rel="bookmark" title="%3$s">%4$s %5$s</a>', 
+					$popup_class,
+					$popup_link, 
 					wpsp_get_esc_title(), 
 					wpsp_post_thumbnail('blog-post'),
 					$post_icon  
