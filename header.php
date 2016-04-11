@@ -33,15 +33,14 @@
 			</div><!-- .site-branding -->
 
 			<div class="site-donate"><a href="http://www.give2habitat.org/cambodia" target="_blank" class="button orange"><?php esc_html_e( 'Donate Now', 'hfhcambodia' ); ?></a></div>
+
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'clear', 'container' => false ) ); ?>
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'hfhcambodia' ); ?></button>
+			</nav><!-- #site-navigation -->
+			
 		</div> <!-- .container .clear -->
 	</header><!-- #masthead -->
-
-	<nav id="site-navigation" class="main-navigation" role="navigation">
-		<div class="container clear">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'hfhcambodia' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'container' => false ) ); ?>
-		</div>
-	</nav><!-- #site-navigation -->
 
 	<?php wpsp_hook_content_top(); ?>
 

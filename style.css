@@ -788,8 +788,11 @@ a:active {
 	font-size: 1em;
 	font-weight: 400;
 	display: block;
-	clear: both;
-	background-color: #007acc;
+	clear: right;
+	float: left;
+	margin-top: 0.333em;
+	margin-left: 1.333em;
+	/*background-color: #007acc;*/
 }
 
 .main-navigation ul {
@@ -806,7 +809,8 @@ a:active {
 
 .main-navigation a {
 	font-size: 1.067em;
-	color: #ffffff;
+	color: #222222;
+	font-weight: 600;
 	display: block;
 	text-decoration: none;
 	padding: 0.65625em 0.875em;
@@ -832,6 +836,7 @@ a:active {
 	color:#1a1a1a;
 	width: 12.6875em;
 	font-size: 0.875em;
+	font-weight: 400;
 	/*padding: 7px 0.875em;*/
 }
 
@@ -1182,21 +1187,30 @@ blockquote.aligncenter {
 	padding: 10px 0;
 }
 .site-branding {
-	float: left;
 	height: 100%;
 }
+.site-branding h2 {
+	margin: 0.333em 0;
+}
+.site-branding a {
+	display: block;
+}
 .site-donate {
-	font-size: 13px;
-	float: right;
-	text-align: right;
 	display: none;
 }
 .mobile-branding {
 	padding: 20px 0 30px 20px;
 }
 @media only screen and (min-width: 992px) {
+	.site-branding {
+		width: 200px;
+		float: left;
+	}
 	.site-donate {
 		display: block;
+		font-size: 13px;
+		float: right;
+		text-align: right;
 	}
 }
 
@@ -1698,6 +1712,7 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 --------------------------------------------------------------*/
 .page-template-homepage .site-content > .container {
 	width: 100%!important;
+	padding: 0;
 }
 
 /* Section Title */
