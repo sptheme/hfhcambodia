@@ -6,7 +6,7 @@
  *
  * @package Habitat Cambodia
  */
-global $post;
+
 // Posts count
 $posts_count = 5;
 

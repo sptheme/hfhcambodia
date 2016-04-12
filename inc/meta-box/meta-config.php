@@ -65,24 +65,6 @@
 				),
 
 			array(
-				'name'  => __( 'Post highlight', 'wpsp_meta_options' ), 
-				'id'    => "post_highlight_fake_id",
-				'desc'	=> __( '', 'wpsp_meta_options' ), 
-				'type'  => 'heading'
-			),
-				array(
-					'name'  => __( 'Select category', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "highlight_category",
-					'desc'  => __( 'Select case study category', 'wpsp_meta_options' ), 
-					'type'  => 'taxonomy',
-					'options' => array(
-						'taxonomy' => 'category',
-						'type'     => 'select_advanced',
-						'args'     => array(),
-					),
-				),
-					
-			array(
 				'name'  => __( 'Main programs', 'wpsp_meta_options' ), 
 				'id'    => "main_programs_fake_id",
 				'desc'	=> __( '', 'wpsp_meta_options' ), 
@@ -107,6 +89,23 @@
 					'post_type' => 'page',
 					'field_type'  => 'select_advanced',
 					'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
+				),
+
+			array(
+				'name'  => __( 'Post highlight', 'wpsp_meta_options' ), 
+				'id'    => "post_highlight_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Select category', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "highlight_category",
+					'type'  => 'taxonomy_advanced',
+					'options' => array(
+						'taxonomy' => 'category',
+						'type'     => 'select',
+						'args'     => array(),
+					),
 				),
 
 			array(
@@ -325,19 +324,18 @@
     	'id'			=> 'video-post-options',
 		'title'			=> __( 'Featured Video Options', 'wpsp_meta_options' ),
 		'post_types'	=> array( 'page' ),
-		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
-		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
-		'autosave'		=> true, // Auto save: true, false (default). Optional.
+		'context'		=> 'normal', 
+		'priority'		=> 'high', 
+		'autosave'		=> true,
 
 		'fields'		=> array(
 			array(
 				'name'  => __( 'Select category', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "featured_video_cat",
-				'desc'	=> __( 'Please select Media category', 'wpsp_meta_options' ), 
 				'type'  => 'taxonomy',
 				'options' => array(
 					'taxonomy' => 'category',
-					'type'     => 'select', // How to show taxonomy: 'checkbox_list' (default) or 'checkbox_tree', 'select_tree', select_advanced or 'select'. Optional
+					'type'     => 'select', 
 				),
 			),
 		)
