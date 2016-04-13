@@ -37,8 +37,8 @@ $summary = wpsp_get_excerpt( array(
 	<?php
 	// Display heading if enabled
 	if ( wpsp_get_redux( 'is-social-share-heading', true ) && 'horizontal' == $position ) : ?>
-		<div class="social-share-title">
-			<?php echo wpsp_get_redux( 'social-share-heading' ); ?>
+		<div class="theme-heading social-share-title">
+			<span class="text"><?php echo wpsp_get_redux( 'social-share-heading' ); ?></span>
 		</div>
 	<?php endif; ?>
 

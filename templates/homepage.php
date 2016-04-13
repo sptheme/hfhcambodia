@@ -29,7 +29,7 @@ get_header(); ?>
 		        <div class="featured-page wpsp-row clear">
 		    	<?php
 		    		$page_count = 0;
-		    		$cols = 2;
+		    		$cols = 3;
 		    		$args = array (
 						'child_of' => rwmb_meta('wpsp_main_program_page_home'),
 						'sort_column' => 'menu_order',
@@ -40,11 +40,11 @@ get_header(); ?>
 							$page_count++;
 							$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'large' );
 			            	if ( $page_count == 1 ) {
-			            		$image_url = aq_resize( $thumb_url[0], '415', '560', true);
+			            		$image_url = aq_resize( $thumb_url[0], '415', '570', true);
 			            	} else {
 			            		$image_url = aq_resize( $thumb_url[0], '415', '271', true);
 			            	}
-			            	if ( $page_count <= 3 ) { 
+			            	if ( $page_count <= 5 ) { 
 			            		$entry_classes = array( 'page-entry-overlay' );
 								$entry_classes[] = 'col';
 								$entry_classes[] = wpsp_grid_class($cols); 
@@ -69,7 +69,7 @@ get_header(); ?>
 		</section> <!-- .our-work -->
 
 		<?php // Highlight post
-			$terms = rwmb_meta('wpsp_highlight_category', array( 'type' => 'taxonomy', 'taxonomy' => 'category'), $post->ID);
+			$terms = rwmb_meta('wpsp_highlight_category', array( 'type' => 'taxonomy_advanced', 'taxonomy' => 'category'), $post->ID);
 			$cats_ids = array();
 			if ( !empty($terms) ) {
 				foreach ( $terms as $term ) {

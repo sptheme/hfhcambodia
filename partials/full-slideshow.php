@@ -52,33 +52,37 @@ if ( $slider_query->have_posts() ) : ?>
 		      });
 	    });     
 	</script>
-	<div class="site-slider container">
-		<div id="slides">
-		    <ul class="slides-container">
-		<?php foreach ( $slider_query->posts as $post ) : setup_postdata( $post ); ?>    
-		        <li>
-		        <?php // Get slider meta
-		        $slide_link = rwmb_meta('wpsp_slide_link');
-				$slide_link_target = rwmb_meta('wpsp_slide_link_target'); ?>
-				
-		        <?php if ( !empty($slide_link) ) : ?>
-		        	<a href="<?php echo esc_url($slide_link); ?>" target="<?php echo esc_attr($slide_link_target); ?>">
-		        <?php endif; ?>	
-		        	<?php wpsp_post_thumbnail_total( array(
-						'size'   => 'thumb-full',
-						'alt'    => wpsp_get_esc_title(),
-					) ); ?>
-				<?php if ( !empty($slide_link) ) : ?>
-		        	</a>
-		        <?php endif; ?>		
-		        </li>
-		<?php endforeach; ?>        
-			</ul>
-			<nav class="slides-navigation">
-				<a href="#" class="next"><i class="fa fa-chevron-right"></i></a>
-				<a href="#" class="prev"><i class="fa fa-chevron-left"></i></a>
-			</nav>
-		</div> <!-- #slides -->	
-	</div> <!-- .site-slider -->
+	<div class="slider-wrap roght-edge-yellow">
+		<div class="rough-top-edge-yellow-solid"></div>
+		<div class="site-slider container">
+			<div id="slides">
+			    <ul class="slides-container">
+			<?php foreach ( $slider_query->posts as $post ) : setup_postdata( $post ); ?>    
+			        <li>
+			        <?php // Get slider meta
+			        $slide_link = rwmb_meta('wpsp_slide_link');
+					$slide_link_target = rwmb_meta('wpsp_slide_link_target'); ?>
+					
+			        <?php if ( !empty($slide_link) ) : ?>
+			        	<a href="<?php echo esc_url($slide_link); ?>" target="<?php echo esc_attr($slide_link_target); ?>">
+			        <?php endif; ?>	
+			        	<?php wpsp_post_thumbnail_total( array(
+							'size'   => 'thumb-full',
+							'alt'    => wpsp_get_esc_title(),
+						) ); ?>
+					<?php if ( !empty($slide_link) ) : ?>
+			        	</a>
+			        <?php endif; ?>		
+			        </li>
+			<?php endforeach; ?>        
+				</ul>
+				<nav class="slides-navigation">
+					<a href="#" class="next"><i class="fa fa-chevron-right"></i></a>
+					<a href="#" class="prev"><i class="fa fa-chevron-left"></i></a>
+				</nav>
+			</div> <!-- #slides -->	
+		</div> <!-- .site-slider -->
+		<div class="rough-bottom-edge-yellow-solid"></div>
+	</div> <!-- .slider-wrap -->
 	
 <?php endif; ?>

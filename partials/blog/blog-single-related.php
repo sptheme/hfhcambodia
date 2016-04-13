@@ -54,12 +54,12 @@ $related_query = new wp_query( $args );
 
 // If posts were found display related items
 if ( $related_query->have_posts() ) : ?>
-	<section id="related-blog-posts">
+	<section id="related-blog-posts" class="related-blog-posts">
 		<?php
 		$heading = wpsp_get_redux('related-post-title');
 		$heading = $heading ? $heading : esc_html__( 'You may also see...', 'hfhcambodia' );
 		if ( $heading ) {
-			printf('<h3>%s</h3>', $heading);
+			printf('<div class="theme-heading related-posts-title"><span class="text">%s</span></div>', $heading);
 		} ?>
 		<div class="wpsp-row clear">
 			<?php 
