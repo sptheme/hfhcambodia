@@ -18,20 +18,20 @@ get_header(); ?>
 		<section class="our-work">
 			<div class="container">
 				<header class="section-title">
-				<?php if ( !empty($home_meta['wpsp_program_headline_home'][0]) ) : ?>
-		            <h2><?php echo $home_meta['wpsp_program_headline_home'][0]; ?></h2>
+				<?php if ( !empty(rwmb_meta('wpsp_program_headline_home')) ) : ?>
+		            <h2><?php echo esc_html( rwmb_meta('wpsp_program_headline_home') ); ?></h2>
 		        <?php endif; ?>    
-		        <?php if ( !empty($home_meta['wpsp_program_desc_home'][0]) ) : ?>
-		            <p class="description"><?php echo $home_meta['wpsp_program_desc_home'][0]; ?></p>
+		        <?php if ( !empty(rwmb_meta('wpsp_program_desc_home')) ) : ?>
+		            <p class="description"><?php echo esc_html( rwmb_meta('wpsp_program_desc_home') ); ?></p>
 		        <?php endif; ?>    
 		        </header>
-		        <?php if ( !empty($home_meta['wpsp_main_program_page_home'][0]) ) : ?>
+		        <?php if ( !empty( rwmb_meta('wpsp_main_program_page_home') ) ) : ?>
 		        <div class="featured-page wpsp-row clear">
 		    	<?php
 		    		$page_count = 0;
 		    		$cols = 2;
 		    		$args = array (
-						'child_of' => $home_meta['wpsp_main_program_page_home'][0],
+						'child_of' => rwmb_meta('wpsp_main_program_page_home'),
 						'sort_column' => 'menu_order',
 					); 
 					$featured_pages = get_pages( $args );
@@ -50,13 +50,13 @@ get_header(); ?>
 								$entry_classes[] = wpsp_grid_class($cols); 
 								$entry_classes[] = 'col-' . $page_count; ?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
-									<div class="entry-page post-thumbnail-wrap overlay-1">
+									<div class="wpsp-image-hover grow overlay-parent">
+										<a href="<?php wpsp_permalink($page->ID);?>" rel="bookmark">
 										<img src="<?php echo $image_url;?>">
-										<div class="caption-wrap">
-											<div class="caption-inner">
-											<a href="<?php wpsp_permalink($page->ID);?>" rel="bookmark"><span class="title"><?php echo $page->post_title; ?></span></a>
-											</div>
+										<div class="overlay-headline headline-wrap">
+											<span class="title headline-inner gradient-background"><?php echo $page->post_title; ?></span>
 										</div>
+										</a>	
 									</div>
 								</article> <!-- .page-entry-overlay -->
 
@@ -89,8 +89,8 @@ get_header(); ?>
 			
 				// show icon by post format
 				$post_format = get_post_format();
-				$format_standard = '<span class="overlay-article-hover overlay-font-icon overlay-icon-center-center"></span>'; 
-				$format_video = '<span class="overlay-video-hover overlay-font-icon overlay-icon-center-center"></span>';
+				$format_standard = '<span class="overlay-article-hover overlay-font-icon"></span>'; 
+				$format_video = '<span class="overlay-video-hover overlay-font-icon"></span>';
 				$popup_link = ( $post_format == 'video' ) ? wpsp_get_post_video() : wpsp_get_permalink();
 				$popup_class = ( $post_format == 'video' ) ? 'popup-youtube' : 'popup-none';
 				$post_icon = ( $post_format == 'video' ) ? $format_video : $format_standard;  ?>

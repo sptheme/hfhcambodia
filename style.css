@@ -2235,13 +2235,47 @@ img.stretch-image { display: block; width: 100% !important; }
 .overlay-plus-hover { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background: #000 url("images/overlay-plus.png") center center no-repeat; transition: all .25s ease-in-out; }
 .overlay-parent:hover .overlay-plus-hover { visibility: visible; opacity: 0.65; -moz-opacity: 0.65; -webkit-opacity: 0.65; }
 
+/* Overlays > Headline Hover */
+.overlay-headline {
+	height: 100%; 
+	width: 100%;
+	position: relative;
+}
+.overlay-headline .headline-inner {
+	position: absolute;
+	left: 0;
+	bottom:0;
+}
+.overlay-headline span.title {
+	display: block;
+	width: 100%;
+	font-size: 1.6em;
+	line-height: 1.5;
+	color: #ffffff;
+	padding: 1em;
+}
+.overlay-parent:hover .overlay-headline span.title {
+	padding-bottom: 1.6em;
+}
+
+/* Overlays > Headline > Gradient background hover  */
+.gradient-background {
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+	text-shadow: 0px 2px 2px #000000;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+	-webkit-transition: padding 0.2s;
+    transition: padding 0.2s;
+}
+
 /* Overlays > Articl Hover */
 .overlay-article-hover:before { content: "\f15c"; }
 
 /* Overlays > Video Hover */
 .overlay-video-hover:before { content: "\f16a"; }
 
-.overlay-font-icon{ 
+/* Overlays > Font icon */
+.overlay-font-icon { 
 	height: 100%; 
 	width: 100%; 
 	position: absolute; 
@@ -2255,11 +2289,7 @@ img.stretch-image { display: block; width: 100% !important; }
     font-size: 1em;
     color: #4caf50;
     background-color: #ffffff;
-    border-radius: 3px;
-    cursor: pointer;
-}
-.overlay-icon-center-center:before {
-	width: 2em;
+    width: 2em;
     height: 2em;
     line-height: 2em;
     top: 50%;
@@ -2267,9 +2297,17 @@ img.stretch-image { display: block; width: 100% !important; }
     margin-top: -1em;
     margin-left: -1em;
     text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.overlay-parent:hover .overlay-font-icon:before { color:#007acc; }
+
+.overlay-headline:before {
+	display: block;
+	font-size: 1.6em;
+	line-height: 1.5;
 }
 
-.overlay-parent:hover .overlay-font-icon:before { color:#007acc; }
 
 /*--------------------------------------------------------------
 ## Paging navigation
