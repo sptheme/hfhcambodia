@@ -53,12 +53,14 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Galleries
 # Blog Post
 	## Blog post meta
+	## Testimonial post
 # Addon Elements
 	## Paging navigation
 	## Buttons
 	## Social Button
 	## Social Sharing
 	## Equal height content
+	## Roght edge background image
 	## Overlay Post thumbnail
 --------------------------------------------------------------*/
 
@@ -500,7 +502,7 @@ html {
 }
 
 body {
-	background: #fff; /* Fallback for when there is no custom background color defined. */
+	background: #ebebeb; /* Fallback for when there is no custom background color defined. */
 	font-size: 93.8%;
 }
 
@@ -1131,10 +1133,19 @@ blockquote.aligncenter {
   max-width: 100%;
   position: relative;
 }
+.site-content {
+	padding-top: 2em;
+    padding-bottom: 2em; 
+}
 .site-main,
-.widget-area {
-	padding-top: 2.5em;
-	padding-bottom: 2.5em;
+.widget-area .widget {
+	padding-left: 4%;
+	padding-right: 4%;
+	background:#ffffff;
+	border:1px solid #cccccc;
+}
+.site-main {
+	padding-top: 4%;
 }
 
 @media only screen and (max-width: 992px) {
@@ -1157,7 +1168,7 @@ blockquote.aligncenter {
 	    overflow: hidden;
 	}
 	.widget-area {
-	    width: 31%;
+	    width: 32%;
 	}
 	.col-2cr .content-area,
 	.col-2cl .widget-area { float: left; }
@@ -1368,6 +1379,10 @@ blockquote.aligncenter {
 	padding: 0 0 0.625em 0;
 	margin-bottom: 0;
 	margin-top: 0;
+}
+.widget-area .widget-title {
+	border-bottom: 4px solid #333333;
+	padding: 0.455em 0;
 }
 
 /* Make sure select elements fit in widgets. */
@@ -1716,55 +1731,12 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 /*--------------------------------------------------------------
 ## Homepage
 --------------------------------------------------------------*/
+body.page-template-homepage {
+	background: #fff;
+}
 .slider-wrap {
 	position: relative;
 	padding: 1.333em 0;
-}
-.roght-edge-blue {
-	background: #137A9F;
-}
-.roght-edge-yellow {
-	background: #f2af2a;
-}
-.rough-top-edge-blue-solid {
-	position: absolute;
-    top: -51px;
-    left: 0;
-    margin: 0;
-    height: 51px;
-    width: 100%;
-    background: url(images/rough-top-edge-blue-solid.png) repeat center top;
-    background-size: 1192px 51px;
-}
-.rough-bottom-edge-blue-solid {
-	position: absolute;
-    bottom: -51px;
-    left: 0;
-    margin: 0;
-    height: 51px;
-    width: 100%;
-    background: url(images/rough-bottom-edge-blue-solid.png) repeat center bottom;
-    background-size: 1192px 51px;
-}
-.rough-top-edge-yellow-solid {
-	position: absolute;
-    top: -51px;
-    left: 0;
-    margin: 0;
-    height: 51px;
-    width: 100%;
-    background: url(images/rough-top-edge-yellow-solid.png) repeat center top;
-    background-size: 1192px 51px;
-}
-.rough-bottom-edge-yellow-solid {
-	position: absolute;
-    bottom: -51px;
-    left: 0;
-    margin: 0;
-    height: 51px;
-    width: 100%;
-    background: url(images/rough-bottom-edge-yellow-solid.png) repeat center bottom;
-    background-size: 1192px 51px;
 }
 
 .page-template-homepage .site-content > .container {
@@ -2730,6 +2702,56 @@ ul.wpsp-social-share { list-style: none }
 
 @media only screen and (max-width: 767px) { 
 	.match-height-content { height: auto !important }
+}
+
+/*--------------------------------------------------------------
+## Roght edge background image
+--------------------------------------------------------------*/
+.roght-edge-blue {
+	background: #137A9F;
+}
+.roght-edge-yellow {
+	background: #f2af2a;
+}
+.rough-top-edge-blue-solid {
+	position: absolute;
+    top: -51px;
+    left: 0;
+    margin: 0;
+    height: 51px;
+    width: 100%;
+    background: url(images/rough-top-edge-blue-solid.png) repeat center top;
+    background-size: 1192px 51px;
+}
+.rough-bottom-edge-blue-solid {
+	position: absolute;
+    bottom: -51px;
+    left: 0;
+    margin: 0;
+    height: 51px;
+    width: 100%;
+    background: url(images/rough-bottom-edge-blue-solid.png) repeat center bottom;
+    background-size: 1192px 51px;
+}
+.rough-top-edge-yellow-solid {
+	position: absolute;
+    top: -51px;
+    left: 0;
+    margin: 0;
+    height: 51px;
+    width: 100%;
+    background: url(images/rough-top-edge-yellow-solid.png) repeat center top;
+    background-size: 1192px 51px;
+}
+.rough-bottom-edge-yellow-solid {
+	position: absolute;
+    bottom: -51px;
+    left: 0;
+    margin: 0;
+    height: 51px;
+    width: 100%;
+    background: url(images/rough-bottom-edge-yellow-solid.png) repeat center bottom;
+    background-size: 1192px 51px;
 }
 
 /*--------------------------------------------------------------
