@@ -18,14 +18,14 @@ get_header(); ?>
 		<section class="our-work">
 			<div class="container">
 				<header class="section-title">
-				<?php if ( !empty(rwmb_meta('wpsp_program_headline_home')) ) : ?>
+				<?php if ( rwmb_meta('wpsp_program_headline_home') ) : ?>
 		            <h2><?php echo esc_html( rwmb_meta('wpsp_program_headline_home') ); ?></h2>
 		        <?php endif; ?>    
-		        <?php if ( !empty(rwmb_meta('wpsp_program_desc_home')) ) : ?>
+		        <?php if ( rwmb_meta('wpsp_program_desc_home') ) : ?>
 		            <p class="description"><?php echo esc_html( rwmb_meta('wpsp_program_desc_home') ); ?></p>
 		        <?php endif; ?>    
 		        </header>
-		        <?php if ( !empty( rwmb_meta('wpsp_main_program_page_home') ) ) : ?>
+		        <?php if ( rwmb_meta('wpsp_main_program_page_home' ) ) : ?>
 		        <div class="featured-page wpsp-row clear">
 		    	<?php
 		    		$page_count = 0;
@@ -40,7 +40,7 @@ get_header(); ?>
 							$page_count++;
 							$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'large' );
 			            	if ( $page_count == 1 ) {
-			            		$image_url = aq_resize( $thumb_url[0], '415', '570', true);
+			            		$image_url = aq_resize( $thumb_url[0], '415', '585', true);
 			            	} else {
 			            		$image_url = aq_resize( $thumb_url[0], '415', '271', true);
 			            	}
@@ -67,6 +67,58 @@ get_header(); ?>
 		    	<?php endif; ?>
 	    	</div> <!-- .container -->
 		</section> <!-- .our-work -->
+
+		<section class="latest-testimonial">
+			<div class="container">
+				<header class="section-title">
+				<?php if ( rwmb_meta('wpsp_testimonial_headline_home') ) : ?>
+		            <h2><?php echo esc_html( rwmb_meta('wpsp_testimonial_headline_home') ); ?></h2>
+		        <?php endif; ?> 
+
+		        <?php // Highlight post
+				$terms = rwmb_meta('wpsp_testimonial_category', array( 'type' => 'taxonomy_advanced', 'taxonomy' => 'testimonials_category'), $post->ID);
+				$cats_ids = array();
+				if ( !empty($terms) ) {
+					foreach ( $terms as $term ) {
+						$cats_ids[] = $term->term_id;
+					}
+				}
+				$args = array(
+						'post_type' => 'testimonials',
+						'posts_per_page' => 1,
+						'tax_query' => array( 
+							array(
+					            'taxonomy' => 'testimonials_category',
+					            'field' => 'term_id',
+					            'terms' => $cats_ids,
+					            'operator' => 'IN'
+					           )
+						)
+					);
+				$testimonial_query = new WP_Query($args);
+
+				if ( $testimonial_query->have_posts() ) : 
+					while ( $testimonial_query->have_posts() ) : $testimonial_query->the_post();  ?>
+						<div class="testimonial-entry-content clear">
+							<?php if ( wpsp_get_redux( 'is-testimonial-entry-title', true ) ) : ?>
+								<h2 class="testimonial-entry-title entry-title clear">
+									<?php the_title(); ?>
+								</h2><!-- .testimonial-entry-title -->
+							<?php endif; ?>
+							<div class="testimonial-entry-text">
+								<?php the_content(); ?>
+							</div><!-- .testimonial-entry-text -->
+						</div><!-- .home-testimonial-entry-content-->
+						<div class="testimonial-entry-bottom">
+							<?php get_template_part( 'partials/testimonials/testimonials-entry-avatar' ); ?>
+							<?php get_template_part( 'partials/testimonials/testimonials-entry-meta' ); ?>
+						</div>
+
+					<?php endwhile; wp_reset_postdata(); 
+				endif; ?>
+
+			</div> <!-- .container -->
+		</section> <!-- .testimonial -->        
 
 		<?php // Highlight post
 			$terms = rwmb_meta('wpsp_highlight_category', array( 'type' => 'taxonomy_advanced', 'taxonomy' => 'category'), $post->ID);
@@ -126,7 +178,6 @@ get_header(); ?>
 		$args = array(
 				'post_type' => 'post',
 				'posts_per_page' => $post_count,
-				//'category__not_in '   => $cats_ids,
 				'tax_query' => array( 
 					'relation' => 'AND',
 					array(

@@ -398,6 +398,56 @@
             ),
         )
     ) );
+
+    // Testimonials section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Testimonials', 'redux-framework-wpsp' ),
+        'id'               => 'testimonials-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-comment'
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'General', 'redux-framework-wpsp' ),
+        'id'         => 'testimonials-general-option',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'testimonials-archive-columns',
+                'type'     => 'select',
+                'title'    => __( 'Testimonials entry columns', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'set number of column to display testimonial entry post', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    '1' => 'Column 1',
+                    '2' => 'Column 2',
+                    '3' => 'Column 3',
+                    '4' => 'Column 4',
+                    '5' => 'Column 5',
+                    '6' => 'Column 6',
+                ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'is-testimonial-entry-title',
+                'type'     => 'checkbox',
+                'title'    => __( 'Archive Entry Title', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Show/hide the title for each testimonials', 'redux-framework-wpsp' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'testimonial-post-style',
+                'type'     => 'select',
+                'title'    => __( 'Single Style', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    'standard' => 'Standard',
+                    'blockquote' => 'Blockquote',
+                ),
+                'default'  => 'standard'
+            ),
+        )
+    ) );
+
     // Placeholder section
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Placeholder', 'redux-framework-wpsp' ),

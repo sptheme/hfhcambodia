@@ -1777,16 +1777,48 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 	font-size: 1.250em;
     line-height: 1.250em;
     margin-bottom: 0.625em;
+    margin-top: 0;
 }
 .section-title p.description {
     font-size: 0.875em;
-    line-height: 1.125em;
+    line-height: 1.5em;
     color:#727272;
 }
 
+.our-work {
+	padding: 6em 0 1em;
+}
 .our-work .section-title {
 	text-align: center;
 }
+.our-work .section-title h2 {
+	color:#2867b7;
+}
+.our-work .wpsp-image-hover {
+	border:1px solid #d7d7d7;
+	padding: 5px;
+}
+
+.latest-testimonial {
+	text-align: center;
+	padding-bottom: 2em;
+}
+.latest-testimonial .section-title > h2 {
+	color:#2867b7
+}
+	
+.latest-testimonial .testimonial-entry-content {
+	background: none;
+}
+.latest-testimonial .testimonial-entry-title {
+	font-size: 1em;
+}
+.latest-testimonial .testimonial-entry-thumb,
+.latest-testimonial .testimonial-entry-meta {
+	float: none;
+	display: inline-block;
+}
+
 
 .highlight-post-wrap {
 	background-color: #f3f3f3;
@@ -1870,12 +1902,21 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 
 @media only screen and (min-width: 767px) {
 	.section-title h2 {
-        font-size: 2em;
+        font-size: 1.600em;
 	    font-weight: 600;
     }
     .section-title p.description {
         font-size: 1.200em;
     }
+    .our-work {
+		padding-bottom: 2em;
+	}
+	.our-work .section-title h2 {
+		font-size: 2em;
+	}
+	.latest-testimonial .testimonial-entry-title {
+		font-size: 1.333em;
+	}
 	.highlight-post-wrap {
     	padding: 3.125em 0;
     }
@@ -2192,6 +2233,26 @@ object {
 .single .format-quote p:last-child { margin: 0 }
 .single .format-quote .quote-entry-author { margin-top: 15px; font-size: 0.923em; font-weight: 300; text-decoration: underline; }
 .single .format-quote .fa-quote-right { position: absolute; right: 15px; bottom: 15px; font-size: 60px; display: block; z-index: 1; opacity: 0.1; }
+
+/*--------------------------------------------------------------
+# Testimonials post
+--------------------------------------------------------------*/
+.testimonial-entry-content { position: relative; background: #f7f7f7; padding: 20px; border-radius: 3px; }
+.testimonial-caret { position: absolute; display: block; left: 10px; bottom: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 12px solid #f7f7f7; }
+.testimonial-entry-content p { margin: 0 0 15px }
+.testimonial-entry-content p:last-child { margin: 0 }
+.testimonial-entry-title { font-size: 1.333em; }
+.testimonial-entry-bottom { margin-top: 20px; overflow: hidden;}
+.testimonial-entry-thumb { float: left; margin-right: 20px; min-width: 45px; }
+.testimonial-entry-thumb img { display: block; padding: 3px; border: 1px solid #eee; border-radius: 50%; width: 45px; height: 45px; }
+.testimonial-entry-meta { float: left }
+.testimonial-entry-author { margin: 0; font-size: 1.200em; }
+.testimonial-entry-other { margin-top: -2px; display: block; color: #999; font-size: 13px; }
+
+/* Testimonials > Singular */
+.single-testimonials .entry-content { margin-bottom: 40px; }
+.single-testimonials .content-left-sidebar blockquote,
+.single-testimonials .content-right-sidebar blockquote { margin-top: 0 }
 
 
 /*--------------------------------------------------------------

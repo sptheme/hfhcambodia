@@ -92,6 +92,30 @@
 				),
 
 			array(
+				'name'  => __( 'Testimonial', 'wpsp_meta_options' ), 
+				'id'    => "testimonial_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Testimonial', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "testimonial_headline_home",
+					'type'  => 'text',
+					'std'	=> __( 'Happy Donor & Supporter', 'wpsp_meta_options' ),
+				),
+				array(
+					'name'  => __( 'Testimonial category', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "testimonial_category",
+					'desc'	=> __( 'Select testimonial category', 'wpsp_meta_options' ), 
+					'type'  => 'taxonomy',
+					'options' => array(
+						'taxonomy' => 'testimonials_category',
+						'type'     => 'select',
+						'args'     => array(),
+					),
+				),
+
+			array(
 				'name'  => __( 'Post highlight', 'wpsp_meta_options' ), 
 				'id'    => "post_highlight_fake_id",
 				'desc'	=> __( '', 'wpsp_meta_options' ), 
@@ -496,6 +520,31 @@
 				'type'             => 'file_advanced',
 				'max_file_uploads' => 1,
 				'mime_type'        => ''
+			),
+		)
+    );
+
+	// Testimonial post type
+    $meta_boxes[] = array(
+    	'id'			=> 'testimonial-options',
+		'title'			=> __( 'Testimonial Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'testimonials' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Client name', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "testimonial_author",
+				'desc'  => __( 'Name of the client giving the testimonial. Appear bellow testimonial.', 'wpsp_meta_options'),
+				'type'  => 'text',
+			),
+			array(
+				'name'  => __( 'Position / Location / Other', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "testimonial_other",
+				'desc'  => __( 'The information that appears bellow client name. e.g: Donor, Australia', 'wpsp_meta_options'),
+				'type'  => 'text',
 			),
 		)
     );
