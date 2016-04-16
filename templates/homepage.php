@@ -12,8 +12,7 @@
 get_header(); ?>
 
 	<?php // Loop page
-	while ( have_posts() ) : the_post();
-		$home_meta = get_post_meta( get_the_ID() ); ?>
+	while ( have_posts() ) : the_post(); ?>
 
 		<section class="our-work">
 			<div class="container">
@@ -202,7 +201,7 @@ get_header(); ?>
 				<div class="latest-post <?php wpsp_blog_wrap_classes(); ?> wpsp-row">
 					<div class="col span_2_of_3">
 						<header class="section-title">
-							<h2><?php echo $home_meta['wpsp_latest_post_headline'][0]; ?></h2>
+							<h2><?php echo rwmb_meta('wpsp_latest_post_headline'); ?></h2>
 						</header>
 						<?php  
 						$classes = wpsp_blog_entry_classes();
@@ -231,7 +230,7 @@ get_header(); ?>
 		<?php endif; // end loop - latest post ?>
 
 		<?php // Latest Publication post type
-		$post_number = $home_meta['wpsp_pub_post_number'][0];
+		$post_number = rwmb_meta('wpsp_pub_post_number');
 		$args = array(
 				'post_type' => 'publications',
 				'posts_per_page' => $post_number,
@@ -243,7 +242,7 @@ get_header(); ?>
 			<div class="container">
 			<div class="latest-publications wpsp-row clear">
 				<header class="section-title">
-					<h2><?php echo $home_meta['wpsp_publication_headline'][0]; ?></h2>
+					<h2><?php echo rwmb_meta('wpsp_publication_headline'); ?></h2>
 				</header>
 
 				<?php while ( $publication_query->have_posts() ) : $publication_query->the_post(); ?>

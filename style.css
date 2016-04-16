@@ -1930,6 +1930,10 @@ body.page-template-homepage {
 .welcome-message {
 	background-color: #7f6e5c;
 }
+.welcome-message.wpsp-row {
+	margin-left: 0;
+	margin-right: 0;
+}
 .welcome-message .col.body-msg {
 	padding: 1.250em!important;
 	color: #ffffff;
@@ -1956,25 +1960,11 @@ body.page-template-homepage {
 	margin-bottom: 1.250em;
 }
 
-.our-mission.post-thumbnail-wrap img,
-.our-value.post-thumbnail-wrap img {
-	opacity: 0.3!important;
-}
-.our-mission.post-thumbnail-wrap:hover img,
-.our-value.post-thumbnail-wrap:hover img {
-	opacity: 0.5!important;
-}
-.our-mission.post-thumbnail-wrap {
-	background-color: #4caf50;
-}
-.our-mission.post-thumbnail-wrap .caption-wrap,
-.our-value.post-thumbnail-wrap .caption-wrap {
-	font-style: italic;
-	padding: 1.250em;
-}
-.our-mission p,
-.our-value p {
-	margin-bottom: 0;
+.our-mission .headline-inner,
+.our-mission .headline-inner h4,
+.our-vision .headline-inner,
+.our-vision .headline-inner h4 {
+	color: #ffffff;
 }
 
 @media only screen and (min-width: 767px) {
@@ -2303,6 +2293,16 @@ img.stretch-image { display: block; width: 100% !important; }
 .theme-heading span.text { display: inline-block; max-width: 90%; position: relative; }
 .theme-heading span.text:after { content: ""; display: block; position: absolute; top: 50%; border-bottom: solid 1px #eee; left: 100%; width: 9999px; margin-top: -1px; margin-left: 15px; }
 
+/* Commons > Separator */
+span.h-sep {
+	display: inline-block;
+	width: 25px;
+	height: 1px;
+	margin-right: 0.625em;
+	margin-bottom: 0.313em;
+	background-color: #ffffff;
+}
+
 /*--------------------------------------------------------------
 ## Overlays
 --------------------------------------------------------------*/
@@ -2330,10 +2330,11 @@ img.stretch-image { display: block; width: 100% !important; }
 	width: 100%;
 	position: relative;
 }
-.overlay-headline .headline-inner {
+.headline-inner {
 	position: absolute;
 	left: 0;
 	bottom:0;
+	padding: 1em;
 }
 .overlay-headline span.title {
 	display: block;
@@ -2342,6 +2343,15 @@ img.stretch-image { display: block; width: 100% !important; }
 	line-height: 1.3;
 	color: #ffffff;
 	padding: 1em;
+}
+.headline-inner h4 {
+	font-size: 1.200em;
+	margin: 0 0 0.667em;
+}
+.headline-inner p.description {
+	font-size: 1em;
+	font-style: italic;
+	margin-bottom: 0;
 }
 .overlay-parent:hover .overlay-headline span.title {
 	padding-bottom: 1.333em;
@@ -2355,6 +2365,22 @@ img.stretch-image { display: block; width: 100% !important; }
 	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
 	-webkit-transition: padding 0.2s;
     transition: padding 0.2s;
+}
+
+/* Overlays > Headline > Background color hover  */
+.background-color-green {
+	background-color: #4caf50;
+}
+.background-color-blue {
+	background-color: #007acc;
+}
+.background-color-green img,
+.background-color-blue img {
+	opacity: 0.2;
+}
+.background-color-green:hover img,
+.background-color-blue:hover img {
+	opacity: 0.7;
 }
 
 /* Overlays > Articl Hover */

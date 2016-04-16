@@ -243,55 +243,29 @@
 					'max_file_uploads' => 1,
 				),
 			array(
-				'name'  => __( 'Our Value', 'wpsp_meta_options' ), 
+				'name'  => __( 'Our Vision', 'wpsp_meta_options' ), 
 				'id'    => "our_value_fake_id",
 				'desc'	=> __( '', 'wpsp_meta_options' ), 
 				'type'  => 'heading'
 			),
 				array(
 					'name'  => __( 'Title', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "value_headline",
+					'id'    => $prefix . "vision_headline",
 					'type'  => 'text'
 				),
 				array(
 					'name'  => __( 'Description', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "value_desc",
+					'id'    => $prefix . "vision_desc",
 					'type'  => 'textarea',
 					'row'	=> 4
 				),
 				array(
 					'name'  => __( 'Background image', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "value_photo",
+					'id'    => $prefix . "vision_photo",
 					'desc'  => __( 'Upload background image for our value, should be the same size as our mission image', 'wpsp_meta_options'),
 					'type'  => 'image_advanced',
 					'max_file_uploads' => 1,
 				),			
-			array(
-				'name'  => __( 'Main programs', 'wpsp_meta_options' ), 
-				'id'    => "main_programs_fake_id",
-				'desc'	=> __( '', 'wpsp_meta_options' ), 
-				'type'  => 'heading'
-			),
-				array(
-					'name'  => __( 'Highlight the title', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "program_headline",
-					'type'  => 'text'
-				),
-				array(
-					'name'  => __( 'Description', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "program_desc",
-					'type'  => 'textarea',
-					'row'	=> 3
-				),
-				array(
-					'name'  => __( 'Display Main Programs Page', 'wpsp_meta_options' ), 
-					'id'    => $prefix . "main_program_page",
-					'desc'	=> __( 'Please select parent page that containe all of main programs. eg: Areas of Interest', 'wpsp_meta_options' ), 
-					'type'  => 'post',
-					'post_type' => 'page',
-					'field_type'  => 'select_advanced',
-					'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
-				),	
 		)
     );	
 
