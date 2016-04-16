@@ -115,15 +115,16 @@ function wpsp_sidebar_primary() {
 	// Set sidebar based on page
 	if ( is_home() && $redux_wpsp['sidebar-home'] ) $sidebar = $redux_wpsp['sidebar-home'];
 	if ( is_single() && $redux_wpsp['sidebar-single'] ) $sidebar = $redux_wpsp['sidebar-single'];
-	/*if ( is_singular('portfolio') && $redux_wpsp['sidebar-single-portfolio'] ) $sidebar = $redux_wpsp['sidebar-single-portfolio'];
-	if ( is_singular('staff') && $redux_wpsp['sidebar-single-staff'] ) $sidebar = $redux_wpsp['sidebar-single-staff'];*/
+	//if ( is_singular('portfolio') && $redux_wpsp['sidebar-single-portfolio'] ) $sidebar = $redux_wpsp['sidebar-single-portfolio'];
+	if ( is_singular('staff') && $redux_wpsp['staff-custom-sidebar'] ) $sidebar = $redux_wpsp['staff-custom-sidebar'];
 	if ( is_archive() && $redux_wpsp['sidebar-archive'] ) $sidebar = $redux_wpsp['sidebar-archive'];
 	if ( is_category() && $redux_wpsp['sidebar-archive-category'] ) $sidebar = $redux_wpsp['sidebar-archive-category'];
-	/*if ( is_tax('portfolio_category') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
-	if ( is_tax('portfolio_province') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
-	if ( is_tax('portfolio_tag') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
+	// if ( is_tax('portfolio_category') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
+	// if ( is_tax('portfolio_province') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
+	// if ( is_tax('portfolio_tag') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
+	if ( is_post_type_archive('staff') && $redux_wpsp['staff-archive-custom-sidebar'] ) $sidebar = $redux_wpsp['staff-archive-custom-sidebar'];
 	if ( is_tax('publications_tag') && $redux_wpsp['sidebar-archive-publication'] ) $sidebar = $redux_wpsp['sidebar-archive-publication'];
-	if ( is_tax('publications_category') && $redux_wpsp['sidebar-archive-publication'] ) $sidebar = $redux_wpsp['sidebar-archive-publication'];*/
+	if ( is_tax('publications_category') && $redux_wpsp['sidebar-archive-publication'] ) $sidebar = $redux_wpsp['sidebar-archive-publication'];
 	if ( is_search() && $redux_wpsp['sidebar-search'] ) $sidebar = $redux_wpsp['sidebar-search'];
 	if ( is_404() && $redux_wpsp['sidebar-404'] ) $sidebar = $redux_wpsp['sidebar-404'];
 	if ( is_page() && $redux_wpsp['sidebar-page'] ) $sidebar = $redux_wpsp['sidebar-page'];
@@ -172,8 +173,8 @@ function wpsp_layout_class() {
 		elseif ( is_page() && ( $redux_wpsp['layout-page'] !='inherit' ) ) $layout = $redux_wpsp['layout-page'];
 		
 		// Else check for custom post
-		/*elseif ( is_singular('portfolio') && ( $redux_wpsp['layout-single-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-single-portfolio'];
-		elseif ( is_singular('staff') && ( $redux_wpsp['layout-single-staff'] !='inherit' ) ) $layout = $redux_wpsp['layout-single-staff'];*/
+		//elseif ( is_singular('portfolio') && ( $redux_wpsp['layout-single-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-single-portfolio'];
+		elseif ( is_singular('staff') && ( $redux_wpsp['staff-single-layout'] !='inherit' ) ) $layout = $redux_wpsp['staff-single-layout'];
 
 		// Else check for custom template
 		/*elseif ( is_page_template( 'templates/page-team.php' ) && ( $redux_wpsp['layout-team'] !='inherit' ) ) $layout = $redux_wpsp['layout-team'];*/
@@ -186,11 +187,12 @@ function wpsp_layout_class() {
 	elseif ( is_home() && ( $redux_wpsp['layout-home'] !='inherit' ) ) $layout = $redux_wpsp['layout-home'];
 	elseif ( is_category() && ( $redux_wpsp['layout-archive-category'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-category'];
 	elseif ( is_archive() && ( $redux_wpsp['layout-archive'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive'];
-	/*elseif ( is_tax('portfolio_category') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
-	elseif ( is_tax('portfolio_province') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
-	elseif ( is_tax('portfolio_tag') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
+	// elseif ( is_tax('portfolio_category') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
+	// elseif ( is_tax('portfolio_province') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
+	// elseif ( is_tax('portfolio_tag') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
+	elseif ( is_post_type_archive('staff') && ( $redux_wpsp['staff-archive-layout'] !='inherit' ) ) $layout = $redux_wpsp['staff-archive-layout'];
 	elseif ( is_tax('publications_tag') && ( $redux_wpsp['layout-archive-publication'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-publication'];
-	elseif ( is_tax('publications_category') && ( $redux_wpsp['layout-archive-publication'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-publication'];*/
+	elseif ( is_tax('publications_category') && ( $redux_wpsp['layout-archive-publication'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-publication'];
 	elseif ( is_search() && ( $redux_wpsp['layout-search'] !='inherit' ) ) $layout = $redux_wpsp['layout-search'];
 	elseif ( is_404() && ( $redux_wpsp['layout-404'] !='inherit' ) ) $layout = $redux_wpsp['layout-404'];
 	

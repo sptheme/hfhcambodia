@@ -399,6 +399,217 @@
         )
     ) );
 
+    // Staff Post sections
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Staff', 'redux-framework-wpsp' ),
+        'id'               => 'staff-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-user'
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Single', 'redux-framework-wpsp' ),
+        'id'         => 'staff-post-option',
+        'subsection' => true,
+        'desc'       => __( 'Manage staff post options', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'staff-single-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Single staff layout', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'col-1c' => array(
+                        'alt' => '1 Column',
+                        'img' => ReduxFramework::$_url . 'assets/img/1col.png'
+                    ),
+                    'col-2cl' => array(
+                        'alt' => '2 Column Left',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cl.png'
+                    ),
+                    'col-2cr' => array(
+                        'alt' => '2 Column Right',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cr.png'
+                    )
+                ),
+                'default'  => 'col-1c',
+            ),
+            array(
+                'id'       => 'staff-custom-sidebar',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Single staff sidebar', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Staff sidebar', 'redux-framework-wpsp' ),
+            ),
+            array(
+                'id'       => 'is-staff-post-related',
+                'type'     => 'switch', 
+                'title'    => __('Post related', 'redux-framework-demo'),
+                'subtitle' => __('Show related posts On or Off', 'redux-framework-demo'),
+                'default'  => true,
+            ),
+            array(
+                'id'       => 'related-staff-post-title',
+                'type'     => 'text', 
+                'required' => array( 'is-staff-post-related', '=', '1' ),
+                'title'    => __('Post related title', 'redux-framework-demo'),
+                'subtitle' => __('', 'redux-framework-demo'),
+                'default'  => 'You may also see...',
+            ),
+            array(
+                'id'       => 'staff-related-count',
+                'type'     => 'text', 
+                'required' => array( 'is-staff-post-related', '=', '1' ),
+                'title'    => __('Related post count', 'redux-framework-demo'),
+                'desc'     => __('Allow only number', 'redux-framework-demo'),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'staff-related-columns',
+                'type'     => 'select',
+                'required' => array( 'is-staff-post-related', '=', '1' ),
+                'title'    => __( 'Related posts Columns', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'set number of column to display related post', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    '1' => 'Column 1',
+                    '2' => 'Column 2',
+                    '3' => 'Column 3',
+                    '4' => 'Column 4',
+                    '5' => 'Column 5',
+                    '6' => 'Column 6',
+                ),
+                'default'  => '3'
+            ),
+        )
+    ) ); 
+    
+    // Staff Archives
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Archives', 'redux-framework-wpsp' ),
+        'id'         => 'staff-archives-option',
+        'subsection' => true,
+        'desc'       => __( 'Manage staff archives options', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'staff-archive-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Single archive layout', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'col-1c' => array(
+                        'alt' => '1 Column',
+                        'img' => ReduxFramework::$_url . 'assets/img/1col.png'
+                    ),
+                    'col-2cl' => array(
+                        'alt' => '2 Column Left',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cl.png'
+                    ),
+                    'col-2cr' => array(
+                        'alt' => '2 Column Right',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cr.png'
+                    )
+                ),
+                'default'  => 'col-1c',
+            ),
+             array(
+                'id'       => 'staff-archive-custom-sidebar',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Archive staff sidebar', 'redux-framework-wpsp' ),
+            ),
+            array(
+                'id'       => 'staff-archive-grid-style',
+                'type'     => 'select',
+                'title'    => __( 'Grid Style', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'Set entry post style', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    'fit-rows' => 'Fit rows',
+                    'masonry' => 'Masonry',
+                    'no-margins' => 'No margin',
+                ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'staff-entry-columns',
+                'type'     => 'select',
+                'title'    => __( 'Entry post columns', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'set number of column to display entry post', 'redux-framework-wpsp' ),
+                'options'  => array(
+                    '1' => 'Column 1',
+                    '2' => 'Column 2',
+                    '3' => 'Column 3',
+                    '4' => 'Column 4',
+                    '5' => 'Column 5',
+                    '6' => 'Column 6',
+                ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'staff-archive-posts-per-page',
+                'type'     => 'text', 
+                'title'    => __('Post per page', 'redux-framework-demo'),
+                'desc'     => __('Allow only number', 'redux-framework-demo'),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+                'default'  => '12'
+            ),
+            array(
+                'id'       => 'staff-entry-overlay-style',
+                'type'     => 'select',
+                'title'    => __( 'Archives Entry: Overlay Style', 'redux-framework-wpsp' ),
+                'subtitle' => __( 'set number of column to display entry post', 'redux-framework-wpsp' ),
+                'options'  => wpsp_overlay_styles_array(),
+            ),
+            array(
+                'id'       => 'is-staff-link',
+                'type'     => 'checkbox',
+                'title'    => __( 'Staff entry link', 'redux-framework-wpsp' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'is-staff-entry-details',
+                'type'     => 'checkbox',
+                'title'    => __( 'Archives Entry: Details', 'redux-framework-wpsp' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'is-staff-entry-position',
+                'type'     => 'checkbox',
+                'title'    => __( 'Archives Entry: Position', 'redux-framework-wpsp' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'staff-entry-excerpt-length',
+                'type'     => 'text', 
+                'title'    => __('Archives Entry: Excerpt Length', 'redux-framework-demo'),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+                'default'  => '12'
+            ),
+            array(
+                'id'       => 'is-staff-entry-social',
+                'type'     => 'checkbox',
+                'title'    => __( 'Archives Entry: Social Links', 'redux-framework-wpsp' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+        )
+    ) );         
+
     // Testimonials section
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Testimonials', 'redux-framework-wpsp' ),

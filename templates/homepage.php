@@ -155,7 +155,10 @@ get_header(); ?>
 						$popup_class,
 						$popup_link, 
 						wpsp_get_esc_title(), 
-						wpsp_post_thumbnail('blog-post'),
+						wpsp_get_post_thumbnail_total( array(
+							'size'   => 'thumb-landscape',
+							'alt'    => wpsp_get_esc_title(),
+						) ),
 						$post_icon  
 					); ?>
 					</div> <!-- .wpsp-image-hover -->

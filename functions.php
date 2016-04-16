@@ -226,6 +226,11 @@ add_action('wp_head', 'wpsp_print_custom_css_script');
 require get_template_directory() . '/inc/core-functions.php';
 
 /**
+ * Overlay functions
+ */
+require get_template_directory() . '/inc/overlays.php';
+
+/**
  * Add Redux Framework
  */
 require get_template_directory() . '/inc/admin/admin-init.php';
@@ -241,6 +246,11 @@ require get_template_directory() . '/inc/widgets/widgets.php';
  */
 require get_template_directory() . '/inc/meta-box/meta-box.php';
 require get_template_directory() . '/inc/meta-box/meta-config.php';
+
+/**
+ * Custom shortcodes.
+ */
+require get_template_directory() . '/inc/shortcodes/shortcodes.php';
 
 /**
  * Custom template tags for this theme.

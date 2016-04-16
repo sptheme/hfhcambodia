@@ -566,12 +566,12 @@ if ( ! class_exists( 'WPSP_Cp_Staff' ) ) {
 		/**
 		 * Alters posts per page for the staff taxonomies.
 		 *
-		 * @since 2.0.0
+		 * @since 1.0.0
 		 * @link    http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
 		 */
 		public static function posts_per_page( $query ) {
 			if ( wpsp_is_staff_tax() && $query->is_main_query() ) {
-				$query->set( 'posts_per_page', 12 );
+				$query->set( 'posts_per_page', wpsp_get_redux( 'staff-archive-posts-per-page', '12' ) );
 				return;
 			}
 		}

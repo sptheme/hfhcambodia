@@ -18,8 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<a href="<?php the_permalink(); ?>" title="<?php wpsp_esc_title(); ?>" rel="bookmark" class="related-post-thumb">
 		<?php wpsp_post_thumbnail_total( array(
 			'size'   => 'thumb-landscape',
-			'width'  => '90',
-			'height' => '140',
 			'alt'    => wpsp_get_esc_title(),
 		) ); ?>
 		<span class="overlay-plus-hover overlay-hide theme-overlay"></span>

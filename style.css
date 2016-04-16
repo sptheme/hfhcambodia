@@ -1144,6 +1144,9 @@ blockquote.aligncenter {
 	background:#ffffff;
 	border:1px solid #cccccc;
 }
+.widget-area .widget {
+	padding-bottom: 4%;
+}
 .site-main {
 	padding-top: 4%;
 }
@@ -1383,6 +1386,7 @@ blockquote.aligncenter {
 .widget-area .widget-title {
 	border-bottom: 4px solid #333333;
 	padding: 0.455em 0;
+	margin-bottom: 1em;
 }
 
 /* Make sure select elements fit in widgets. */
@@ -1683,7 +1687,8 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 /* Search & Archive */
 .page-template-publications-filter .entry-header,
 .search .entry-header h1,
-.archive .entry-header h1 {
+.archive .entry-header h1,
+.page .entry-header h1 {
 	font-size: 2em;
 	margin-bottom: 0.750em;
 }
@@ -1731,7 +1736,7 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 /*--------------------------------------------------------------
 ## Homepage
 --------------------------------------------------------------*/
-body.page-template-homepage {
+.page-template-homepage #page {
 	background: #fff;
 }
 .slider-wrap {
@@ -1942,6 +1947,10 @@ body.page-template-homepage {
 	margin-top: 0;
 	margin-bottom: 0.455em;
 }
+.welcome-message h3,
+.welcome-message a {
+	color: #ffffff;
+}
 .about-entry-content {
 	background-color: #ebebeb;
 	padding: 1.250em;
@@ -2143,7 +2152,7 @@ object {
 }
 
 /* Entries > Title */
-.entry-title { display: block; font-size: 1.6em; margin: 0 0 5px; font-weight: 600; color: #000; }
+.entry-title { display: block; font-size: 1.067em; margin: 0 0 5px; font-weight: 600; color: #000; }
 .entry-title a { color: inherit }
 .entry-title a:hover { text-decoration: none }
 .single-post-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
@@ -2197,6 +2206,69 @@ object {
 .single .format-quote .fa-quote-right { position: absolute; right: 15px; bottom: 15px; font-size: 60px; display: block; z-index: 1; opacity: 0.1; }
 
 /*--------------------------------------------------------------
+# Staff post
+--------------------------------------------------------------*/
+
+/* Staff > Entries */
+.staff-entry-categories { margin: -5px 0 10px }
+.staff-entry-categories a { font-size: 0.923em; color: #777; list-style: none; }
+.staff-entry { text-align: left; margin-bottom: 30px; }
+.staff-entry-details { padding-top: 15px }
+.staff-entry-details .staff-entry-title,
+.staff-entry-details .staff-entry-position {
+	text-align: center;
+}
+.staff-entry-media { position: relative }
+.staff-entry-media-link { display: block }
+.staff-entry-media img { display: block; margin: 0 auto; }
+.staff-entry-position { font-size: 0.923em; color: #777; list-style: none; margin: -5px 0 10px; }
+.staff-entry-excerpt p { margin-bottom: 15px }
+.staff-entry-excerpt,
+.staff-entry-excerpt p:last-child { margin: 0 }
+.staff-entry-readmore-wrap { padding-top: 15px }
+
+/* Staff > Entries > Custom background highlight */
+.blue-highlight .staff-entry-inner {
+	background-color: #007acc;
+	padding: 4px;
+}
+.green-highlight .staff-entry-inner {
+	background-color: #4caf50;
+	padding: 4px;
+}
+.blue-highlight .staff-entry-title,
+.blue-highlight .staff-entry-position,
+.green-highlight .staff-entry-title,
+.green-highlight .staff-entry-position {
+	color: #ffffff;
+}
+
+
+/* Staff > Singular */
+#staff-post-thumbnail { margin-bottom: 20px }
+#staff-post-thumbnail img { display: block; margin: 0; }
+#staff-single-media { margin-bottom: 30px }
+
+/* Staff > Related */
+.related-staff-posts { margin-bottom: 40px }
+.related-staff-posts .staff-entry-inner {
+	background:#f2f2f2;
+	padding: 4px;
+}
+
+/* Staff > No Margin Grid */
+.staff-no-margins .col { margin: 0 !important; padding: 0 !important; }
+
+/* Staff > Single Post */
+.single-staff .single-header { margin-bottom: 20px }
+.single-staff .single-header .entry-title { margin: 0 }
+.skin-base .single-staff-position { color: #bbb }
+
+/* Staff > Social */
+.staff-social { margin-top: 5px; font-size: 13px; }
+.staff-social a { margin-right: 4px; margin-top: 4px; display: inline-block; }
+
+/*--------------------------------------------------------------
 # Testimonials post
 --------------------------------------------------------------*/
 .testimonial-entry-content { position: relative; background: #f7f7f7; padding: 20px; border-radius: 3px; }
@@ -2215,7 +2287,6 @@ object {
 .single-testimonials .entry-content { margin-bottom: 40px; }
 .single-testimonials .content-left-sidebar blockquote,
 .single-testimonials .content-right-sidebar blockquote { margin-top: 0 }
-
 
 /*--------------------------------------------------------------
 # Addon Elements
@@ -2320,9 +2391,84 @@ span.h-sep {
 .overlay-parent:hover .overlay-slideup-title span.title,
 .overlay-parent:hover .overlay-hover-button { visibility: visible; opacity: 1; -moz-opacity: 1; -webkit-opacity: 1; }
 
+/* Overlays > Magnifying Hover */
+.magnifying-hover { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background: #000; background: rgba(0,0,0,0.7); transition: all .25s ease-in-out; }
+.magnifying-hover .fa { position: absolute; height: 30px; line-height: 30px; width: 30px; text-align: center; top: 50%; margin-top: -15px; left: 50%; margin-left: -15px; color: #fff; font-size: 21px; }
+
 /* Overlays > Plus Hover */
 .overlay-plus-hover { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background: #000 url("images/overlay-plus.png") center center no-repeat; transition: all .25s ease-in-out; }
 .overlay-parent:hover .overlay-plus-hover { visibility: visible; opacity: 0.65; -moz-opacity: 0.65; -webkit-opacity: 0.65; }
+
+/* Overlays > Plus #2 Hover */
+.overlay-plus-two-hover { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background: #000; background: rgba(0,0,0,0.8); transition: all .25s ease-in-out; }
+.overlay-plus-two-hover .fa { position: absolute; height: 30px; line-height: 30px; width: 30px; text-align: center; top: 50%; margin-top: -15px; left: 50%; margin-left: -15px; color: #fff; font-size: 14px; }
+
+/* Overlays > Plus #3 Hover */
+.overlay-plus-three-hover { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background: #000; background: rgba(0,0,0,0.6); transition: all .3s; }
+.overlay-plus-three-hover .fa { position: absolute; height: 30px; line-height: 30px; width: 30px; text-align: center; top: 50%; left: 50%; margin-left: -15px; font-size: 36px; opacity: 0; visibility: none; transition: all .3s; }
+.overlay-plus-three-hover:hover .fa { margin-top: -15px; opacity: 1; visibility: visible; }
+
+/* Overlays > Slide Up Title > White */
+.overlay-slideup-title { position: absolute; top: 0; right: 0; background: #fff; height: 100%; width: 100%; transition: all .25s ease-in-out; }
+.overlay-slideup-title.white { background: #fff }
+.overlay-slideup-title.black { background: #000 }
+.overlay-slideup-title span.title { position: absolute; bottom: 30px; left: 0; width: 100%; text-align: center; padding: 0 30px; color: #000; font-size: 1.077em; font-weight: bold; font-weight: 600; transition: all .15s ease-in-out; line-height: 1.6em; }
+.overlay-slideup-title.black span.title { color: #fff }
+.overlay-parent:hover .overlay-slideup-title { visibility: visible; opacity: 0.8; -webkit-opacity: 0.8; -moz-opacity: 0.8; }
+.overlay-parent:hover .overlay-slideup-title span.title { bottom: 60px }
+
+/* Overlays > Title + Excerpt Hover */
+.overlay-title-excerpt-hover { background: #000; background: rgba(0,0,0,0.75); position: absolute; top: 0; right: 0; height: 100%; width: 100%; transition: all .25s ease-in-out; overflow: hidden; }
+.overlay-parent:hover .overlay-title-excerpt-hover { visibility: visible; opacity: 1; -moz-opacity: 1; -webkit-opacity: 1; }
+.overlay-title-excerpt-hover-inner { display: table; vertical-align: middle; width: 100%; height: 100%; text-align: center; }
+.overlay-title-excerpt-hover-text { vertical-align: middle; display: table-cell; text-align: center; color: #fff; font-weight: bold; font-weight: 600; padding: 20px; transition: all 0.15s linear; transform: scale(1.3); }
+.overlay-title-excerpt-hover:hover .overlay-title-excerpt-hover-text { transform: none }
+.overlay-title-excerpt-hover-title { font-size: 1.231em; color: #fff; margin: 0 0 10px; }
+.overlay-title-excerpt-hover-excerpt { font-style: italic; font-weight: normal; color: #bbb; overflow: hidden; }
+
+/* Overlays > Title + Category Hover */
+.overlay-title-category-hover { background: #000; background: rgba(0,0,0,0.75); position: absolute; top: 0; right: 0; height: 100%; width: 100%; transition: all .25s ease-in-out; }
+.overlay-parent:hover .overlay-title-category-hover { visibility: visible; opacity: 1; }
+.overlay-title-category-hover-inner { display: table; vertical-align: middle; width: 100%; height: 100%; text-align: center; overflow: hidden; }
+.overlay-title-category-hover-text { vertical-align: middle; display: table-cell; text-align: center; color: #fff; font-weight: bold; font-weight: 600; padding: 20px; transition: all 0.15s linear; transform: scale(1.3); }
+.overlay-title-category-hover:hover .overlay-title-category-hover-text { transform: none }
+.overlay-title-category-hover-title { font-size: 1.231em }
+.overlay-title-category-hover-category { font-style: italic; font-weight: normal; color: #bbb; }
+
+/* Overlays > Title + Category Visible */
+.overlay-title-category-visible { background: #000; background: rgba(0,0,0,0.5); position: absolute; top: 0; right: 0; height: 100%; width: 100%; }
+.overlay-title-category-visible-inner { display: table; vertical-align: middle; width: 100%; height: 100%; text-align: center; }
+.overlay-title-category-visible-text { vertical-align: middle; display: table-cell; text-align: center; color: #fff; font-weight: bold; font-weight: 600; padding: 20px; }
+.overlay-title-category-visible-title { font-size: 1.231em }
+.overlay-title-category-visible-category { color: #fff; font-weight: normal; -webkit-font-smoothing: antialiased; }
+
+/* Overlays > Title + Date Hover */
+.overlay-title-date-hover { background: #000; background: rgba(0,0,0,0.75); position: absolute; top: 0; right: 0; height: 100%; width: 100%; transition: all .25s ease-in-out; }
+.overlay-parent:hover .overlay-title-date-hover { visibility: visible; opacity: 1; }
+.overlay-title-date-hover-inner { display: table; vertical-align: middle; width: 100%; height: 100%; text-align: center; }
+.overlay-title-date-hover-text { vertical-align: middle; display: table-cell; text-align: center; color: #fff; font-weight: bold; font-weight: 600; padding: 20px; transition: all 0.15s linear; transform: scale(1.3); }
+.overlay-title-date-hover:hover .overlay-title-date-hover-text { transform: none }
+.overlay-title-date-hover-title { font-size: 1.231em }
+.overlay-title-date-hover-date { font-style: italic; font-weight: normal; color: #bbb; }
+
+/* Overlays > Title + Date Visible */
+.overlay-title-date-visible { background: #000; background: rgba(0,0,0,0.5); position: absolute; top: 0; right: 0; height: 100%; width: 100%; }
+.overlay-title-date-visible-inner { display: table; vertical-align: middle; width: 100%; height: 100%; text-align: center; }
+.overlay-title-date-visible-text { vertical-align: middle; display: table-cell; text-align: center; color: #fff; font-weight: bold; font-weight: 600; padding: 20px; }
+.overlay-title-date-visible-title { font-size: 1.231em }
+.overlay-title-date-visible-date { color: #fff; font-weight: normal; -webkit-font-smoothing: antialiased; }
+
+/* Overlays > Title Bottom */
+.overlay-title-bottom,
+.overlay-title-bottom-see-through { display: block; background: #000; color: #fff; padding: 10px 20px; position: absolute; bottom: 0; left: 0; width: 100%; font-size: 1.077em; }
+.overlay-title-bottom-see-through { background: rgba(0,0,0,0.6) }
+
+/* Overlays > Button */
+.overlay-hover-button { background: #000; background: rgba(0,0,0,0.75); position: absolute; top: 0; right: 0; height: 100%; width: 100%; transition: all .25s ease-in-out; }
+.overlay-hover-button-inner { display: table; vertical-align: middle; width: 100%; height: 100%; text-align: center; }
+.overlay-hover-button-text { vertical-align: middle; display: table-cell; text-align: center; color: #fff; font-weight: bold; font-weight: 600; padding: 20px; transition: all 0.15s linear; transform: scale(1.3); }
+.overlay-parent:hover .overlay-hover-button-text { transform: none }
+.theme-button.overlay-hover-button-link { font-size: 1.077em }
 
 /* Overlays > Headline Hover */
 .overlay-headline {

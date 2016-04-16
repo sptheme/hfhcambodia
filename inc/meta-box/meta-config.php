@@ -573,6 +573,19 @@
 
 		// List of meta fields
 		'fields'     => array(
+			
+			array(
+				'name'  => __( 'Title align', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "post_title_align",
+				'desc'	=> __( 'Align the title for this post/page', 'wpsp_meta_options' ), 
+				'type'  => 'select',
+				'options'     => array(
+					'left' => __( 'Left', 'wpsp_meta_options' ),
+					'right' => __( 'Right', 'wpsp_meta_options' ),
+					'center' => __( 'Center', 'wpsp_meta_options' ),
+					),
+				'std'   => 'left'
+			),	
 			array(
 				'name'  => __( 'Primary Sidebar', 'wpsp_meta_options' ), 
 				'id'    => $prefix . "sidebar_primary",

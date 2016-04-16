@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
 
-<div class="entry-content entry wpsp-clear">
+<div class="entry-content entry clear">
 
 	<?php if ( 'standard' == wpsp_get_redux( 'testimonial-post-style', 'standard' ) ) : ?>
 
