@@ -15,14 +15,14 @@ get_header();
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<header class="entry-header">
+			<!-- <header class="entry-header">
 				<?php $title_align = get_post_meta( get_the_ID(), 'wpsp_post_title_align', true ); ?>
 				<h1 class="entry-title" style="text-align:<?php echo $title_align; ?>"><?php the_title(); ?></h1>
-			</header><!-- .entry-header -->
+			</header> --><!-- .entry-header -->
 
-			<section class="entry-content">
+			<!-- <section class="entry-content">
 				<?php the_content(); ?>
-			</section> <!-- .about-entry-content -->
+			</section> --> <!-- .about-entry-content -->
 
 			<section class="featured-video-posts">
 			<?php // setup cols
@@ -104,14 +104,14 @@ get_header();
 						$entry_classes[] = 'col-' . $post_count; ?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
-								
-							<?php get_template_part( 'partials/blog/media/blog-entry' ); ?>
+							<div class="gray-highlight">	
+								<?php get_template_part( 'partials/blog/media/blog-entry' ); ?>
 
-							<div class="blog-entry-wrap">
-								<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
-								<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
-								<?php get_template_part( 'partials/blog/blog-entry-content' ); ?>
-							</div> <!-- .blog-entry-wrap -->
+								<div class="blog-entry-wrap">
+									<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
+									<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
+								</div> <!-- .blog-entry-wrap -->
+							</div> <!-- .gray-highlight -->
 								
 						</article>	
 				<?php endwhile; wp_reset_postdata(); ?>

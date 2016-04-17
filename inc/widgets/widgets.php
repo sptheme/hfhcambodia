@@ -122,9 +122,8 @@ function wpsp_sidebar_primary() {
 	// if ( is_tax('portfolio_category') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
 	// if ( is_tax('portfolio_province') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
 	// if ( is_tax('portfolio_tag') && $redux_wpsp['sidebar-archive-portfolio'] ) $sidebar = $redux_wpsp['sidebar-archive-portfolio'];
-	if ( is_post_type_archive('staff') && $redux_wpsp['staff-archive-custom-sidebar'] ) $sidebar = $redux_wpsp['staff-archive-custom-sidebar'];
-	if ( is_tax('publications_tag') && $redux_wpsp['sidebar-archive-publication'] ) $sidebar = $redux_wpsp['sidebar-archive-publication'];
-	if ( is_tax('publications_category') && $redux_wpsp['sidebar-archive-publication'] ) $sidebar = $redux_wpsp['sidebar-archive-publication'];
+	if ( is_tax('publications_tag') && $redux_wpsp['publications-archive-custom-sidebar'] ) $sidebar = $redux_wpsp['publications-archive-custom-sidebar'];
+	if ( is_tax('publications_category') && $redux_wpsp['publications-archive-custom-sidebar'] ) $sidebar = $redux_wpsp['publications-archive-custom-sidebar'];
 	if ( is_search() && $redux_wpsp['sidebar-search'] ) $sidebar = $redux_wpsp['sidebar-search'];
 	if ( is_404() && $redux_wpsp['sidebar-404'] ) $sidebar = $redux_wpsp['sidebar-404'];
 	if ( is_page() && $redux_wpsp['sidebar-page'] ) $sidebar = $redux_wpsp['sidebar-page'];
@@ -190,9 +189,8 @@ function wpsp_layout_class() {
 	// elseif ( is_tax('portfolio_category') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
 	// elseif ( is_tax('portfolio_province') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
 	// elseif ( is_tax('portfolio_tag') && ( $redux_wpsp['layout-archive-portfolio'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-portfolio'];
-	elseif ( is_post_type_archive('staff') && ( $redux_wpsp['staff-archive-layout'] !='inherit' ) ) $layout = $redux_wpsp['staff-archive-layout'];
-	elseif ( is_tax('publications_tag') && ( $redux_wpsp['layout-archive-publication'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-publication'];
-	elseif ( is_tax('publications_category') && ( $redux_wpsp['layout-archive-publication'] !='inherit' ) ) $layout = $redux_wpsp['layout-archive-publication'];
+	elseif ( is_tax('publications_tag') && ( $redux_wpsp['publications-archive-layout'] !='inherit' ) ) $layout = $redux_wpsp['publications-archive-layout'];
+	elseif ( is_tax('publications_category') && ( $redux_wpsp['publications-archive-layout'] !='inherit' ) ) $layout = $redux_wpsp['publications-archive-layout'];
 	elseif ( is_search() && ( $redux_wpsp['layout-search'] !='inherit' ) ) $layout = $redux_wpsp['layout-search'];
 	elseif ( is_404() && ( $redux_wpsp['layout-404'] !='inherit' ) ) $layout = $redux_wpsp['layout-404'];
 	

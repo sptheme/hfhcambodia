@@ -608,7 +608,54 @@
                 'default'  => '1'// 1 = on | 0 = off
             ),
         )
-    ) );         
+    ) );
+
+    // Publications
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Publications', 'redux-framework-wpsp' ),
+        'id'               => 'publications-options',
+        'desc'             => __( '', 'redux-framework-wpsp' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-book'
+    ) );
+    // Staff Archives
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Archives', 'redux-framework-wpsp' ),
+        'id'         => 'publications-archives-option',
+        'subsection' => true,
+        'desc'       => __( 'Manage publications archives options', 'redux-framework-wpsp' ),
+        'fields'     => array(
+            array(
+                'id'       => 'publications-archive-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Single archive layout', 'redux-framework-wpsp' ),
+                'subtitle' => __( '', 'redux-framework-wpsp' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'redux-framework-wpsp' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'col-1c' => array(
+                        'alt' => '1 Column',
+                        'img' => ReduxFramework::$_url . 'assets/img/1col.png'
+                    ),
+                    'col-2cl' => array(
+                        'alt' => '2 Column Left',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cl.png'
+                    ),
+                    'col-2cr' => array(
+                        'alt' => '2 Column Right',
+                        'img' => ReduxFramework::$_url . 'assets/img/2cr.png'
+                    )
+                ),
+                'default'  => 'col-1c',
+            ),
+             array(
+                'id'       => 'publications-archive-custom-sidebar',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Archive publications sidebar', 'redux-framework-wpsp' ),
+            ),
+        )
+    ) );                 
 
     // Testimonials section
     Redux::setSection( $opt_name, array(

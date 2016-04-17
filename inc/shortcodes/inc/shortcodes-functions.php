@@ -236,12 +236,12 @@ function wpsp_partner_shortcode( $atts, $content = null ){
 
 	<?php while ( $partner_query->have_posts() ) : $partner_query->the_post(); ?>
 	<?php
-		$entry_classes = array( 'entry-partner-article' );
+		$entry_classes = array( 'entry-partner' );
 		$entry_classes[] = 'col';
-		$entry_classes[] = wpsp_grid_class($cols); 
+		$entry_classes[] = wpsp_grid_class($cols);
 	?>	
 			<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
-				<?php get_template_part( 'template-parts/partner/partner-entry-media' ); ?>
+				<?php get_template_part( 'partials/partner/partner-entry-media' ); ?>
 			</article><!-- #post-## -->
 	<?php endwhile; wp_reset_postdata(); ?>
 
@@ -392,34 +392,16 @@ function wpsp_post_shortcode( $atts, $content = null ){
 		<div class="wpsp-row clearfix">
 		<?php while ( $post_query->have_posts() ) : $post_query->the_post(); ?>
 		<?php // entry-class
-		$entry_classes = array( 'entry-blog-article' );
+		$entry_classes = array( 'blog-entry' );
+		$entry_classes[] = 'blog-entry-shortcode';
 		$entry_classes[] = $post_style;
 		$entry_classes[] = 'col';
 		$entry_classes[] = wpsp_grid_class($cols); ?>	
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
-				<?php if ( 'overlay-2' == $post_style ) : ?>
-					<div class="post-thumbnail-wrap overlay-2">
-						<div class="post-thumbnail"><?php wpsp_get_post_thumbnail('thumb-full'); ?></div>
-						<div class="caption-wrap">
-							<div class="caption-inner">
-							<a href="<?php wpsp_permalink();?>" title="<?php echo wpsp_esc_title(); ?>" rel="bookmark"><span class="title"><?php the_title(); ?></span></a>
-							</div>
-						</div>
-					</div>
-				<?php else: ?>	
-					<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
-						wpsp_get_permalink(), 
-						wpsp_get_esc_title(), 
-						wpsp_post_thumbnail('thumb-full')  
-					); ?>
-					<div class="entry-post-content-wrap">
-						<div class="entry-blog-content">
-						<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>	
-						<?php if ( $post_meta ) get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
-						</div>
-						<?php if ( $post_excerpt ) get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
-					</div> <!-- .entry-post-content-wrap -->
-				<?php endif; ?>		
+					<?php get_template_part( 'partials/blog/media/blog-entry' ); ?>
+					<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
+					<?php if ( $post_meta )  get_template_part( 'partials/blog/blog-entry-meta' ); ?>
+					<?php if ( $post_excerpt )  get_template_part( 'partials/blog/blog-entry-content' ); ?>
 				</article><!-- #post-## -->
 		<?php endwhile; wp_reset_postdata(); ?>
 		</div>

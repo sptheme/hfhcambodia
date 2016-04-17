@@ -50,6 +50,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## About
 	## Video
 	## Contact
+	## What we build
 # Custom post type
 	## Staff
 	## Testimonial
@@ -2049,9 +2050,12 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 }
 
 .video-posts .blog-entry-title {
-	font-size: 1.200em;
+	font-size: 1em;
     line-height: 1.4;
     margin-bottom: 0.556em;
+}
+.video-posts .gray-highlight {
+	padding: 4px;
 }
 
 /*--------------------------------------------------------------
@@ -2060,6 +2064,129 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .rwmb-map-canvas,
 iframe.google-map {
 	border:5px solid #f1f1f1;
+}
+
+/*--------------------------------------------------------------
+## What we build
+--------------------------------------------------------------*/
+.page-template-what-we-build .site-content {
+	padding: 0;
+}
+.page-template-what-we-build .site-content > .container {
+	width: 100%!important;
+	padding: 0;
+} 
+
+/* Page header image */
+.page-header-background-image {
+	display: table;
+	width: 100%;
+    border: none;
+    background: #000;
+    min-height: 200px;
+    background-position: 50% 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+.page-header-background-image .page-header-inner {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+    padding: 0 1.875em;
+    width: 100%;
+}
+
+.page-header-wrap {
+	position: relative;
+	z-index: 2;
+}
+.page-header-background-image .page-header-title {
+    display: block;
+    margin: 0px;
+	color: #fff;
+	font-size: 1.5em;
+	line-height: 1.4em;
+    font-weight: normal;
+    font-weight: 400;
+}
+.page-header-background-image p {
+	color: #fff;
+	font-size: 1em;
+}
+.page-header-overlay {
+	display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #43A047;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+/* Build highlight */
+.build-highlight {
+	background: #ffffff;
+	padding: 2em 0;
+}
+.build-highlight .container {
+	width: 720px;
+	margin: 0 auto;
+}
+
+/* Callout boxes */
+.callout-boxes {
+	padding: 2em 0;
+}
+.callout-box {
+	background:#ffffff;
+	border:1px solid #d7d7d7;
+	padding: 5px;
+}
+.callout-box-content {
+	text-align: center;
+	padding: 0 1.2em;
+}
+.callout-box-content img {
+	border:5px solid #e0e0e0;
+}
+.callout-box-content h3 {
+	color:#007acc;
+	margin: 1em 0 0.467em;
+}
+.callout-box-content p {
+	font-size: 0.867em;
+}
+.callout-box-content a.button {
+	margin-bottom: 0.667em;
+}
+
+@media only screen and (min-width: 767px) {
+	.page-header-background-image {
+	   	height: 600px;
+	}
+	.page-header-background-image .page-header-inner {
+		padding: 2.250em 0;
+		color: #f7f7f7;
+	}
+	.page-header-background-image h1.page-header-title{
+		font-size: 4.800em;
+		margin-bottom: 0.417em;
+		font-weight: 600;
+	}
+	.page-header-background-image p {
+		font-size: 1.2em;
+		width: 720px;
+		margin: 0 auto;
+	}
+	.page-header-background-image .button {
+		padding: 1em 2em;
+		margin-top: 1em;
+	}
 }
 
 /*--------------------------------------------------------------
@@ -2671,7 +2798,7 @@ a:hover.page-numbers {
 ## Buttons
 --------------------------------------------------------------*/
 .button {
-	background: #4a97c2;
+	background: #007acc;
     color: #fff;
     padding: .5em 1em;
     border-radius: 3px;
@@ -2687,7 +2814,7 @@ a:hover.page-numbers {
 }
 a.button:hover {
 	color:#fff;
-	background-color: #00394a;
+	background-color: #2867b7;
 }
 .button.yellow {
 	color:#00402e;
@@ -2712,12 +2839,19 @@ a.button:hover {
 /*--------------------------------------------------------------
 ## Higight
 --------------------------------------------------------------*/
+/* Highlight > Text */
 .highlight {
 	color:#4a97c2;
 }
 .highlight.green,
 .highlight.green a {
 	color:#4fb94a;
+}
+
+/* Highlight > Background */
+.gray-highlight {
+	background: #f2f2f2;
+	padding: 1em;
 }
 
 /*--------------------------------------------------------------

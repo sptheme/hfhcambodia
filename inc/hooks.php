@@ -18,6 +18,16 @@ function wpsp_hook_content_bottom() {
 }
 
 /**
+ * Get custom page header template part, will apply on top of post/page
+ */
+function wpsp_page_header() {
+	if ( is_page_template( 'templates/what-we-build.php' ) ) {
+		get_template_part( 'partials/page-header' );	
+	}
+}
+add_action( 'wpsp_hook_content_top', 'wpsp_page_header' );
+
+/**
  * Display full slideshow on page header
  */
 function wpsp_full_slideshow() {

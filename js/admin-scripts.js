@@ -37,34 +37,28 @@ jQuery(document).ready(function($) {
 	}
 
 	//Switch Metabox with template was loaded or selected
-	var $masthead = $('#masthead'),
+	var $what_we_build = $('#what-we-build-options'),
 	$homepage = $('#homepage-options'),
 	$about = $('#about-options'),
-	$featured_pages = $('#featured-pages-options'),
 	$video_post = $('#featured-videos-options'),
 	$contact = $('#contact-options');
 	
 	function hide_meta_template() {
 		$homepage.hide();
         $about.hide();
-        $featured_pages.hide();
         $video_post.hide();
         $contact.hide();
-        //default meta box
-        $masthead.show();
+        $what_we_build.hide();
 	}
 
 	if ( $('#page_template').length ) {
 		hide_meta_template();
 		
-		var page_tempaltes = ['homepage', 'about', 'featured-pages', 'featured-videos', 'contact'];
+		var page_tempaltes = ['homepage', 'about', 'featured-videos', 'contact', 'what-we-build'];
 		var selected_page_template = $('#page_template').val().replace('templates/', '').replace('.php', '');
 		//console.log( selected_page_template );
 		if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
 			$('#'+selected_page_template+'-options').show();
-			if ( 'contact' == selected_page_template || 'home' == selected_page_template ) {
-				$masthead.hide();
-			}
 		}
 
 		$('#page_template').live('change', function(){
@@ -73,9 +67,6 @@ jQuery(document).ready(function($) {
 			//console.log( selected_page_template );
 			if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			
 				$('#'+selected_page_template+'-options').show();
-				if ( 'contact' == selected_page_template || 'home' == selected_page_template ) {
-					$masthead.hide();
-				}
 			}
 		});
 	} 

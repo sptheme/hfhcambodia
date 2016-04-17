@@ -267,54 +267,6 @@
 					'max_file_uploads' => 1,
 				),			
 		)
-    );	
-
-	// Featured Pages
-    $meta_boxes[] = array(
-    	'id'			=> 'featured-pages-options',
-		'title'			=> __( 'Featured Pages Options', 'wpsp_meta_options' ),
-		'post_types'	=> array( 'page' ),
-		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
-		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
-		'autosave'		=> true, // Auto save: true, false (default). Optional.
-
-		'fields'		=> array(
-			array(
-				'name'  => __( 'Parent page', 'wpsp_meta_options' ), 
-				'id'    => $prefix . "featured_parent_page",
-				'desc'	=> __( 'Please select parent page to display child pages as featured page. eg: Areas of Interest', 'wpsp_meta_options' ), 
-				'type'  => 'post',
-				'post_type' => 'page',
-				'field_type'  => 'select_advanced',
-				'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
-			),
-			array(
-				'name'  => __( 'Page style', 'wpsp_meta_options' ), 
-				'id'    => $prefix . "featured_page_style",
-				'desc'	=> __( 'Will show page style as box with background color options', 'wpsp_meta_options' ), 
-				'type'  => 'select',
-				'options'     => array(
-					'post-highlight' => __( 'Highlight Blue', 'wpsp_meta_options' ),
-					'post-highlight-green' => __( 'Highlight Green', 'wpsp_meta_options' ),
-					'post-highlight-gray' => __( 'Highlight Gray', 'wpsp_meta_options' ),
-					'post-masonry' => __( 'Masonry', 'wpsp_meta_options' ),
-				),
-				// Select multiple values, optional. Default is false.
-				'multiple'    => false,
-				'std'         => 'post-highlight',
-				'placeholder' => __( 'Select an Item', 'wpsp_meta_options' ),
-			),
-			array(
-				'name'  => __( 'Page columns', 'wpsp_meta_options' ), 
-				'id'    => $prefix . "page_col",
-				'desc'	=> __( 'How many columns to display child page', 'wpsp_meta_options' ),
-				'type' 	=> 'number',
-				'min'  	=> 0,
-				'max'  	=> 5,
-				'step' 	=> 1,
-				'std'  	=> 3,
-			),
-		)
     );
 
     // Featured Video
@@ -363,6 +315,174 @@
 				),
 		)
     );	
+
+    // What we build page
+    $meta_boxes[] = array(
+    	'id'			=> 'what-we-build-options',
+		'title'			=> __( 'Options', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'page' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Masthead', 'wpsp_meta_options' ), 
+				'id'    => "masthead_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Upload background image', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "masthead_image",
+					'desc'	=> __( 'Option: Recommended image size: 1600px by 640px.', 'wpsp_meta_options' ), 
+					'type'  => 'image_advanced',
+					'max_file_uploads' => 1,
+				),
+				array(
+					'name'  => __( 'Short description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "sub_headline",
+					'type'  => 'wysiwyg',
+					'raw'   => false,
+					'options' => array(
+						'textarea_rows' => 4,
+						'teeny'         => true,
+						'media_buttons' => false,
+					),
+				),
+				array(
+					'name'  => __( 'Button text', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "masthead_button_text",
+					'desc' => __( 'Enter text for button. e.g: Learn more', 'wpsp_meta_options' ),
+					'type'  => 'text',
+					'std'  => 'Learn more',
+				),
+				array(
+					'name'  => __( 'Button link', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "masthead_button_link",
+					'desc' => __( 'URL/Link for slide (e.g: http://google.com).', 'wpsp_meta_options' ),
+					'type'  => 'url',
+				),
+			array(
+				'name'  => __( 'Callout Box 1', 'wpsp_meta_options' ), 
+				'id'    => "callout_boxes_fake_id_1",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Upload image', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_image_1",
+					'desc'	=> __( 'Optional: Recommended image size: 320px by 217px.', 'wpsp_meta_options' ), 
+					'type'  => 'image_advanced',
+					'max_file_uploads' => 1,
+				),
+				array(
+					'name'  => __( 'Title', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_title_1",
+					'type'  => 'text',
+				),
+				array(
+					'name'  => __( 'Short description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_desc_1",
+					'desc' => __( 'Recommended 25 characters', 'wpsp_meta_options' ),
+					'type'  => 'textarea',
+					'std'  => '',
+					'row'	=> 4
+				),
+				array(
+					'name'  => __( 'Button text', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_button_text_1",
+					'desc' => __( 'Enter text for button. e.g: Learn more', 'wpsp_meta_options' ),
+					'type'  => 'text',
+					'std'  => 'Learn more',
+				),
+				array(
+					'name'  => __( 'Button link', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_button_link_1",
+					'desc' => __( 'URL/Link for slide (e.g: http://google.com).', 'wpsp_meta_options' ),
+					'type'  => 'url',
+				),
+
+			array(
+				'name'  => __( 'Callout Box 2', 'wpsp_meta_options' ), 
+				'id'    => "callout_boxes_fake_id_2",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Upload image', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_image_2",
+					'desc'	=> __( 'Optional: Recommended image size: 320px by 217px.', 'wpsp_meta_options' ), 
+					'type'  => 'image_advanced',
+					'max_file_uploads' => 1,
+				),
+				array(
+					'name'  => __( 'Title', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_title_2",
+					'type'  => 'text',
+				),
+				array(
+					'name'  => __( 'Short description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_desc_2",
+					'desc' => __( 'Recommended 25 characters', 'wpsp_meta_options' ),
+					'type'  => 'textarea',
+					'std'  => '',
+					'row'	=> 4
+				),
+				array(
+					'name'  => __( 'Button text', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_button_text_2",
+					'desc' => __( 'Enter text for button. e.g: Learn more', 'wpsp_meta_options' ),
+					'type'  => 'text',
+					'std'  => 'Learn more',
+				),
+				array(
+					'name'  => __( 'Button link', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_button_link_2",
+					'desc' => __( 'URL/Link for slide (e.g: http://google.com).', 'wpsp_meta_options' ),
+					'type'  => 'url',
+				),		
+			array(
+				'name'  => __( 'Callout Box 3', 'wpsp_meta_options' ), 
+				'id'    => "callout_boxes_fake_id",
+				'desc'	=> __( '', 'wpsp_meta_options' ), 
+				'type'  => 'heading'
+			),
+				array(
+					'name'  => __( 'Upload image', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_image_3",
+					'desc'	=> __( 'Optional: Recommended image size: 320px by 217px.', 'wpsp_meta_options' ), 
+					'type'  => 'image_advanced',
+					'max_file_uploads' => 1,
+				),
+				array(
+					'name'  => __( 'Title', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_title_3",
+					'type'  => 'text',
+				),
+				array(
+					'name'  => __( 'Short description', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_desc_3",
+					'desc' => __( 'Recommended 25 characters', 'wpsp_meta_options' ),
+					'type'  => 'textarea',
+					'std'  => '',
+					'row'	=> 4
+				),
+				array(
+					'name'  => __( 'Button text', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_button_text_3",
+					'desc' => __( 'Enter text for button. e.g: Learn more', 'wpsp_meta_options' ),
+					'type'  => 'text',
+					'std'  => 'Learn more',
+				),
+				array(
+					'name'  => __( 'Button link', 'wpsp_meta_options' ), 
+					'id'    => $prefix . "callout_button_link_3",
+					'desc' => __( 'URL/Link for slide (e.g: http://google.com).', 'wpsp_meta_options' ),
+					'type'  => 'url',
+				),
+		)
+    );
 
     // Slider post type
     $meta_boxes[] = array(
