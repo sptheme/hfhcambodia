@@ -40,20 +40,27 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Footer
 # Widgets
 # Content
+	## Entries (Global Styles)
     ## Posts and pages
 	## Asides
 	## Comments	
 # Infinite scroll
 # Templates
 	## Homepage
+	## About
+	## Video
+	## Contact
 # Custom post type
+	## Staff
+	## Testimonial
+	## Partner post type
 	## Publication
 # Media
 	## Captions
 	## Galleries
 # Blog Post
 	## Blog post meta
-	## Testimonial post
+	## Blog single post
 # Addon Elements
 	## Paging navigation
 	## Buttons
@@ -1047,14 +1054,14 @@ blockquote.aligncenter {
 	.wpsp-row .span_1_of_7 { width: 14.28% }
 
 	/* Clear float */
-	/*.wpsp-row .span_1_of_2:nth-child(2n+1),
+	.wpsp-row .span_1_of_2:nth-child(2n+1),
 	.wpsp-row .span_1_of_3:nth-child(3n+1),
 	.wpsp-row .span_1_of_4:nth-child(4n+1),
 	.wpsp-row .span_1_of_5:nth-child(5n+1),
 	.wpsp-row .span_1_of_6:nth-child(6n+1),
 	.wpsp-row .span_1_of_7:nth-child(7n+1) {
 		clear: left;
-	}*/
+	}
 	/* No margin */
 	.wpsp-row.no-margin-grid .col { margin: 0 !important; padding: 0 !important; }
 }
@@ -1150,6 +1157,13 @@ blockquote.aligncenter {
 .site-main {
 	padding-top: 4%;
 }
+.col-1c .site-main {
+	padding-left: 2%;
+	padding-right: 2%;
+}
+.widget-area {
+	margin-top: 1.333em;
+}
 
 @media only screen and (max-width: 992px) {
 	.container,
@@ -1172,6 +1186,7 @@ blockquote.aligncenter {
 	}
 	.widget-area {
 	    width: 32%;
+	    margin-top: 0;
 	}
 	.col-2cr .content-area,
 	.col-2cl .widget-area { float: left; }
@@ -1636,7 +1651,7 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .wpsp-video-widget-description { text-align: center; margin-top: 15px; }
 
 /* Widgets > Posts w/ Thumbnails */
-.wpsp-widget-recent-posts-li { margin: 0; font-size: 1em; min-height: 95px; padding-left: 85px!important; position: relative; padding-top: 1em!important; padding-bottom: 1em!important; }
+.wpsp-widget-recent-posts-li { margin: 0; font-size: 1em; min-height: 95px; padding-left: 28.5%!important; position: relative; padding-top: 1em!important; padding-bottom: 1em!important; }
 .wpsp-widget-recent-posts-li:first-child { padding-top: 1em }
 .wpsp-widget-recent-posts-thumbnail { position: absolute!important; left: 0; top: 1em; width: 25%; }
 .wpsp-widget-recent-posts-thumbnail,
@@ -1652,6 +1667,26 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Entries (Global Styles)
+--------------------------------------------------------------*/
+/* Entries > Left Thumbnail Style */
+.entries.left-thumbs .entry { border: 0 }
+.entries.left-thumbs .entry .entry-media { margin-bottom: 20px }
+.entries.left-thumbs .entry .entry-media,
+.entries.left-thumbs .entry .entry-details { width: 100%; }
+
+@media only screen and (min-width: 768px) {
+	.entries.left-thumbs .entry-media { float: left; margin: 0; width: 46%; }
+	.entries.left-thumbs .entry-details { background: none; border: none; float: right; width: 50%; padding: 0; }
+}
+
+/* Entries > Title */
+.entry-title { display: block; font-size: 1.067em; margin: 0 0 5px; font-weight: 600; color: #000; }
+.entry-title a { color: inherit }
+.entry-title a:hover { text-decoration: none }
+.single-post-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
+
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
@@ -1770,6 +1805,9 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 }
 .our-work .section-title h2 {
 	color:#2867b7;
+}
+.our-work .span_1_of_3:nth-child(3n+1) {
+	clear: none;
 }
 .our-work .wpsp-image-hover {
 	border:1px solid #d7d7d7;
@@ -1984,6 +2022,39 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 }
 
 /*--------------------------------------------------------------
+## Video
+--------------------------------------------------------------*/
+.featured-video {
+	background-color: #4caf50;
+}
+.featured-video .wpsp-row {
+	margin: 0;
+}
+.featured-video .blog-entry-media {
+	margin-bottom: 0;
+	border:5px solid #4caf50;
+}
+
+.featured-video .blog-entry-title {
+	font-size: 1.5em;
+    line-height: 1.3;
+}
+.featured-video .blog-entry-wrap {
+	padding: 0.625em;
+}
+.featured-video .blog-entry-excerpt p,
+.featured-video .blog-entry-excerpt a,
+.featured-video .meta {
+	color: #ffffff;
+}
+
+.video-posts .blog-entry-title {
+	font-size: 1.200em;
+    line-height: 1.4;
+    margin-bottom: 0.556em;
+}
+
+/*--------------------------------------------------------------
 ## Contact
 --------------------------------------------------------------*/
 .rwmb-map-canvas,
@@ -1994,6 +2065,96 @@ iframe.google-map {
 /*--------------------------------------------------------------
 # Custom post type
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Staff post
+--------------------------------------------------------------*/
+
+/* Staff > Entries */
+.staff-entry-categories { margin: -5px 0 10px }
+.staff-entry-categories a { font-size: 0.923em; color: #777; list-style: none; }
+.staff-entry { text-align: left; margin-bottom: 30px; }
+.staff-entry-details { padding-top: 15px }
+.staff-entry-details .staff-entry-title,
+.staff-entry-details .staff-entry-position {
+	text-align: center;
+}
+.staff-entry-media { position: relative }
+.staff-entry-media-link { display: block }
+.staff-entry-media img { display: block; margin: 0 auto; }
+.staff-entry-position { font-size: 0.923em; color: #777; list-style: none; margin: -5px 0 10px; }
+.staff-entry-excerpt p { margin-bottom: 15px }
+.staff-entry-excerpt,
+.staff-entry-excerpt p:last-child { margin: 0 }
+.staff-entry-readmore-wrap { padding-top: 15px }
+
+/* Staff > Entries > Custom background highlight */
+.blue-highlight .staff-entry-inner {
+	background-color: #007acc;
+	padding: 4px;
+}
+.green-highlight .staff-entry-inner {
+	background-color: #4caf50;
+	padding: 4px;
+}
+.blue-highlight .staff-entry-title,
+.blue-highlight .staff-entry-position,
+.green-highlight .staff-entry-title,
+.green-highlight .staff-entry-position {
+	color: #ffffff;
+}
+
+
+/* Staff > Singular */
+#staff-post-thumbnail { margin-bottom: 20px }
+#staff-post-thumbnail img { display: block; margin: 0; }
+#staff-single-media { margin-bottom: 30px }
+
+/* Staff > Related */
+.related-staff-posts { margin-bottom: 40px }
+.related-staff-posts .staff-entry-inner {
+	background:#f2f2f2;
+	padding: 4px;
+}
+
+/* Staff > No Margin Grid */
+.staff-no-margins .col { margin: 0 !important; padding: 0 !important; }
+
+/* Staff > Single Post */
+.single-staff .single-header { margin-bottom: 20px }
+.single-staff .single-header .entry-title { margin: 0 }
+.skin-base .single-staff-position { color: #bbb }
+
+/* Staff > Social */
+.staff-social { margin-top: 5px; font-size: 13px; }
+.staff-social a { margin-right: 4px; margin-top: 4px; display: inline-block; }
+
+/*--------------------------------------------------------------
+## Testimonials
+--------------------------------------------------------------*/
+.testimonial-entry-content { position: relative; background: #f7f7f7; padding: 20px; border-radius: 3px; }
+.testimonial-caret { position: absolute; display: block; left: 10px; bottom: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 12px solid #f7f7f7; }
+.testimonial-entry-content p { margin: 0 0 15px }
+.testimonial-entry-content p:last-child { margin: 0 }
+.testimonial-entry-title { font-size: 1.333em; }
+.testimonial-entry-bottom { margin-top: 20px; overflow: hidden;}
+.testimonial-entry-thumb { float: left; margin-right: 20px; min-width: 45px; }
+.testimonial-entry-thumb img { display: block; padding: 3px; border: 1px solid #eee; border-radius: 50%; width: 45px; height: 45px; }
+.testimonial-entry-meta { float: left }
+.testimonial-entry-author { margin: 0; font-size: 1.200em; }
+.testimonial-entry-other { margin-top: -2px; display: block; color: #999; font-size: 13px; }
+
+/* Testimonials > Singular */
+.single-testimonials .entry-content { margin-bottom: 40px; }
+.single-testimonials .content-left-sidebar blockquote,
+.single-testimonials .content-right-sidebar blockquote { margin-top: 0 }
+
+/*--------------------------------------------------------------
+## Partner post type
+--------------------------------------------------------------*/
+.entry-partner a:hover img {
+	opacity: 0.5;
+}
 
 /*--------------------------------------------------------------
 ## Publication
@@ -2137,31 +2298,19 @@ object {
 .meta a:hover { color: #000; text-decoration: none; }
 .meta time { display: inline; }
 
-/*--------------------------------------------------------------
-## Blog entry post
---------------------------------------------------------------*/
-/* Entries > Left Thumbnail Style */
-.entries.left-thumbs .entry { border: 0 }
-.entries.left-thumbs .entry .entry-media { margin-bottom: 20px }
-.entries.left-thumbs .entry .entry-media,
-.entries.left-thumbs .entry .entry-details { width: 100%; }
-
-@media only screen and (min-width: 768px) {
-	.entries.left-thumbs .entry-media { float: left; margin: 0; width: 46%; }
-	.entries.left-thumbs .entry-details { background: none; border: none; float: right; width: 50%; padding: 0; }
-}
-
-/* Entries > Title */
-.entry-title { display: block; font-size: 1.067em; margin: 0 0 5px; font-weight: 600; color: #000; }
-.entry-title a { color: inherit }
-.entry-title a:hover { text-decoration: none }
-.single-post-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
-
 /* Blog entries */
+.blog-entry a.blog-entry-media-link { display: block; margin: 0 auto; }
+.blog-entry-media img { display: block; margin: 0 auto; width: 100%; }
+.single-post .blog-entry.grid-entry-style.format-quote { width: 100%; margin: 0; }
+.format-quote { overflow: hidden }
+.blog-entry-readmore span.readmore-rarr { margin-left: 7px }
+.blog-entry .social-share-title { display: none }
+.blog-entry-excerpt p:last-child { margin: 0 }
+
 .blog-entry-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
 .blog-entry-media,
 .blog-entry-excerpt,
-.blog-entry-readmore { margin-bottom: 20px; }
+.blog-entry-readmore { margin-bottom: 1em; }
 
 /* Blog Entry > Thumbnail */
 .entries .blog-entry { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #eee; }
@@ -2172,7 +2321,6 @@ object {
 ## Blog single post
 --------------------------------------------------------------*/
 .single-post .entry { margin-bottom: 40px }
-
 .single-post .meta { margin: 0 0 20px }
 
 /* Blog Single > Thumbnail */
@@ -2199,94 +2347,13 @@ object {
 .related-post-excerpt { font-size: 0.923em; line-height: 1.7em; }
 .related-post-excerpt p:last-child { margin: 0 }
 
-/* Blog Single > Quote */
-.single .format-quote { position: relative; display: block; padding: 20px 30px; font-size: 1.231em; z-index: 2; background: #f7f7f7; }
-.single .format-quote p:last-child { margin: 0 }
-.single .format-quote .quote-entry-author { margin-top: 15px; font-size: 0.923em; font-weight: 300; text-decoration: underline; }
-.single .format-quote .fa-quote-right { position: absolute; right: 15px; bottom: 15px; font-size: 60px; display: block; z-index: 1; opacity: 0.1; }
-
-/*--------------------------------------------------------------
-# Staff post
---------------------------------------------------------------*/
-
-/* Staff > Entries */
-.staff-entry-categories { margin: -5px 0 10px }
-.staff-entry-categories a { font-size: 0.923em; color: #777; list-style: none; }
-.staff-entry { text-align: left; margin-bottom: 30px; }
-.staff-entry-details { padding-top: 15px }
-.staff-entry-details .staff-entry-title,
-.staff-entry-details .staff-entry-position {
-	text-align: center;
-}
-.staff-entry-media { position: relative }
-.staff-entry-media-link { display: block }
-.staff-entry-media img { display: block; margin: 0 auto; }
-.staff-entry-position { font-size: 0.923em; color: #777; list-style: none; margin: -5px 0 10px; }
-.staff-entry-excerpt p { margin-bottom: 15px }
-.staff-entry-excerpt,
-.staff-entry-excerpt p:last-child { margin: 0 }
-.staff-entry-readmore-wrap { padding-top: 15px }
-
-/* Staff > Entries > Custom background highlight */
-.blue-highlight .staff-entry-inner {
-	background-color: #007acc;
-	padding: 4px;
-}
-.green-highlight .staff-entry-inner {
-	background-color: #4caf50;
-	padding: 4px;
-}
-.blue-highlight .staff-entry-title,
-.blue-highlight .staff-entry-position,
-.green-highlight .staff-entry-title,
-.green-highlight .staff-entry-position {
-	color: #ffffff;
+/* Blog entries > shortcode */
+.blog-entry-shortcode .blog-entry-title {
+	font-size: 1.200em;
+	line-height: 1.4;
+	margin-bottom: 0.556em
 }
 
-
-/* Staff > Singular */
-#staff-post-thumbnail { margin-bottom: 20px }
-#staff-post-thumbnail img { display: block; margin: 0; }
-#staff-single-media { margin-bottom: 30px }
-
-/* Staff > Related */
-.related-staff-posts { margin-bottom: 40px }
-.related-staff-posts .staff-entry-inner {
-	background:#f2f2f2;
-	padding: 4px;
-}
-
-/* Staff > No Margin Grid */
-.staff-no-margins .col { margin: 0 !important; padding: 0 !important; }
-
-/* Staff > Single Post */
-.single-staff .single-header { margin-bottom: 20px }
-.single-staff .single-header .entry-title { margin: 0 }
-.skin-base .single-staff-position { color: #bbb }
-
-/* Staff > Social */
-.staff-social { margin-top: 5px; font-size: 13px; }
-.staff-social a { margin-right: 4px; margin-top: 4px; display: inline-block; }
-
-/*--------------------------------------------------------------
-# Testimonials post
---------------------------------------------------------------*/
-.testimonial-entry-content { position: relative; background: #f7f7f7; padding: 20px; border-radius: 3px; }
-.testimonial-caret { position: absolute; display: block; left: 10px; bottom: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 12px solid #f7f7f7; }
-.testimonial-entry-content p { margin: 0 0 15px }
-.testimonial-entry-content p:last-child { margin: 0 }
-.testimonial-entry-title { font-size: 1.333em; }
-.testimonial-entry-bottom { margin-top: 20px; overflow: hidden;}
-.testimonial-entry-thumb { float: left; margin-right: 20px; min-width: 45px; }
-.testimonial-entry-thumb img { display: block; padding: 3px; border: 1px solid #eee; border-radius: 50%; width: 45px; height: 45px; }
-.testimonial-entry-meta { float: left }
-.testimonial-entry-author { margin: 0; font-size: 1.200em; }
-.testimonial-entry-other { margin-top: -2px; display: block; color: #999; font-size: 13px; }
-
-/* Testimonials > Singular */
-.single-testimonials .entry-content { margin-bottom: 40px; }
-.single-testimonials .content-left-sidebar blockquote,
-.single-testimonials .content-right-sidebar blockquote { margin-top: 0 }
 
 /*--------------------------------------------------------------
 # Addon Elements

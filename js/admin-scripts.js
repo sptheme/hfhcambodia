@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
 	$homepage = $('#homepage-options'),
 	$about = $('#about-options'),
 	$featured_pages = $('#featured-pages-options'),
-	$video_post = $('#video-post-options'),
+	$video_post = $('#featured-videos-options'),
 	$contact = $('#contact-options');
 	
 	function hide_meta_template() {
@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
 	if ( $('#page_template').length ) {
 		hide_meta_template();
 		
-		var page_tempaltes = ['homepage', 'about', 'featured-pages', 'video-post', 'contact'];
+		var page_tempaltes = ['homepage', 'about', 'featured-pages', 'featured-videos', 'contact'];
 		var selected_page_template = $('#page_template').val().replace('templates/', '').replace('.php', '');
 		//console.log( selected_page_template );
 		if(jQuery.inArray(selected_page_template,page_tempaltes) != '-1') {			

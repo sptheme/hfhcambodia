@@ -42,8 +42,8 @@ function wpsp_staff_shortcode_ajax(){
 					<td>
 						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
 							<option class="level-0" value=""><?php _e( 'Simple', 'wpsp_shortcode' ); ?></option>
-							<option class="level-0" value="post-highlight"><?php _e( 'Highlight Blue', 'wpsp_shortcode' ); ?></option>
-							<option class="level-0" value="post-highlight-green"><?php _e( 'Highlight Green', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="blue-highlight"><?php _e( 'Highlight Blue', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="green-highlight"><?php _e( 'Highlight Green', 'wpsp_shortcode' ); ?></option>
 						</select>
 					</td>
 				</tr>

@@ -135,18 +135,14 @@ class WPSP_Recent_Posts_Thumbnails_Widget extends WP_Widget {
 					} ?>
 
 					<li class="wpsp-widget-recent-posts-li clear">
-
-						<?php if ( has_post_thumbnail() ) : ?>
-							<a href="<?php wpsp_permalink(); ?>" title="<?php wpsp_esc_title(); ?>" class="wpsp-widget-recent-posts-thumbnail<?php echo esc_attr( $hover_classes ); ?>">
-								<?php wpsp_post_thumbnail_total( array(
-									'size'   => $img_size,
-									'width'  => $img_width,
-									'height' => $img_height,
-									'alt'    => wpsp_get_esc_title(),
-								) ); ?>
-							</a>
-						<?php endif; ?>
-
+						<a href="<?php wpsp_permalink(); ?>" title="<?php wpsp_esc_title(); ?>" class="wpsp-widget-recent-posts-thumbnail<?php echo esc_attr( $hover_classes ); ?>">
+							<?php wpsp_post_thumbnail_total( array(
+								'size'   => $img_size,
+								'width'  => $img_width,
+								'height' => $img_height,
+								'alt'    => wpsp_get_esc_title(),
+							) ); ?>
+						</a>
 						<a href="<?php wpsp_permalink(); ?>" title="<?php wpsp_esc_title(); ?>" class="wpsp-widget-recent-posts-title"><?php the_title(); ?></a>
 
 						<?php

@@ -15,14 +15,15 @@ get_header();
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<header class="entry-header">
-				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+				<?php $title_align = get_post_meta( get_the_ID(), 'wpsp_post_title_align', true ); ?>
+				<h1 class="entry-title" style="text-align:<?php echo $title_align; ?>"><?php the_title(); ?></h1>
 			</header><!-- .entry-header -->
 
 			<div class="entry-content">
 				<?php the_content(); ?>
 			</div><!-- .entry-content -->
 		
-			<div class="wpsp-row clearfix">
+			<div class="wpsp-row clear">
 				<div class="col span_2_of_3">
 					<?php $args = array(
 						    'type'         => 'map',

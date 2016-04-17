@@ -319,7 +319,7 @@
 
     // Featured Video
     $meta_boxes[] = array(
-    	'id'			=> 'video-post-options',
+    	'id'			=> 'featured-videos-options',
 		'title'			=> __( 'Featured Video Options', 'wpsp_meta_options' ),
 		'post_types'	=> array( 'page' ),
 		'context'		=> 'normal', 

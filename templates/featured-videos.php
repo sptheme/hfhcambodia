@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Video pages
+ * Template Name: Featured videos
  *
  * This is the template that landing video posts.
  *
@@ -15,11 +15,10 @@ get_header();
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<?php if ( rwmb_meta( 'wpsp_masthead_title') ) : ?>
 			<header class="entry-header">
-				<h2 class="entry-title"><?php echo rwmb_meta( 'wpsp_masthead_title'); ?></h2>
+				<?php $title_align = get_post_meta( get_the_ID(), 'wpsp_post_title_align', true ); ?>
+				<h1 class="entry-title" style="text-align:<?php echo $title_align; ?>"><?php the_title(); ?></h1>
 			</header><!-- .entry-header -->
-			<?php endif; ?>
 
 			<section class="entry-content">
 				<?php the_content(); ?>
@@ -32,7 +31,7 @@ get_header();
 				$excerpt_length = 25;
 				$term_id = ( rwmb_meta('wpsp_featured_video_cat') ) ? rwmb_meta('wpsp_featured_video_cat') : 3;
 				$post_style = '';
-				$entry_classes = array( 'entry-blog-article' ); 
+				$entry_classes = array( 'blog-entry' ); 
 				$entry_classes[] = $post_style;
 
 				$args = array (
@@ -57,24 +56,18 @@ get_header();
 						$entry_classes[] = 'col-' . $post_count; ?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
-							<div class="wpsp-row no-margin-grid clearfix">
+							<div class="wpsp-row no-margin-grid clear">
 								<div class="col span_2_of_3">
-								<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
-									wpsp_get_permalink(), 
-									wpsp_get_esc_title(), 
-									wpsp_post_thumbnail('thumb-full')  
-								); ?>
+								<?php get_template_part( 'partials/blog/media/blog-entry' ); ?>
 								</div> <!-- .col .span_2_of_3 -->
 								<div class="col span_1_of_3">
-									<div class="entry-post-content-wrap">
-										<div class="entry-blog-content">
-											<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
-											<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
-										</div> <!-- .entry-blog-content -->
-										<?php get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
-									</div> <!-- .entry-post-content-wrap -->
+									<div class="blog-entry-wrap">
+										<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
+										<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
+										<?php get_template_part( 'partials/blog/blog-entry-content' ); ?>
+									</div> <!-- .blog-entry-wrap -->
 								</div><!-- .col .span_1_of_3 -->	
-							</div> <!-- .wpsp-row .clearfix -->
+							</div> <!-- .wpsp-row .clear -->
 						</article>	
 				<?php endwhile; wp_reset_postdata(); ?>
 				</div> <!-- .featured-video -->
@@ -84,7 +77,6 @@ get_header();
 			<?php // Video Posts
 				$cols = 3;
 				$post_count = 0;
-				$entry_classes[] = 'post-highlight-gray';
 				$entry_classes[] = 'col';
 				$entry_classes[] = wpsp_grid_class($cols);
 				$args = array (
@@ -105,7 +97,7 @@ get_header();
 
 				if ( $video_query->have_posts() ) { ?>
 
-				<div class="video-posts wpsp-row clearfix">
+				<div class="video-posts wpsp-row clear">
 				
 				<?php while ( $video_query->have_posts() ) : $video_query->the_post(); 
 						$post_count++;
@@ -113,24 +105,18 @@ get_header();
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
 								
-							<?php printf( '<div class="post-thumbnail"><a itemprop="url" href="%1$s" rel="bookmark" title="%2$s">%3$s</a></div>', 
-								wpsp_get_permalink(), 
-								wpsp_get_esc_title(), 
-								wpsp_post_thumbnail('thumb-full')  
-							); ?>
-							
-							<div class="entry-post-content-wrap">
-								<div class="entry-blog-content">
-									<?php get_template_part( 'template-parts/blog/blog-entry-title' ); ?>
-									<?php get_template_part( 'template-parts/blog/blog-entry-meta' ); ?>
-								</div> <!-- .entry-blog-content -->
-								<?php get_template_part( 'template-parts/blog/blog-entry-excerpt' ); ?>
-							</div> <!-- .entry-post-content-wrap -->
+							<?php get_template_part( 'partials/blog/media/blog-entry' ); ?>
+
+							<div class="blog-entry-wrap">
+								<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
+								<?php get_template_part( 'partials/blog/blog-entry-meta' ); ?>
+								<?php get_template_part( 'partials/blog/blog-entry-content' ); ?>
+							</div> <!-- .blog-entry-wrap -->
 								
 						</article>	
 				<?php endwhile; wp_reset_postdata(); ?>
 
-				</div> <!-- .video-posts .wpsp-row .clearfix -->
+				</div> <!-- .video-posts .wpsp-row .clear -->
 				<?php // Pagination
 			            if(function_exists('wp_pagenavi'))
 			                wp_pagenavi();
