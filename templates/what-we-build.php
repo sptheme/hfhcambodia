@@ -49,7 +49,7 @@ get_header(); ?>
 						<div class="callout-box-content">
 							<h3><?php echo rwmb_meta('wpsp_callout_title_2'); ?></h3>
 							<p><?php echo rwmb_meta('wpsp_callout_desc_2'); ?></p>
-							<a href="<?php echo rwmb_meta('wpsp_callout_button_link_2'); ?>" class="button"><?php echo rwmb_meta('wpsp_callout_button_text_1'); ?></a>
+							<a href="<?php echo rwmb_meta('wpsp_callout_button_link_2'); ?>" class="button"><?php echo rwmb_meta('wpsp_callout_button_text_2'); ?></a>
 						</div>
 					</div> <!-- .callout-box -->
 				</div> <!-- .col .span_1_of_3 -->
@@ -65,7 +65,7 @@ get_header(); ?>
 						<div class="callout-box-content">
 							<h3><?php echo rwmb_meta('wpsp_callout_title_3'); ?></h3>
 							<p><?php echo rwmb_meta('wpsp_callout_desc_3'); ?></p>
-							<a href="<?php echo rwmb_meta('wpsp_callout_button_link_3'); ?>" class="button"><?php echo rwmb_meta('wpsp_callout_button_text_1'); ?></a>
+							<a href="<?php echo rwmb_meta('wpsp_callout_button_link_3'); ?>" class="button"><?php echo rwmb_meta('wpsp_callout_button_text_3'); ?></a>
 						</div>
 					</div> <!-- .callout-box -->
 				</div> <!-- .col .span_1_of_3 -->
