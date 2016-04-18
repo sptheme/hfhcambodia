@@ -356,10 +356,11 @@ add_filter( 'the_content_more_link', 'wpsp_remove_more_link_scroll' );
 if ( is_admin() && apply_filters( 'wpsp_dashboard_thumbnails', true ) ) :
 
 	add_filter( 'manage_post_posts_columns', 'wpsp_posts_columns' );
-	add_filter( 'manage_portfolio_posts_columns', 'wpsp_posts_columns' );
-	add_filter( 'manage_testimonials_posts_columns', 'wpsp_posts_columns' );
+	add_filter( 'manage_slider_posts_columns', 'wpsp_posts_columns' );
 	add_filter( 'manage_staff_posts_columns', 'wpsp_posts_columns' );
 	add_filter( 'manage_publications_posts_columns', 'wpsp_posts_columns' );
+	add_filter( 'manage_partner_posts_columns', 'wpsp_posts_columns' );
+	add_filter( 'manage_testimonials_posts_columns', 'wpsp_posts_columns' );
 	add_action( 'manage_posts_custom_column', 'wpsp_posts_custom_columns', 10, 2 );
 	add_filter( 'manage_page_posts_columns', 'wpsp_posts_columns' );
 	add_action( 'manage_pages_custom_column', 'wpsp_posts_custom_columns', 10, 2 );
