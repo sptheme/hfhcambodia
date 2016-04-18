@@ -2350,24 +2350,32 @@ object {
 /*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/
-.wp-caption {
-	margin-bottom: 1.5em;
-	max-width: 100%;
+.wp-caption { 
+	text-align: center; 
+	max-width: 100%; 
+	border: 1px solid #eee; 
+	text-align: center; 
+	background-color: #fff; 
+	padding: 8px; 
+	color:#999999;
 }
-
-.wp-caption img[class*="wp-image-"] {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+.wp-caption img { 
+	display: block; 
+	margin: 0 auto; 
+	padding: 0; 
+	border: 0 none; 
 }
-
 .wp-caption .wp-caption-text {
-	margin: 0.8075em 0;
+	padding-top: 8px;
 }
-
-.wp-caption-text {
-	text-align: center;
+.wp-caption p.wp-caption-text { 
+	font-size: 0.875em; 
+	padding: 10px 0 0; 
+	margin: 0; 
+	text-align: center; 
 }
+.wp-caption.alignnone { margin-bottom: 20px }
+.wp-smiley { margin: 0; max-height: 1em; }
 
 /*--------------------------------------------------------------
 ## Galleries

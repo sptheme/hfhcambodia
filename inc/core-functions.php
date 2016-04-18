@@ -349,6 +349,47 @@ function wpsp_remove_more_link_scroll( $link ) {
 add_filter( 'the_content_more_link', 'wpsp_remove_more_link_scroll' );
 
 /**
+ * Displays dashboard thumbnails if enabled
+ *
+ * @since 1.0.0
+ */
+if ( is_admin() && apply_filters( 'wpsp_dashboard_thumbnails', true ) ) :
+
+	add_filter( 'manage_post_posts_columns', 'wpsp_posts_columns' );
+	add_filter( 'manage_portfolio_posts_columns', 'wpsp_posts_columns' );
+	add_filter( 'manage_testimonials_posts_columns', 'wpsp_posts_columns' );
+	add_filter( 'manage_staff_posts_columns', 'wpsp_posts_columns' );
+	add_filter( 'manage_publications_posts_columns', 'wpsp_posts_columns' );
+	add_action( 'manage_posts_custom_column', 'wpsp_posts_custom_columns', 10, 2 );
+	add_filter( 'manage_page_posts_columns', 'wpsp_posts_columns' );
+	add_action( 'manage_pages_custom_column', 'wpsp_posts_custom_columns', 10, 2 );
+
+	if ( ! function_exists( 'wpsp_posts_columns' ) ) {
+		function wpsp_posts_columns( $defaults ){
+			$defaults['wpsp_post_thumbs'] = esc_html__( 'Featured Image', 'poshedition' );
+			return $defaults;
+		}
+	}
+
+	if ( ! function_exists( 'wpsp_posts_custom_columns' ) ) {
+		function wpsp_posts_custom_columns( $column_name, $id ){
+			if ( $column_name != 'wpsp_post_thumbs' ) {
+				return;
+			}
+			if ( has_post_thumbnail( $id ) ) {
+				$img_src = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'thumbnail', false );
+				if ( ! empty( $img_src[0] ) ) { ?>
+						<img src="<?php echo esc_url( $img_src[0] ); ?>" alt="<?php echo esc_html( get_the_title() ); ?>" style="max-width:100%;max-height:90px;" />
+					<?php
+				}
+			} else {
+				echo '&mdash;';
+			}
+		}
+	}
+endif;
+
+/**
  * Get Post thumbnail
  * 
  * @since 1.0.0
