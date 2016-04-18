@@ -26,7 +26,7 @@ body {
 	color: #404040;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 15px;
 	line-height: 1.5;
 	max-width: 600px;
 }
@@ -43,18 +43,17 @@ h4,
 h5,
 h6 {
 	font-family: 'Open Sans', sans-serif;
-	clear: both;
-	font-weight: 400;
-	line-height: 1.3em; /* Always relative to the inherited font-size of container element */
-	margin-top: 2.5rem; /* Use rem are root relative to em, always related to default font-size (16px) */
-	margin-bottom: 1rem; 
+	font-weight: 600; 
+	color: #222; 
+	line-height: 1.5; 
+	margin: 2em 0 1.333em;
 }
-h1 { font-size: 1.875em; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1.375em; }
-h4 { font-size: 1.25em; }
-h5 { font-size: 1.125em; }
-h6 { font-size: 1em; }
+h1 { font-size: 1.500em; margin: 0 0 20px; }
+h2 { font-size: 1.313em }
+h3 { font-size: 1.125em }
+h4 { font-size: 1em }
+h5 { font-size: 0.875em }
+h6 { font-size: 0.750em }
 
 p {
 	margin: 0 0 1.75em;
@@ -314,24 +313,32 @@ blockquote.aligncenter {
  * 5.0 Caption
  */
 
-.wp-caption {
-	margin-bottom: 1.5em;
-	max-width: 100%;
+.wp-caption { 
+	text-align: center; 
+	max-width: 100%; 
+	border: 1px solid #eee; 
+	text-align: center; 
+	background-color: #fff; 
+	padding: 8px; 
+	color:#999999;
 }
-
-.wp-caption img[class*="wp-image-"] {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+.wp-caption img { 
+	display: block; 
+	margin: 0 auto; 
+	padding: 0; 
+	border: 0 none; 
 }
-
 .wp-caption .wp-caption-text {
-	margin: 0.8075em 0;
+	padding-top: 8px;
 }
-
-.wp-caption-text {
-	text-align: center;
+.wp-caption p.wp-caption-text { 
+	font-size: 0.875em; 
+	padding: 10px 0 0; 
+	margin: 0; 
+	text-align: center; 
 }
+.wp-caption.alignnone { margin-bottom: 20px }
+.wp-smiley { margin: 0; max-height: 1em; }
 
 
 /**
