@@ -1222,9 +1222,6 @@ blockquote.aligncenter {
 .site-branding h2 {
 	margin: 0.333em 0;
 }
-.page-template-homepage .site-branding h2 {
-	margin-bottom: 3em;
-}
 .site-branding a {
 	display: block;
 }
@@ -1238,6 +1235,9 @@ blockquote.aligncenter {
 	.site-branding {
 		width: 200px;
 		float: left;
+	}
+	.page-template-homepage .site-branding h2 {
+		margin-bottom: 3em;
 	}
 	.site-donate {
 		display: block;
@@ -1779,6 +1779,10 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 	position: relative;
 	padding: 1.333em 0;
 }
+.slider-wrap .rough-top-edge-yellow-solid,
+.slider-wrap .rough-bottom-edge-yellow-solid {
+	display: none;
+}
 
 .page-template-homepage .site-content > .container {
 	width: 100%!important;
@@ -1917,6 +1921,10 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 }
 
 @media only screen and (min-width: 767px) {
+	.slider-wrap .rough-top-edge-yellow-solid,
+	.slider-wrap .rough-bottom-edge-yellow-solid {
+		display: block;
+	}
 	.section-title h2 {
         font-size: 1.600em;
 	    font-weight: 600;
@@ -2113,8 +2121,12 @@ iframe.google-map {
     font-weight: 400;
 }
 .page-header-background-image p {
-	color: #fff;
-	font-size: 1em;
+	display: none;
+}
+.page-header-background-image .button {
+	margin-top: 0.313em;
+	padding: 0.313em 1em;
+	font-size: 0.813em;
 }
 .page-header-overlay {
 	display: block;
@@ -2179,6 +2191,7 @@ iframe.google-map {
 		font-weight: 600;
 	}
 	.page-header-background-image p {
+		display: block;
 		font-size: 1.2em;
 		width: 720px;
 		margin: 0 auto;
