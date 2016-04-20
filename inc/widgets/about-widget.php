@@ -21,7 +21,7 @@ if ( ! class_exists( 'WPSP_About_Widget' ) ) {
 		/**
 		 * Register widget with WordPress.
 		 *
-		 * @since 3.2.0
+		 * @since 1.1.0
 		 */
 		public function __construct() {
 			$branding = wpsp_get_theme_branding(false);
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WPSP_About_Widget' ) ) {
 		/**
 		 * Enqueue media scripts
 		 *
-		 * @since 3.2.0
+		 * @since 1.1.0
 		 */
 		public function scripts() {
 			wp_enqueue_media();
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WPSP_About_Widget' ) ) {
 		 * Front-end display of widget.
 		 *
 		 * @see WP_Widget::widget()
-		 * @since 3.2.0
+		 * @since 1.1.0
 		 *
 		 *
 		 * @param array $args     Widget arguments.
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WPSP_About_Widget' ) ) {
 
 					<?php endif; ?>
 
-				</div><!-- .mailchimp-widget -->
+				</div><!-- .wpsp-about-widget -->
 
 			<?php
 			// After widget hook
@@ -108,7 +108,7 @@ if ( ! class_exists( 'WPSP_About_Widget' ) ) {
 		 * Sanitize widget form values as they are saved.
 		 *
 		 * @see WP_Widget::update()
-		 * @since 3.2.0
+		 * @since 1.1.0
 		 *
 		 * @param array $new_instance Values just sent to be saved.
 		 * @param array $old_instance Previously saved values from database.
@@ -128,7 +128,7 @@ if ( ! class_exists( 'WPSP_About_Widget' ) ) {
 		 * Back-end widget form.
 		 *
 		 * @see WP_Widget::form()
-		 * @since 3.2.0
+		 * @since 1.1.0
 		 *
 		 * @param array $instance Previously saved values from database.
 		 */

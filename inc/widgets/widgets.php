@@ -232,6 +232,7 @@ function wpsp_custom_widgets() {
         'video',
         'posts-thumbnails',
         'about',
+        'events',
     );
 
     // Loop through widgets and load their files
