@@ -545,6 +545,34 @@
 		)
     );*/
 
+	// Events post type
+    $meta_boxes[] = array(
+    	'id'			=> 'events-options',
+		'title'			=> __( 'Personal information', 'wpsp_meta_options' ),
+		'post_types'	=> array( 'events' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Datetime', 'wpsp_meta_options' ), 
+				'id'    => $prefix . "event_datetime",
+				'type'  => 'datetime',
+				'desc'  => __( 'Event start date and time', 'wpsp_meta_options' ), 
+				'js_options' => array(
+					'appendText'      => __( '(yyyy-mm-dd)', 'wpsp_meta_options' ),
+					'dateFormat'      => __( 'yy-mm-dd', 'wpsp_meta_options' ),
+					'stepMinute'      => 5,
+					'showTimepicker'  => true,
+					'changeMonth'     => true,
+					'changeYear'      => true,
+					'showButtonPanel' => true,
+				),
+			),
+		)
+    );
+
 	// Staff post type
     $meta_boxes[] = array(
     	'id'			=> 'staff-options',
