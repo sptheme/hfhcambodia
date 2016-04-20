@@ -5,7 +5,7 @@
  * For more information, please visit:
  * @link http://metabox.io/docs/registering-meta-boxes/
  *
- * @package Learning_Institute
+ * @package Habitat Cambodia
  */
 
  add_filter( 'rwmb_meta_boxes', 'wpsp_register_meta_boxes' );

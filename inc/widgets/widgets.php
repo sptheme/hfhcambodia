@@ -231,6 +231,7 @@ function wpsp_custom_widgets() {
         //'modern-menu',
         'video',
         'posts-thumbnails',
+        'about',
     );
 
     // Loop through widgets and load their files

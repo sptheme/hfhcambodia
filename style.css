@@ -63,6 +63,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Blog post meta
 	## Blog single post
 # Addon Elements
+	## Border Radius
+	## Images
+	## Overlays
 	## Paging navigation
 	## Buttons
 	## Social Button
@@ -2509,6 +2512,13 @@ object {
 /*--------------------------------------------------------------
 # Addon Elements
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Border Radius
+--------------------------------------------------------------*/
+body .wpsp-semi-rounded { border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px }
+body .wpsp-rounded { border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+body .wpsp-round { border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; }
 
 /*--------------------------------------------------------------
 ## Images
