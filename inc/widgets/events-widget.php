@@ -33,7 +33,7 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 	                'classname'         => 'wpsp-event-widget',
 	            )
 			);
-			add_action( 'load-widgets.php', array( $this, 'scripts' ), 100 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
 		}
 
 		/**
@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 		 * @since 1.1.0
 		 */
 		public function scripts() {
-			
+			wp_enqueue_script( 'jquery-countdown', get_template_directory_uri() . '/js/vendor/jquery.countdown.min.js', array(), '20160218', false );
 		}
 
 		/**
@@ -74,8 +74,15 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 				} ?>
 
 				<div class="wpsp-event-countdown clear">
-
+					<div id="getting-started"></div>
 				</div><!-- .wpsp-event-countdown .clear -->
+				<script type="text/javascript">
+					( function( $ ) {
+						$("#getting-started").countdown("2016/04/30", function(event) {
+							$(this).html(event.strftime('%D days %H:%M:%S'));
+						});
+					} ) ( jQuery );
+				</script>
 
 			<?php
 			// After widget hook
@@ -127,10 +134,10 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 			</p>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'post_count' ) ); ?>"><?php esc_html_e( 'Post number', 'wpsp_widget' ); ?>:</label> 
-				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'post_count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_count' ) ); ?>" type="number" value="<?php echo esc_attr( $title ); ?>" />
+				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'post_count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_count' ) ); ?>" type="number" value="<?php echo esc_attr( $post_count ); ?>" />
 			</p>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>"><?php esc_html_e( 'Category', 'wpsp_widget' ); ?>:</label>
-				<select id="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'category' ) ); ?>" class="widefat">
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'tax_category' ) ); ?>"><?php esc_html_e( 'Category', 'wpsp_widget' ); ?>:</label>
+				<select id="<?php echo esc_attr( $this->get_field_id( 'tax_category' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tax_category' ) ); ?>" class="widefat">
 					<option><?php esc_html_e('Select term', 'wpsp_widget');?></option>
 				<?php
                     $args = array( 
@@ -144,8 +151,8 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
                 ?>
 				</select>
 			</p>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'Province' ) ); ?>"><?php esc_html_e( 'Category', 'wpsp_widget' ); ?>:</label>
-				<select id="<?php echo esc_attr( $this->get_field_id( 'Province' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'Province' ) ); ?>" class="widefat">
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'tax_province' ) ); ?>"><?php esc_html_e( 'Province', 'wpsp_widget' ); ?>:</label>
+				<select id="<?php echo esc_attr( $this->get_field_id( 'tax_province' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tax_province' ) ); ?>" class="widefat">
 					<option><?php esc_html_e('Select term', 'wpsp_widget');?></option>
 				<?php
                     $args = array(
@@ -159,8 +166,8 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
                 ?>
 				</select>
 			</p>
-			<p><label for="<?php echo esc_attr( $this->get_field_id( 'Year' ) ); ?>"><?php esc_html_e( 'Year', 'wpsp_widget' ); ?>:</label>
-				<select id="<?php echo esc_attr( $this->get_field_id( 'Year' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'Year' ) ); ?>" class="widefat">
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'tax_year' ) ); ?>"><?php esc_html_e( 'Year', 'wpsp_widget' ); ?>:</label>
+				<select id="<?php echo esc_attr( $this->get_field_id( 'tax_year' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tax_year' ) ); ?>" class="widefat">
 					<option><?php esc_html_e('Select term', 'wpsp_widget');?></option>
 				<?php
                     $args = array(
