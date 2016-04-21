@@ -27,10 +27,10 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 			$branding = wpsp_get_theme_branding(false);
 			$branding = $branding ? $branding . ' - ' : '';
 			parent::__construct(
-				'wpsp-event-widget',
+				'wpsp-events-widget',
 	            $branding . esc_html__( 'Events', 'wpsp_widget' ),
 	            $widget_ops = array(
-	                'classname'         => 'wpsp-event-widget',
+	                'classname'         => 'wpsp-events-widget',
 	            )
 			);
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
@@ -70,19 +70,66 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 				<?php
 				// Display widget title
 				if ( $title ) {
+					echo '<span class="event-status green-highlight">' . esc_html__('Next', 'wpsp_widget') . '</span>';
 					echo $args['before_title'] . $title . $args['after_title'];
 				} ?>
 
-				<div class="wpsp-event-countdown clear">
-					<div id="getting-started"></div>
-				</div><!-- .wpsp-event-countdown .clear -->
-				<script type="text/javascript">
-					( function( $ ) {
-						$("#getting-started").countdown("2016/04/30", function(event) {
-							$(this).html(event.strftime('%D days %H:%M:%S'));
-						});
-					} ) ( jQuery );
-				</script>
+				<?php 
+					$args = array(
+						'post_type' => 'events', 
+						'posts_per_page' => $post_count,
+						'post__not_in'   => array( $post_id ),
+						'no_found_rows'  => true,
+						'tax_query' => array(
+								'relation' => 'AND',
+								array (
+									'taxonomy' => 'events_category',
+									'field'    => 'name',
+									'terms'    => array($tax_category),
+									'operator' => 'IN',
+								),
+								array (
+									'taxonomy' => 'events_province',
+									'field'    => 'name',
+									'terms'    => array($tax_province),
+									'operator' => 'IN',
+								),
+								array (
+									'taxonomy' => 'events_tag',
+									'field'    => 'name',
+									'terms'    => array($tax_year),
+									'operator' => 'IN',
+								),
+							)
+						);
+					$events_query = new WP_Query( $args ) ; 
+
+					if ( $events_query->have_posts() ) : ?>
+
+					<div class="event-countdown-wrap clear">
+						<?php while ( $events_query->have_posts() ) : $events_query->the_post(); ?>
+							<?php $datetime = get_post_meta( get_the_ID(), 'wpsp_event_datetime', true ); 
+								$datetime = explode( ' ' , $datetime ); ?>
+							<div class="event-info">
+							<?php get_template_part( 'partials/events/events-entry-title' ); ?>
+							<?php get_template_part( 'partials/events/events-entry-datetime' ); ?>
+							</div> <!-- .event-info -->
+						<?php endwhile; wp_reset_postdata(); ?>
+						<div id="event-countdown" class="event-countdown"></div>
+					</div><!-- .wpsp-event-countdown .clear -->
+					<script type="text/javascript">
+						( function( $ ) {
+							$("#event-countdown").countdown("<?php echo date('Y/m/d', strtotime($datetime[0])); ?>", function(event) {
+								$(this).html(event.strftime(''
+									+ '<div class="time"><span class="count">%d</span><span class="label">days</span></div>'
+									+ '<div class="time"><span class="count">%H</span><span class="label">hr</span></div>'
+									+ '<div class="time"><span class="count">%M</span><span class="label">min</span></div>'
+									+ '<div class="time"><span class="count">%S</span><span class="label">sec</span></div>'
+								));
+							});
+						} ) ( jQuery );
+					</script>
+				<?php endif; ?>
 
 			<?php
 			// After widget hook

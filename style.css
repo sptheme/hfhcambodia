@@ -1671,6 +1671,49 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-li { padding-left: 0; min-height: 0; }
 .wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-date { margin-top: 0 }
 
+/* Widgets > Event */
+.wpsp-events-widget .event-status {
+	border-radius: 5px;
+	padding: 0 0.769em;
+	font-size: 0.800em;
+	line-height: 2em;
+	display: inline-block;
+	text-transform: uppercase;
+}
+.wpsp-events-widget .event-entry-title {
+	font-size: 1.200em;
+}
+.wpsp-events-widget .event-countdown {
+	margin-top: 1em;
+}
+.wpsp-events-widget .event-countdown .time {
+	background: #202020;
+	border-radius: 5px;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+	display: inline-block;	
+	text-align: center;
+	margin: 0 0.333em;
+	padding: 0 1em;
+}
+.wpsp-events-widget .event-countdown .time:first-child {
+	background-color: #4caf50;
+	margin-left: 0;
+}
+.wpsp-events-widget .event-countdown .count {
+  color: #f8f8f8;
+  display: block;
+  font-size: 2em;
+  line-height: 2em;
+} 
+
+.wpsp-events-widget .event-countdown .label {
+  font-size: normal;
+  margin-bottom: 0.333em;
+  display: block;
+  color:#fff;
+  text-transform: uppercase;
+}
+
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
@@ -2334,6 +2377,15 @@ h3.publication-entry-title {
 }
 
 /*--------------------------------------------------------------
+## Events
+--------------------------------------------------------------*/
+/* Events > Entries */
+.event-entry-datetime {
+	color: #666666;
+	font-size: 0.867em;
+}
+
+/*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
 .page-content .wp-smiley,
@@ -2886,6 +2938,12 @@ a.button:hover {
 .gray-highlight {
 	background: #f2f2f2;
 	padding: 1em;
+	color:#fff;
+}
+.green-highlight {
+	background: #4fb94a;
+	padding: 1em;
+	color:#fff;
 }
 
 /*--------------------------------------------------------------
