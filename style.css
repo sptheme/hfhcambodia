@@ -297,7 +297,7 @@ th {
 /*--------------------------------------------------------------
 # Fonts icon
 --------------------------------------------------------------*/
-
+.event-widget-header:before,
 .overlay-article-hover:before,
 .overlay-video-hover:before,
 .menu-item-has-children a:after,
@@ -1672,6 +1672,12 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .wpsp-widget-recent-posts.style-fullimg .wpsp-widget-recent-posts-date { margin-top: 0 }
 
 /* Widgets > Event */
+.wpsp-events-widget .event-widget-header:before {
+	content: "\f073";
+	float: left;
+    font-size: 4em;
+    margin-right: 0.167em;
+}
 .wpsp-events-widget .event-status {
 	border-radius: 5px;
 	padding: 0 0.769em;
@@ -1679,6 +1685,7 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 	line-height: 2em;
 	display: inline-block;
 	text-transform: uppercase;
+	margin-top: 0.667em;
 }
 .wpsp-events-widget .event-entry-title {
 	font-size: 1.200em;
@@ -1687,13 +1694,22 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 	margin-top: 1em;
 }
 .wpsp-events-widget .event-countdown .time {
-	background: #202020;
+	background: #404040;
 	border-radius: 5px;
 	box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
 	display: inline-block;	
 	text-align: center;
 	margin: 0 0.333em;
 	padding: 0 1em;
+}
+.widget-area .wpsp-events-widget {
+	padding-top: 0.800em;
+}
+.widget-area .wpsp-events-widget .widget-title {
+	padding-top: 0.133em;
+}
+.widget-area .wpsp-events-widget .event-countdown .time {
+	padding: 0 0.867em;
 }
 .wpsp-events-widget .event-countdown .time:first-child {
 	background-color: #4caf50;
@@ -1824,6 +1840,9 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .page-template-homepage #page {
 	background: #fff;
 }
+.page-template-homepage .site-content {
+	padding-top: 6em;
+}
 .slider-wrap {
 	position: relative;
 	padding: 1.333em 0;
@@ -1851,8 +1870,16 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
     color:#727272;
 }
 
+.home-sidebar-1 {
+	background:#ededed;
+	padding: 1.333em 0;
+}
+.home-sidebar-1 .widget {
+	margin-bottom: 0;
+}
+
 .our-work {
-	padding: 6em 0 1em;
+	padding: 3em 0 1em;
 }
 .our-work .section-title {
 	text-align: center;
@@ -1981,6 +2008,17 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
     .section-title p.description {
         font-size: 1.200em;
     }
+    .home-sidebar-1 {
+    	padding: 2.667em 0;
+    }
+    .home-sidebar-1 .event-widget-header {
+    	width: 320px;
+    }
+    .home-sidebar-1 .event-widget-header,
+	.home-sidebar-1 .event-info {
+		float: left;
+		margin-right: 3em;
+	}
     .our-work {
 		padding-bottom: 2em;
 	}
@@ -2383,6 +2421,10 @@ h3.publication-entry-title {
 .event-entry-datetime {
 	color: #666666;
 	font-size: 0.867em;
+}
+/* Events > Single */
+.event-single-datetime {
+	margin-bottom: 2em;
 }
 
 /*--------------------------------------------------------------

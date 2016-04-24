@@ -14,6 +14,14 @@ get_header(); ?>
 	<?php // Loop page
 	while ( have_posts() ) : the_post(); ?>
 
+		<?php if ( is_active_sidebar( 'home-sidebar' ) ) : ?>
+		<section id="home-sidebar-1" class="home-sidebar-1">
+			<div class="container">
+			<?php dynamic_sidebar( 'home-sidebar' ); ?>
+			</div>
+		</section> <!-- .home-sidebar-1 -->
+	<?php endif; ?>
+
 		<section class="our-work">
 			<div class="container">
 				<header class="section-title">
@@ -202,7 +210,9 @@ get_header(); ?>
 		<section class="latest-post-wrap">
 			<div class="container">
 				<div class="latest-post <?php wpsp_blog_wrap_classes(); ?> wpsp-row">
+					<?php if ( is_active_sidebar( 'home-sidebar-2' ) ) : ?>
 					<div class="col span_2_of_3">
+					<?php endif; ?>
 						<header class="section-title">
 							<h2><?php echo rwmb_meta('wpsp_latest_post_headline'); ?></h2>
 						</header>
@@ -223,10 +233,15 @@ get_header(); ?>
 							</div>	
 							</article>
 						<?php endwhile; wp_reset_postdata(); ?>
+					<?php if ( is_active_sidebar( 'home-sidebar-2' ) ) : ?>	
 					</div> <!-- .col .span_2_of_3 -->
-					<div id="home-sidebar" class="col span_1_of_3">
-						<?php if ( is_active_sidebar( 'home-sidebar' ) ) dynamic_sidebar( 'home-sidebar' ); ?>
+					<?php endif; ?>
+
+					<?php if ( is_active_sidebar( 'home-sidebar-2' ) ) : ?>
+					<div id="home-sidebar-2" class="col span_1_of_3">
+						<?php dynamic_sidebar( 'home-sidebar-2' ); ?>
 					</div> <!-- .col .span_1_of_3 -->
+					<?php endif; ?>
 				</div>
 			</div> <!-- .container -->
 		</section> <!-- .latest-post-wrap -->

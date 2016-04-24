@@ -70,15 +70,17 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 				<?php
 				// Display widget title
 				if ( $title ) {
+					echo '<div class="event-widget-header clear">';
 					echo '<span class="event-status green-highlight">' . esc_html__('Next', 'wpsp_widget') . '</span>';
 					echo $args['before_title'] . $title . $args['after_title'];
+					echo '</div>';
 				} ?>
 
 				<?php 
-					$args = array(
+					$event_args = array(
 						'post_type' => 'events', 
 						'posts_per_page' => $post_count,
-						'post__not_in'   => array( $post_id ),
+						'post__not_in'   => array( get_the_ID() ),
 						'no_found_rows'  => true,
 						'tax_query' => array(
 								'relation' => 'AND',
@@ -102,7 +104,7 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 								),
 							)
 						);
-					$events_query = new WP_Query( $args ) ; 
+					$events_query = new WP_Query( $event_args ) ; 
 
 					if ( $events_query->have_posts() ) : ?>
 
@@ -111,8 +113,8 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 							<?php $datetime = get_post_meta( get_the_ID(), 'wpsp_event_datetime', true ); 
 								$datetime = explode( ' ' , $datetime ); ?>
 							<div class="event-info">
-							<?php get_template_part( 'partials/events/events-entry-title' ); ?>
-							<?php get_template_part( 'partials/events/events-entry-datetime' ); ?>
+								<?php get_template_part( 'partials/events/events-entry-title' ); ?>
+								<?php get_template_part( 'partials/events/events-entry-datetime' ); ?>
 							</div> <!-- .event-info -->
 						<?php endwhile; wp_reset_postdata(); ?>
 						<div id="event-countdown" class="event-countdown"></div>
