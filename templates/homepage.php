@@ -233,6 +233,7 @@ get_header(); ?>
 							</div>	
 							</article>
 						<?php endwhile; wp_reset_postdata(); ?>
+						<a class="archive-link" href="<?php echo get_permalink( rwmb_meta('wpsp_post_archive_page') ); ?>"><?php echo esc_html('Other Builds Activities', 'hfhcambodia'); ?> <i class="fa fa-angle-double-right"></i></a>
 					<?php if ( is_active_sidebar( 'home-sidebar-2' ) ) : ?>	
 					</div> <!-- .col .span_2_of_3 -->
 					<?php endif; ?>

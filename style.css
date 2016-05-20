@@ -1002,6 +1002,9 @@ a:active {
 	width: auto;
 	z-index: 100000; /* Above WP toolbar. */
 }
+.archive-link {
+	font-size: 13px;
+}
 
 /*--------------------------------------------------------------
 # Alignments
@@ -1961,10 +1964,6 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .latest-post .section-title h2 {
 	margin-top: 0;
 }
-.latest-post .blog-entry{
-	margin-bottom: 0.813em;
-	border-bottom: 1px solid #eee;
-}
 .latest-post .entry-title {
 	font-size: 1.231em;
 	line-height: 1.250em;
@@ -1983,6 +1982,12 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .latest-publications.wpsp-row .col {
 	margin-bottom: 0;
 }
+.latest-post .archive-link {
+	display: inline-block;
+	float: right;
+	margin-top: -16px;
+}
+
 .latest-publications.wpsp-row .col.span_1_of_2:nth-child(2n+1) {
 	clear: none!important;
 }
