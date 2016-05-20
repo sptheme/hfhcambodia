@@ -1581,6 +1581,18 @@ blockquote.aligncenter {
 .wpsp-quick-contact-widget li.email:before {
 	content: '\f0e0';
 }
+.wpsp-quick-contact-widget ul.wpsp-fa-social { clear: both; }
+.wpsp-quick-contact-widget ul.wpsp-fa-social li {
+	clear: none;
+	float: left; 
+	margin-right: 5px; 
+	margin-bottom: 5px;
+	padding-right: 5px;
+}
+.wpsp-quick-contact-widget ul.wpsp-fa-social li a {
+	font-size: 18px;
+	color: #ffffff;
+}
 
 /* Social Font Awesome Widget */
 .wpsp-fa-social-widget .desc { 

@@ -238,8 +238,8 @@ function wpsp_custom_widgets() {
     $widgets = array(
         'quick-contact',
         'facebook-page',
-        'call-to-action',
-        'social-fontawesome',
+        //'call-to-action',
+        //'social-fontawesome',
         'custom-taxonomy-menu',
         //'modern-menu',
         'video',
