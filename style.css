@@ -2453,6 +2453,23 @@ h3.publication-entry-title {
 /* Events > Single */
 .event-single-datetime {
 	margin-bottom: 2em;
+	color: #666666;
+	font-size: 13px;
+}
+
+.progress-event .single-header h1 span { display: none; }
+.passed-event .single-header h1 span {
+  display: inline-block;
+  color: #ffffff;
+  background-color: #999999;
+  padding: 0 10px;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: normal;
+  font-style: italic;
+  border-radius:3px;
+  margin-left: 10px;
+  vertical-align: middle;
 }
 
 /*--------------------------------------------------------------

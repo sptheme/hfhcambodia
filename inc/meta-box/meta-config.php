@@ -565,6 +565,13 @@
 
 		'fields'		=> array(
 			array(
+				'name'  => __( 'Location', 'wpsp-meta-options' ), 
+				'id'    => $prefix . "event_location",
+				'desc' => __( 'e.g: At Koh Pich City', 'wpsp-meta-options' ),
+				'type'  => 'text',
+				'std'  => '',
+			),
+			array(
 				'name'  => __( 'Datetime', 'wpsp-meta-options' ), 
 				'id'    => $prefix . "event_datetime",
 				'type'  => 'datetime',
