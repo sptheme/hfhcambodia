@@ -29,6 +29,7 @@ function wpsp_add_shortcodes() {
 	add_shortcode( 'sc_partner', 'wpsp_partner_shortcode' );
 	add_shortcode( 'sc_publication', 'wpsp_publication_shortcode' );
 	add_shortcode( 'sc_post', 'wpsp_post_shortcode' );
+	add_shortcode( 'sc_events', 'wpsp_events_shortcode' );
 	
 }
 add_action( 'init', 'wpsp_add_shortcodes' );
@@ -107,7 +108,7 @@ function wpsp_accordion_shortcode($atts, $content = null) {
 		'open_index' => 0
 	), $atts));
 
-	return '<div class="accordion ' . $size . ' ' . $style . ' clearfix" data-opened="' . $open_index . '">' . return_clean($content) . '</div>';
+	return '<div class="accordion ' . $size . ' ' . $style . ' clear" data-opened="' . $open_index . '">' . return_clean($content) . '</div>';
 }
 endif;
 
@@ -165,7 +166,7 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 	$staff_query = new WP_Query($args);
 
 	if ( $staff_query->have_posts() ) { ?>
-		<div class="wpsp-row clearfix">
+		<div class="wpsp-row clear">
 
 	<?php while ( $staff_query->have_posts() ) : $staff_query->the_post(); ?>
 	<?php
@@ -182,7 +183,7 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 			</article><!-- #post-## -->
 	<?php endwhile; wp_reset_postdata(); ?>
 
-		</div> <!-- .wpsp-row .clearfix -->
+		</div> <!-- .wpsp-row .clear -->
 	<?php	
 	} else {
 		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );
@@ -232,7 +233,7 @@ function wpsp_partner_shortcode( $atts, $content = null ){
 	$partner_query = new WP_Query($args);
 
 	if ( $partner_query->have_posts() ) { ?>
-		<div class="wpsp-row clearfix">
+		<div class="wpsp-row clear">
 
 	<?php while ( $partner_query->have_posts() ) : $partner_query->the_post(); ?>
 	<?php
@@ -245,7 +246,7 @@ function wpsp_partner_shortcode( $atts, $content = null ){
 			</article><!-- #post-## -->
 	<?php endwhile; wp_reset_postdata(); ?>
 
-		</div> <!-- .wpsp-row .clearfix -->
+		</div> <!-- .wpsp-row .clear -->
 		<?php // Pagination
             if(function_exists('wp_pagenavi'))
                 wp_pagenavi();
@@ -300,7 +301,7 @@ function wpsp_publication_shortcode( $atts, $content = null ){
 	$publication_query = new WP_Query($args);
 
 	if ( $publication_query->have_posts() ) { ?>
-		<div class="wpsp-row clearfix">
+		<div class="wpsp-row clear">
 
 	<?php while ( $publication_query->have_posts() ) : $publication_query->the_post(); ?>
 	<?php
@@ -315,7 +316,7 @@ function wpsp_publication_shortcode( $atts, $content = null ){
 			</article><!-- #post-## -->
 	<?php endwhile; wp_reset_postdata(); ?>
 
-		</div> <!-- .wpsp-row .clearfix -->
+		</div> <!-- .wpsp-row .clear -->
 		<?php // Pagination
             if(function_exists('wp_pagenavi'))
                 wp_pagenavi();
@@ -402,7 +403,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 	$post_query = new WP_Query($args);
 
 	if ( $post_query->have_posts() ) { ?>
-		<div class="wpsp-row clearfix">
+		<div class="wpsp-row clear">
 		<?php while ( $post_query->have_posts() ) : $post_query->the_post(); ?>
 		<?php // entry-class
 		$entry_classes = array( 'blog-entry' );
@@ -426,6 +427,79 @@ function wpsp_post_shortcode( $atts, $content = null ){
                 wp_pagenavi();
             else 
                 wpsp_paging_nav($post_query->max_num_pages);  ?>
+	<?php	
+	} else {
+		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );
+	}
+	return ob_get_clean();
+}
+endif;
+
+
+if ( ! function_exists( 'wpsp_events_shortcode' ) ) :
+/**
+ * Event shortcode
+ *
+ * Options: Show all event / by Category
+ *
+ */
+function wpsp_events_shortcode( $atts, $content = null ){
+	ob_start();
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'area_id' => null,
+		'post_count' => null		
+	), $atts ) );
+
+	//$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$args = array();
+	if ( $term_id != '-1' &&  $area_id != '-1' ) {
+		$args = array(
+			'tax_query' => array(
+					'relation' => 'AND',
+					array(
+			            'taxonomy' => 'events_category',
+			            'field' => 'term_id',
+			            'terms' => array( $term_id ),
+			          ),
+					array(
+			            'taxonomy' => 'events_province',
+			            'field' => 'term_id',
+			            'terms' => array( $term_id ),
+			          )
+				),
+			);
+	}
+
+	$defaults = array(
+			'post_type' => 'events',
+			'posts_per_page' => $post_count,
+		);
+
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args );
+
+	$event_query = new WP_Query($args);
+
+	if ( $event_query->have_posts() ) { ?>
+		
+		<?php while ( $event_query->have_posts() ) : $event_query->the_post(); ?>
+		<?php // entry-class
+		$entry_classes = array( 'event-entry' );
+		$entry_classes[] = 'event-entry-shortcode'; ?>	
+				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+					<div class="event-entry-inner">
+					<?php get_template_part( 'partials/events/events-entry-title' ); ?>
+					<?php get_template_part( 'partials/events/events-entry-datetime' ); ?> 
+					</div>
+				</article><!-- #post-## -->
+		<?php endwhile; wp_reset_postdata(); ?>
+
+		<?php // Pagination
+            if(function_exists('wp_pagenavi'))
+                wp_pagenavi();
+            else 
+                wpsp_paging_nav($event_query->max_num_pages);  ?>
 	<?php	
 	} else {
 		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );
