@@ -16,13 +16,7 @@
 	<?php wpsp_hook_content_bottom(); ?>
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div id="footer-top-sidebar" class="footer-top-sidebar">
-			<?php if ( is_active_sidebar( 'footer-top-sidebar' ) ) : ?>
-			<?php dynamic_sidebar( 'footer-top-sidebar' ); ?>
-			<?php else : ?>
-				<p>Go to <strong>Widget</strong> in Appearance menu to add widget into <strong>Footer Top Sidebar</strong>.</p>
-			<?php endif; ?>
-		</div> <!-- .footer-top-sidebar -->
+		
 		<div id="footer-bottom-sidebar" class="footer-bottom-sidebar">
 			<div class="container clear col span_1_of_3">
 				<?php if ( is_active_sidebar( 'footer-bottom-sidebar' ) ) : ?>

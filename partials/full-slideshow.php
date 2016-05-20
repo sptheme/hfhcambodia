@@ -52,8 +52,7 @@ if ( $slider_query->have_posts() ) : ?>
 		      });
 	    });     
 	</script>
-	<div class="slider-wrap roght-edge-yellow">
-		<div class="rough-top-edge-yellow-solid"></div>
+	<div class="slider-wrap">
 		<div class="site-slider container">
 			<div id="slides">
 			    <ul class="slides-container">
@@ -82,7 +81,6 @@ if ( $slider_query->have_posts() ) : ?>
 				</nav>
 			</div> <!-- #slides -->	
 		</div> <!-- .site-slider -->
-		<div class="rough-bottom-edge-yellow-solid"></div>
 	</div> <!-- .slider-wrap -->
 	
 <?php endif; ?>

@@ -21,6 +21,7 @@ function wpsp_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Home Sidebar 2', 'wpsp_widget' ),
 		'id'            => 'home-sidebar-2',
@@ -30,6 +31,17 @@ function wpsp_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Header Sidebar', 'wpsp_widget' ),
+		'id'            => 'header-sidebar',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'wpsp_widget' ),
 		'id'            => 'sidebar',
@@ -39,6 +51,7 @@ function wpsp_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Page Sidebar', 'wpsp_widget' ),
 		'id'            => 'page-sidebar',
@@ -58,16 +71,7 @@ function wpsp_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
-	register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Sidebar', 'wpsp_widget' ),
-		'id'            => 'footer-top-sidebar',
-		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Bottom Sidebar', 'wpsp_widget' ),
 		'id'            => 'footer-bottom-sidebar',
