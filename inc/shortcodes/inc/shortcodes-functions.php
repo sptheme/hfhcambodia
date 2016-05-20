@@ -185,7 +185,7 @@ function wpsp_staff_shortcode( $atts, $content = null ){
 		</div> <!-- .wpsp-row .clearfix -->
 	<?php	
 	} else {
-		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
+		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );
 	}
 
 	return ob_get_clean();
@@ -253,7 +253,7 @@ function wpsp_partner_shortcode( $atts, $content = null ){
                 wpsp_paging_nav($partner_query->max_num_pages);  ?>
 	<?php	
 	} else {
-		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
+		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );
 	}
 
 	return ob_get_clean();
@@ -323,7 +323,7 @@ function wpsp_publication_shortcode( $atts, $content = null ){
                 wpsp_paging_nav($publication_query->max_num_pages);  ?>
 	<?php	
 	} else {
-		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
+		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );
 	}
 
 	return ob_get_clean();
@@ -352,7 +352,20 @@ function wpsp_post_shortcode( $atts, $content = null ){
 
 	//$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 	$args = array();
-	if ( $post_format != 'post-format-standard' ) {
+	if ( $post_format == '' ) {
+		$args = array(
+			'tax_query' => array(
+					array(
+			            'taxonomy' => 'post_format',
+			            'field' => 'slug',
+			            'terms' => array('post-format-quote','post-format-audio','post-format-image','post-format-link'),
+			            'operator' => 'NOT IN'
+			          )
+				),
+			);
+	}
+
+	if ( $post_format != 'post-format-standard' && $post_format != '' ) {
 		$args = array(
 			'tax_query' => array(
 					array(
@@ -398,22 +411,24 @@ function wpsp_post_shortcode( $atts, $content = null ){
 		$entry_classes[] = 'col';
 		$entry_classes[] = wpsp_grid_class($cols); ?>	
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+					<div class="blog-entry-inner">
 					<?php get_template_part( 'partials/blog/media/blog-entry' ); ?>
 					<?php get_template_part( 'partials/blog/blog-entry-title' ); ?>
 					<?php if ( $post_meta )  get_template_part( 'partials/blog/blog-entry-meta' ); ?>
 					<?php if ( $post_excerpt )  get_template_part( 'partials/blog/blog-entry-content' ); ?>
+					</div>
 				</article><!-- #post-## -->
 		<?php endwhile; wp_reset_postdata(); ?>
 		</div>
 
 		<?php // Pagination
-           /* if(function_exists('wp_pagenavi'))
+            if(function_exists('wp_pagenavi'))
                 wp_pagenavi();
             else 
-                wpsp_paging_nav($post_query->max_num_pages); */ ?>
+                wpsp_paging_nav($post_query->max_num_pages);  ?>
 	<?php	
 	} else {
-		echo esc_html__( 'Sorry, new content will coming soon.', 'learninginstitute' );
+		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );
 	}
 	return ob_get_clean();
 }

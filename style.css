@@ -2576,6 +2576,46 @@ object {
 .blog-entry.thumbnail-entry-style .blog-entry-title { margin: 0 0 5px; }
 .blog-entry.thumbnail-entry-style .blog-entry-excerpt { margin-bottom: 0; }
 
+/* Post > Entries > Custom background highlight */
+.blog-entry.blue-highlight,
+.blog-entry.green-highlight,
+.blog-entry.gray-highlight {
+	background: none!important;
+}
+.blue-highlight .blog-entry-inner {
+	background-color: #007acc;
+	padding: 4px;
+}
+.green-highlight .blog-entry-inner {
+	background-color: #4caf50;
+	padding: 4px;
+}
+.gray-highlight .blog-entry-inner {
+	background-color: #f2f2f2;
+	padding: 4px;
+}
+.blue-highlight .blog-entry-title,
+.green-highlight .blog-entry-title,
+.blue-highlight ul.meta,
+.green-highlight ul.meta,
+.blue-highlight .blog-entry-excerpt,
+.green-highlight .blog-entry-excerpt, 
+.blue-highlight .wpsp-readmore,
+.green-highlight .wpsp-readmore {
+	color: #ffffff;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.gray-highlight .blog-entry-title,
+.gray-highlight ul.meta,
+.gray-highlight .blog-entry-excerpt {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.gray-highlight .blog-entry-excerpt {
+	color: #333333;
+}
+
 /*--------------------------------------------------------------
 ## Blog single post
 --------------------------------------------------------------*/
@@ -2612,6 +2652,8 @@ object {
 	line-height: 1.4;
 	margin-bottom: 0.556em
 }
+
+
 
 
 /*--------------------------------------------------------------
@@ -2907,6 +2949,7 @@ span.h-sep {
 ## Paging navigation
 --------------------------------------------------------------*/
 .paging-navigation {
+	clear: both;
     text-align: center;
     margin: 3em 0;
 }
@@ -2990,6 +3033,11 @@ a.button:hover {
 /* Highlight > Background */
 .gray-highlight {
 	background: #f2f2f2;
+	padding: 1em;
+	color:#fff;
+}
+.blue-highlight {
+	background: #007acc;
 	padding: 1em;
 	color:#fff;
 }

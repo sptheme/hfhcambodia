@@ -32,6 +32,7 @@ function wpsp_post_shortcode_ajax(){
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Select post format: ', 'wpsp_shortcode' ); ?></label></th>
 					<td>
 						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+							<option class="level-0" value=""><?php _e( 'All format', 'wpsp_shortcode' ); ?></option>
 							<option class="level-0" value="post-format-standard"><?php _e( 'Standard', 'wpsp_shortcode' ); ?></option>
 							<option class="level-0" value="post-format-video"><?php _e( 'Video', 'wpsp_shortcode' ); ?></option>
 							<option class="level-0" value="post-format-gallery"><?php _e( 'Gallery', 'wpsp_shortcode' ); ?></option>
@@ -64,10 +65,9 @@ function wpsp_post_shortcode_ajax(){
 					<td>
 						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
 							<option class="level-0" value=""><?php _e( 'Simple', 'wpsp_shortcode' ); ?></option>
-							<option class="level-0" value="post-highlight"><?php _e( 'Highlight Blue', 'wpsp_shortcode' ); ?></option>
-							<option class="level-0" value="post-highlight-green"><?php _e( 'Highlight Green', 'wpsp_shortcode' ); ?></option>
-							<option class="level-0" value="post-highlight-gray"><?php _e( 'Highlight Gray', 'wpsp_shortcode' ); ?></option>
-							<option class="level-0" value="overlay-2"><?php _e( 'Effect', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="blue-highlight"><?php _e( 'Highlight Blue', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="green-highlight"><?php _e( 'Highlight Green', 'wpsp_shortcode' ); ?></option>
+							<option class="level-0" value="gray-highlight"><?php _e( 'Highlight Gray', 'wpsp_shortcode' ); ?></option>
 						</select>
 					</td>
 				</tr>
