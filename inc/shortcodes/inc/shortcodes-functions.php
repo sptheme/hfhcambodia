@@ -485,12 +485,15 @@ function wpsp_events_shortcode( $atts, $content = null ){
 		
 		<?php while ( $event_query->have_posts() ) : $event_query->the_post(); ?>
 		<?php // entry-class
-		$entry_classes = array( 'event-entry' );
+		$entry_classes = wpsp_event_passed_class( get_the_ID() );
+		$entry_classes[] = 'event-entry';
 		$entry_classes[] = 'event-entry-shortcode'; ?>	
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
 					<div class="event-entry-inner">
+					<?php get_template_part( 'partials/events/events-entry-meta' ); ?>
 					<?php get_template_part( 'partials/events/events-entry-title' ); ?>
 					<?php get_template_part( 'partials/events/events-entry-datetime' ); ?> 
+					<?php get_template_part( 'partials/events/events-entry-content' ); ?> 
 					</div>
 				</article><!-- #post-## -->
 		<?php endwhile; wp_reset_postdata(); ?>

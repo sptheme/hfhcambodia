@@ -2446,9 +2446,33 @@ h3.publication-entry-title {
 ## Events
 --------------------------------------------------------------*/
 /* Events > Entries */
+.event-entry {
+	border-bottom: 1px solid #ededed;
+	margin-bottom: 1.5em;
+}
 .event-entry-datetime {
+	margin-bottom: 1em;
 	color: #666666;
 	font-size: 0.867em;
+}
+.event-entry-meta {
+	width: 50px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.event-entry-meta .event-day {
+	display: block;
+	background: url(images/bg-date.gif) no-repeat;
+    font-size: 20px!important;
+    font-weight: 600;
+    padding-top: 5px;
+    height: 40px;
+    width: 48px;
+}
+.events-entry-excerpt {
+	clear: left;
 }
 /* Events > Single */
 .event-single-datetime {
@@ -2457,7 +2481,9 @@ h3.publication-entry-title {
 	font-size: 13px;
 }
 
+.progress-event .event-entry-title span,
 .progress-event .single-header h1 span { display: none; }
+.passed-event .event-entry-title span,
 .passed-event .single-header h1 span {
   display: inline-block;
   color: #ffffff;

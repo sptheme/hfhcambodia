@@ -297,7 +297,7 @@ if ( ! function_exists('wpsp_excerpt_length') ) :
 function wpsp_excerpt_length() {
 
 	// Theme panel length setting
-	$length = wpsp_get_mod( 'blog_excerpt_length', '40' );
+	$length = wpsp_get_redux( 'blog-excerpt-length', '40' );
 
 	// Taxonomy setting
 	if ( is_category() ) {

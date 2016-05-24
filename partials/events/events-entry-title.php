@@ -14,4 +14,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <h2 class="event-entry-title entry-title">
 	<a href="<?php wpsp_permalink(); ?>" title="<?php wpsp_esc_title(); ?>"><?php the_title(); ?></a>
+	<span><?php echo __( 'Passed Event', 'hfhcambodia' ); ?></span>
 </h2><!-- .event-entry-title -->
