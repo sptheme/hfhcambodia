@@ -351,7 +351,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 		'cols' => null
 	), $atts ) );
 
-	//$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 	$args = array();
 	if ( $post_format == '' ) {
 		$args = array(
@@ -387,7 +387,7 @@ function wpsp_post_shortcode( $atts, $content = null ){
 			'post_type' => 'post',
 			'category__in' => $term_id,
 			'posts_per_page' => $post_count,
-			//'paged' 		=> $paged,
+			'paged' 		=> $paged,
 			'tax_query' => array( 
 					array(
 			            'taxonomy' => 'post_format',
@@ -451,7 +451,7 @@ function wpsp_events_shortcode( $atts, $content = null ){
 		'post_count' => null		
 	), $atts ) );
 
-	//$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 	$args = array();
 	if ( $term_id != '-1' &&  $area_id != '-1' ) {
 		$args = array(
@@ -474,6 +474,7 @@ function wpsp_events_shortcode( $atts, $content = null ){
 	$defaults = array(
 			'post_type' => 'events',
 			'posts_per_page' => $post_count,
+			'paged' 		=> $paged,
 		);
 
 	$args = wp_parse_args( $args, $defaults );

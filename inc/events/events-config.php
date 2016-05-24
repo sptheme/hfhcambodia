@@ -60,7 +60,7 @@ if ( ! class_exists( 'WPSP_Cp_Events' ) ) {
 			}	
 
 			// Adds the events custom sidebar
-			add_filter( 'widgets_init', array( $this, 'register_sidebar' ) );
+			//add_filter( 'widgets_init', array( $this, 'register_sidebar' ) );
 
 			// Posts per page
 			add_action( 'pre_get_posts', array( $this, 'posts_per_page' ) );

@@ -1332,6 +1332,8 @@ blockquote.aligncenter {
 	color:#99ccff;
 }
 
+.footer-bottom-sidebar .wpsp-quick-contact-widget ul.wpsp-fa-social li a { color: #ffffff; }
+
 /* Change default color of each icon of li element */
 .site-footer .widget_recent_entries li:before,
 .site-footer .widget_recent_comments li:before,
@@ -1591,7 +1593,6 @@ blockquote.aligncenter {
 }
 .wpsp-quick-contact-widget ul.wpsp-fa-social li a {
 	font-size: 18px;
-	color: #ffffff;
 }
 
 /* Social Font Awesome Widget */
@@ -1712,6 +1713,7 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 .wpsp-events-widget .event-entry-title {
 	font-size: 1.200em;
 }
+.wpsp-events-widget .event-entry-title span { display: none; }
 .wpsp-events-widget .event-countdown {
 	margin-top: 1em;
 }
@@ -2043,6 +2045,7 @@ body.content-right-sidebar .modern-menu-widget a:after { left: 10px; content: "\
 		float: left;
 		margin-right: 3em;
 	}
+	.home-sidebar-1 .event-info { width: 240px; }
     .our-work {
 		padding-bottom: 2em;
 	}
