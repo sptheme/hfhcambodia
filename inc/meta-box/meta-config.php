@@ -607,6 +607,40 @@
 		)
     );
 
+    // Career post type
+    $meta_boxes[] = array(
+    	'id'			=> 'career-options',
+		'title'			=> __( 'Career Options', 'wpsp-meta-options' ),
+		'post_types'	=> array( 'career' ),
+		'context'		=> 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
+		'priority'		=> 'high', // Order of meta box: high (default), low. Optional.
+		'autosave'		=> true, // Auto save: true, false (default). Optional.
+
+		'fields'		=> array(
+			array(
+				'name'  => __( 'Job announcement', 'wpsp-meta-options' ), 
+				'id'    => $prefix . "job_announcement",
+				'desc'	=> __( 'Upload file. File support .doc, .docx or .pdf', 'wpsp-meta-options' ), 
+				'type'  => 'image_advanced',
+				'max_file_uploads' => 1
+			),
+			array(
+				'name'  => __( 'Job description', 'wpsp-meta-options' ), 
+				'id'    => $prefix . "job_description",
+				'desc'	=> __( 'Upload file. File support .doc, .docx or .pdf', 'wpsp-meta-options' ), 
+				'type'  => 'image_advanced',
+				'max_file_uploads' => 1
+			),
+			array(
+				'name'  => __( 'Application form', 'wpsp-meta-options' ), 
+				'id'    => $prefix . "application_form",
+				'desc'	=> __( 'Upload file. File support .doc, .docx or .pdf', 'wpsp-meta-options' ), 
+				'type'  => 'image_advanced',
+				'max_file_uploads' => 1
+			),
+		)
+    );
+
     // Partner post type
     $meta_boxes[] = array(
     	'id'			=> 'partner-options',

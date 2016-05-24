@@ -278,6 +278,7 @@ require get_template_directory() . '/inc/slider/slider-config.php';
 require get_template_directory() . '/inc/events/events-config.php';
 require get_template_directory() . '/inc/staff/staff-config.php';
 require get_template_directory() . '/inc/publications/publications-config.php';
+require get_template_directory() . '/inc/career/career-config.php';
 require get_template_directory() . '/inc/partner/partner-config.php';
 require get_template_directory() . '/inc/testimonials/testimonials-config.php';
 
