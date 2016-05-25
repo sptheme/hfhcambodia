@@ -621,22 +621,55 @@
 				'name'  => __( 'Job announcement', 'wpsp-meta-options' ), 
 				'id'    => $prefix . "job_announcement",
 				'desc'	=> __( 'Upload file. File support .doc, .docx or .pdf', 'wpsp-meta-options' ), 
-				'type'  => 'image_advanced',
+				'type'  => 'file_advanced',
 				'max_file_uploads' => 1
 			),
 			array(
 				'name'  => __( 'Job description', 'wpsp-meta-options' ), 
 				'id'    => $prefix . "job_description",
 				'desc'	=> __( 'Upload file. File support .doc, .docx or .pdf', 'wpsp-meta-options' ), 
-				'type'  => 'image_advanced',
+				'type'  => 'file_advanced',
 				'max_file_uploads' => 1
 			),
 			array(
 				'name'  => __( 'Application form', 'wpsp-meta-options' ), 
 				'id'    => $prefix . "application_form",
 				'desc'	=> __( 'Upload file. File support .doc, .docx or .pdf', 'wpsp-meta-options' ), 
-				'type'  => 'image_advanced',
+				'type'  => 'file_advanced',
 				'max_file_uploads' => 1
+			),
+			array(
+				'name'  => __( 'Type', 'wpsp-meta-options' ), 
+				'id'    => $prefix . "career_type",
+				'type'    => 'taxonomy',
+				'desc'	=> __( 'Select job type', 'wpsp-meta-options' ), 
+				'options' => array(
+					'taxonomy' => 'career_type',
+					'type'     => 'select',
+					),
+			),
+			array(
+				'name'  => __( 'Location', 'wpsp-meta-options' ), 
+				'id'    => $prefix . "career_location",
+				'type'    => 'taxonomy',
+				'desc'	=> __( 'Select job location', 'wpsp-meta-options' ), 
+				'options' => array(
+					'taxonomy' => 'career_location',
+					'type'     => 'select',
+					),
+			),
+			array(
+				'name'  => __( 'Expire date', 'wpsp-meta-options' ), 
+				'id'    => $prefix . "career_expire",
+				'type'  => 'datetime',
+				'desc'  => __( 'Select expire date', 'wpsp-meta-options' ), 
+				'js_options' => array(
+					'appendText'      => __( '(yyyy-mm-dd)', 'wpsp-meta-options' ),
+					'dateFormat'      => __( 'yy-mm-dd', 'wpsp-meta-options' ),
+					'showTimepicker'  => false,
+					'changeMonth'     => true,
+					'changeYear'      => true,					
+				),
 			),
 		)
     );

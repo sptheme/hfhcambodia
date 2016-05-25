@@ -20,6 +20,7 @@ function wpsp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'publication' );
 	array_push( $buttons, 'post' );
 	array_push( $buttons, 'events' );
+	array_push( $buttons, 'career' );
 
     return $buttons;
 }
@@ -62,6 +63,7 @@ function wpsp_shortcodes_add_tinymce_plugin($plugin_array) {
 		$plugin_array['publication']		= ED_JS_URL . 'ed-publication.js';
 		$plugin_array['post']				= ED_JS_URL . 'ed-post.js';
 		$plugin_array['events']				= ED_JS_URL . 'ed-events.js';
+		$plugin_array['career']				= ED_JS_URL . 'ed-career.js';
 	}
 	
     return $plugin_array;

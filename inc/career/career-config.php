@@ -39,6 +39,10 @@ if ( ! class_exists( 'WPSP_Cp_Career' ) ) {
 			if ( 'off' != get_option( 'career_categories', 'on' ) ) {	
 				add_action( 'init', array( $this, 'register_categories' ), 0 );
 			}
+
+			add_action( 'init', array( $this, 'register_career_location' ), 0 );
+			add_action( 'init', array( $this, 'register_career_type' ), 0 );
+			add_action( 'admin_init', array( $this, 'remove_career_taxonomy' ), 0 );
 			
 			// Admin only actions
 			if ( is_admin() ) {
@@ -61,6 +65,9 @@ if ( ! class_exists( 'WPSP_Cp_Career' ) ) {
 
 			// Posts per page
 			add_action( 'pre_get_posts', array( $this, 'posts_per_page' ) );
+
+			// Save post meta career type and location into terms
+			add_action( 'save_post', array( $this, 'save_career_post_meta' ) );
 
 		}
 
@@ -224,6 +231,100 @@ if ( ! class_exists( 'WPSP_Cp_Career' ) ) {
 		}
 
 		/**
+		 * Register Career location.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function register_career_location() {
+
+			// Define and sanitize options
+			$name = esc_html__( 'Career Location', 'wpsp_admin' );
+			$slug = 'career-location';
+
+			// Define career location arguments
+			$args = array(
+				'labels' => array(
+					'name' => $name,
+					'singular_name' => $name,
+					'menu_name' => $name,
+					'search_items' => esc_html__( 'Search','wpsp_admin' ),
+					'popular_items' => esc_html__( 'Popular', 'wpsp_admin' ),
+					'all_items' => esc_html__( 'All', 'wpsp_admin' ),
+					'parent_item' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'parent_item_colon' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'edit_item' => esc_html__( 'Edit', 'wpsp_admin' ),
+					'update_item' => esc_html__( 'Update', 'wpsp_admin' ),
+					'add_new_item' => esc_html__( 'Add New', 'wpsp_admin' ),
+					'new_item_name' => esc_html__( 'New', 'wpsp_admin' ),
+					'separate_items_with_commas' => esc_html__( 'Separate with commas', 'wpsp_admin' ),
+					'add_or_remove_items' => esc_html__( 'Add or remove', 'wpsp_admin' ),
+					'choose_from_most_used' => esc_html__( 'Choose from the most used', 'wpsp_admin' ),
+				),
+				'public' => true,
+				'show_in_nav_menus' => true,
+				'show_ui' => true,
+				'show_tagcloud' => true,
+				'hierarchical' => true,
+				'rewrite' => array( 'slug' => $slug ),
+				'query_var' => true
+			);
+
+			// Apply filters
+			$args = apply_filters( 'wpsp_taxonomy_career_location_args', $args );
+
+			// Register the career location taxonomy
+			register_taxonomy( 'career_location', array( 'career' ), $args );
+
+		}
+
+		/**
+		 * Register Career type.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function register_career_type() {
+
+			// Define and sanitize options
+			$name = esc_html__( 'Career Type', 'wpsp_admin' );
+			$slug = 'career-type';
+
+			// Define career type arguments
+			$args = array(
+				'labels' => array(
+					'name' => $name,
+					'singular_name' => $name,
+					'menu_name' => $name,
+					'search_items' => esc_html__( 'Search','wpsp_admin' ),
+					'popular_items' => esc_html__( 'Popular', 'wpsp_admin' ),
+					'all_items' => esc_html__( 'All', 'wpsp_admin' ),
+					'parent_item' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'parent_item_colon' => esc_html__( 'Parent', 'wpsp_admin' ),
+					'edit_item' => esc_html__( 'Edit', 'wpsp_admin' ),
+					'update_item' => esc_html__( 'Update', 'wpsp_admin' ),
+					'add_new_item' => esc_html__( 'Add New', 'wpsp_admin' ),
+					'new_item_name' => esc_html__( 'New', 'wpsp_admin' ),
+					'separate_items_with_commas' => esc_html__( 'Separate with commas', 'wpsp_admin' ),
+					'add_or_remove_items' => esc_html__( 'Add or remove', 'wpsp_admin' ),
+					'choose_from_most_used' => esc_html__( 'Choose from the most used', 'wpsp_admin' ),
+				),
+				'public' => true,
+				'show_in_nav_menus' => true,
+				'show_ui' => true,
+				'show_tagcloud' => true,
+				'hierarchical' => true,
+				'rewrite' => array( 'slug' => $slug ),
+				'query_var' => true
+			);
+
+			// Apply filters
+			$args = apply_filters( 'wpsp_taxonomy_career_type_args', $args );
+
+			// Register the career type taxonomy
+			register_taxonomy( 'career_type', array( 'career' ), $args );
+
+		}
+
+		/**
 		 * Adds columns to the WP dashboard edit screen.
 		 *
 		 * @since 1.0.0
@@ -235,6 +336,11 @@ if ( ! class_exists( 'WPSP_Cp_Career' ) ) {
 			if ( taxonomy_exists( 'career_tag' ) ) {
 				$columns['career_tag']      = esc_html__( 'Tags', 'wpsp_admin' );
 			}
+			
+			$columns['career_type']      	= esc_html__( 'Type', 'wpsp_admin' );
+			$columns['career_location']     = esc_html__( 'Location', 'wpsp_admin' );
+			$columns['career_expire']     	= esc_html__( 'Expire date', 'wpsp_admin' );
+			
 			return $columns;
 		}
 		
@@ -270,6 +376,36 @@ if ( ! class_exists( 'WPSP_Cp_Career' ) ) {
 
 				break;
 
+				// Display the career type in the column view
+				case 'career_type':
+
+					if ( $type_list = get_the_term_list( $post_id, 'career_type', '', ', ', '' ) ) {
+						echo $type_list;
+					} else {
+						echo '&mdash;';
+					}
+
+				break;
+
+				// Display the career location in the column view
+				case 'career_location':
+
+					if ( $location_list = get_the_term_list( $post_id, 'career_location', '', ', ', '' ) ) {
+						echo $location_list;
+					} else {
+						echo '&mdash;';
+					}
+
+				break;
+
+				case 'career_expire':
+					
+					$career_expire = get_post_meta( $post_id, 'wpsp_career_expire', true );
+					$career_expire = date( 'l, F j, Y', strtotime( $career_expire ) );
+					echo $career_expire;
+
+					break;
+
 			endswitch;
 
 		}
@@ -283,7 +419,7 @@ if ( ! class_exists( 'WPSP_Cp_Career' ) ) {
 			global $typenow;
 
 			// An array of all the taxonomyies you want to display. Use the taxonomy name or slug
-			$taxonomies = array( 'career_category', 'career_tag' );
+			$taxonomies = array( 'career_category', 'career_tag', 'career_type', 'career_location' );
 
 			// must set this to the post type you want the filter(s) displayed on
 			if ( 'career' == $typenow ) {
@@ -372,6 +508,8 @@ if ( ! class_exists( 'WPSP_Cp_Career' ) ) {
 				$checkboxes = array(
 					'career_categories',
 					'career_tags',
+					'career_type',
+					'career_location',
 				);
 				foreach ( $checkboxes as $checkbox ) {
 					if ( ! empty( $options[$checkbox] ) ) {
@@ -573,6 +711,30 @@ if ( ! class_exists( 'WPSP_Cp_Career' ) ) {
 			if ( wpsp_is_career_tax() && $query->is_main_query() ) {
 				$query->set( 'posts_per_page', 12 );
 				return;
+			}
+		}
+
+		/**
+		 * Remove taxonomy career type and location.
+		 *
+		 * @since 1.0.0		 
+		 */
+		public static function remove_career_taxonomy() {
+			remove_meta_box( 'career_typediv', 'career', 'side' );
+			remove_meta_box( 'career_locationdiv', 'career', 'side' );
+		}
+
+		/**
+		 * Save post meta career type and location into terms.
+		 *
+		 * @since 1.0.0		 
+		 */
+		public static function save_career_post_meta() {
+			global $post;
+			if (  'career' == get_post_type() ) {
+				if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
+				wp_set_post_terms( $post->ID, $_POST['wpsp_career_type'], 'career_type' );
+				wp_set_post_terms( $post->ID, $_POST['wpsp_career_location'], 'career_location' );
 			}
 		}
 

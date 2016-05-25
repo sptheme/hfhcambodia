@@ -1098,6 +1098,17 @@ function wpsp_list_post_terms( $taxonomy = 'category', $show_links = true, $echo
 
 }
 
+/**
+ * Get term name by term_id
+ * @since 1.0.0 
+ */
+if ( ! function_exists( 'wpsp_get_term_name_by_id' ) ) {
+	function wpsp_get_term_name_by_id( $term_id, $taxonomy ){
+		$term = get_term_by( 'id', $term_id, $taxonomy );
+		return ( $term ) ? $term->name : 'null';
+	}
+}
+
 /*-------------------------------------------------------------------------------*/
 /* [ Array ]
 /*-------------------------------------------------------------------------------*/

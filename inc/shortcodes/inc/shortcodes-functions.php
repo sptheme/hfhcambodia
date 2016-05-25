@@ -30,6 +30,7 @@ function wpsp_add_shortcodes() {
 	add_shortcode( 'sc_publication', 'wpsp_publication_shortcode' );
 	add_shortcode( 'sc_post', 'wpsp_post_shortcode' );
 	add_shortcode( 'sc_events', 'wpsp_events_shortcode' );
+	add_shortcode( 'sc_career', 'wpsp_career_shortcode' );
 	
 }
 add_action( 'init', 'wpsp_add_shortcodes' );
@@ -504,6 +505,59 @@ function wpsp_events_shortcode( $atts, $content = null ){
                 wp_pagenavi();
             else 
                 wpsp_paging_nav($event_query->max_num_pages);  ?>
+	<?php	
+	} else {
+		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );
+	}
+	return ob_get_clean();
+}
+endif;
+
+if ( ! function_exists( 'wpsp_career_shortcode' ) ) :
+/**
+ * Career shortcode
+ *
+ * Options: Show all job announcement
+ *
+ */
+function wpsp_career_shortcode( $atts, $content = null ){
+	ob_start();
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_count' => null		
+	), $atts ) );
+
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$args = array();
+
+	$defaults = array(
+			'post_type' => 'career',
+			'posts_per_page' => $post_count,
+			'paged' 		=> $paged,
+		);
+
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args );
+
+	$career_query = new WP_Query($args);
+
+	if ( $career_query->have_posts() ) { ?>
+		
+		<?php while ( $career_query->have_posts() ) : $career_query->the_post(); ?>
+		<?php // entry-class
+			$entry_classes = array();
+			$entry_classes[] = 'career-entry';
+			$entry_classes[] = 'career-entry-shortcode'; ?>	
+			<article id="post-<?php the_ID(); ?>" <?php post_class( $entry_classes ); ?>>
+				<?php get_template_part( 'partials/career/career-entry-layout' ); ?>
+			</article><!-- #post-## -->
+		<?php endwhile; wp_reset_postdata(); ?>
+
+		<?php // Pagination
+            if(function_exists('wp_pagenavi'))
+                wp_pagenavi();
+            else 
+                wpsp_paging_nav($career_query->max_num_pages);  ?>
 	<?php	
 	} else {
 		echo esc_html__( 'Sorry, new content will coming soon.', 'hfhcambodia' );

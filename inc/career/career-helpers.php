@@ -49,3 +49,18 @@ if ( ! function_exists( 'wpsp_event_passed_class' ) ) :
 		return $classes;
 	}
 endif;
+
+/**
+ * Retur job type class
+ *
+ * @since 1.0.0
+ */
+if ( ! function_exists( 'wpsp_career_type_class' ) ) :
+	function wpsp_career_type_class() {
+		$career_type_obj = rwmb_meta( 'wpsp_career_type' );
+		$career_type = wpsp_get_term_name_by_id( $career_type_obj->term_id, 'career_type' );
+		$career_class = str_replace(' ', '-', strtolower($career_type));
+		
+		return $career_class;
+	}
+endif;

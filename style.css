@@ -54,6 +54,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Custom post type
 	## Staff
 	## Testimonial
+	## Career post type
 	## Partner post type
 	## Publication
 # Media
@@ -297,6 +298,7 @@ th {
 /*--------------------------------------------------------------
 # Fonts icon
 --------------------------------------------------------------*/
+.job-location:before,
 .event-widget-header:before,
 .overlay-article-hover:before,
 .overlay-video-hover:before,
@@ -2406,6 +2408,56 @@ iframe.google-map {
 .single-testimonials .entry-content { margin-bottom: 40px; }
 .single-testimonials .content-left-sidebar blockquote,
 .single-testimonials .content-right-sidebar blockquote { margin-top: 0 }
+
+/*--------------------------------------------------------------
+## Career post type
+--------------------------------------------------------------*/
+.career-entry.hentry { margin-bottom: 0; }
+.career-entry {
+	padding: 15px 0;
+    border-bottom: 1px solid #bfbfbf;
+    overflow: hidden;
+}
+.career-entry-meta {
+	font-size: 12px;
+    color: #999999;
+}
+.career-entry .job-type { width: 100%; }
+.career-entry .closed-date {
+  font-size: 12px;
+  text-align: center;
+  line-height: 16px;
+  margin-top: 5px;
+}
+.career-entry .closed-date span { 
+  font-size: 10px; 
+  display: inline-block;
+  margin-right: 5px;
+}
+.career-entry .job-location {
+	text-align: center;
+}
+.job-location i {
+	margin-right: 5px;
+}
+.job-type {
+  background-color:#dadada;
+  display: inline-block;
+  padding: 3px 10px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  font-size: 12px;
+  line-height: 15px;
+  color:#fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+.job-type.full-time { background-color: #01be7e; }
+.job-type.part-time { background-color: #f08d3c; }
+.job-type.freelancer { background-color: #0c75b9; }
+.job-type.internship { background-color: #99cd00; }
+.job-type.volunteer { background-color: #f4cc60; }
 
 /*--------------------------------------------------------------
 ## Partner post type
