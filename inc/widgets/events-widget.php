@@ -122,8 +122,8 @@ if ( ! class_exists( 'WPSP_Events_Widget' ) ) {
 					<script type="text/javascript">
 						( function( $ ) {
 							$("#event-countdown").countdown("<?php echo date('Y/m/d', strtotime($datetime[0])); ?>", function(event) {
-								$(this).html(event.strftime(''
-									+ '<div class="time"><span class="count">%d</span><span class="label">days</span></div>'
+								var $this = $(this).html(event.strftime('' 
+									+ '<div class="time"><span class="count">%D</span><span class="label">days</span></div>'
 									+ '<div class="time"><span class="count">%H</span><span class="label">hr</span></div>'
 									+ '<div class="time"><span class="count">%M</span><span class="label">min</span></div>'
 									+ '<div class="time"><span class="count">%S</span><span class="label">sec</span></div>'
